@@ -1,0 +1,144 @@
+<taxonomy>
+	<node name="Action">
+		<node name="Transformers: Dark of the Moon"/>
+		<node name="Pirates of the Caribbean: On Stranger Tides"/>
+		<node name="Fast Five"/>
+		<node name="Mission: Impossible - Ghost Protocol"/>
+		<node name="Sherlock Holmes: A Game of Shadows"/>
+		<node name="Thor"/>
+		<node name="Rise of the Planet of the Apes"/>
+		<node name="Captain America: The First Avenger"/>
+		<node name="Kung Fu Panda 2"/>
+		<node name="X-Men: First Class"/>
+		<node name="Green Lantern"/>
+		<node name="Cowboys &amp; Aliens"/>
+		<node name="The Green Hornet"/>
+		<node name="Real Steel"/>
+		<node name="Battle Los Angeles"/>
+		<node name="Immortals"/>
+		<node name="Tower Heist"/>
+		<node name="The Adventures of Tintin"/>
+		<node name="Unknown"/>
+		<node name="Ghost Rider: Spirit of Vengeance"/>
+	</node>
+	
+	<node name="Comedy">
+		<node name="The Hangover Part II"/>
+		<node name="Cars 2"/>
+		<node name="Bridesmaids"/>
+		<node name="Kung Fu Panda 2"/>
+		<node name="Puss in Boots"/>
+		<node name="Rio"/>
+		<node name="The Smurfs"/>
+		<node name="Alvin and the Chipmunks: Chipwrecked"/>
+		<node name="Rango"/>
+		<node name="Horrible Bosses"/>
+		<node name="Hop"/>
+		<node name="Just Go with It"/>
+		<node name="Bad Teacher"/>
+		<node name="Gnomeo &amp; Juliet"/>
+		<node name="The Green Hornet"/>
+		<node name="The Muppets"/>
+		<node name="Crazy, Stupid, Love."/>
+		<node name="The Descendants"/>
+		<node name="Zookeeper"/>
+		<node name="Tower Heist"/>
+	</node>
+	
+	<node name="Crime">
+		<node name="Fast Five"/>
+		<node name="Sherlock Holmes: A Game of Shadows"/>
+		<node name="Horrible Bosses"/>
+		<node name="The Girl with the Dragon Tattoo"/>
+		<node name="The Green Hornet"/>
+		<node name="Tower Heist "/>
+		<node name="The Lincoln Lawyer"/>
+		<node name="J. Edgar"/>
+		<node name="30 Minutes or Less"/>
+		<node name="Colombiana"/>
+		<node name="Drive"/>
+		<node name="The Mechanic"/>
+		<node name="Killer Elite"/>
+		<node name="Drive Angry"/>
+		<node name="Bernie"/>
+		<node name="The Guard"/>
+		<node name="The Raid: Redemption"/>
+		<node name="Don 2"/>
+		<node name="Delhi Belly"/>
+		<node name="Headhunters"/>
+	</node>
+	
+	<node name="Horror">
+		<node name = "Paranormal Activity 3"/>
+		<node name="Final Destination 5"/>
+		<node name="The Cabin in the Woods"/>
+		<node name="Scream 4"/>
+		<node name="Red Riding Hood"/>
+		<node name="The Roommate"/>
+		<node name="The Rite"/>
+		<node name="Priest"/>
+		<node name="The Darkest Hour"/>
+		<node name="Shark Night 3D"/>
+		<node name="Fright Night"/>
+		<node name="Apollo 18"/>
+		<node name="The Thing"/>
+		<node name="Silent House"/>
+		<node name="Creature "/>
+		<node name="Munger Road"/>
+		<node name="Filth to Ashes, Flesh to Dust"/>
+		<node name="The Human Centipede II (Full Sequence)"/>
+		<node name="The Innkeepers"/>
+		<node name="Intruders"/>
+		<node name="Kill List"/>
+		<node name="The Day"/>
+	</node>
+	
+	<node name="Mystery">
+		<node name="Harry Potter and the Deathly Hallows: Part 2"/>
+		<node name="Sherlock Holmes: A Game of Shadows "/>
+		<node name="Super 8 "/>
+		<node name="The Girl with the Dragon Tattoo"/>
+		<node name="Limitless"/>
+		<node name="The Adventures of Tintin"/>
+		<node name="Hugo"/>
+		<node name="Unknown"/>
+		<node name="Source Code"/>
+		<node name="Final Destination 5"/>
+		<node name="The Cabin in the Woods"/>
+		<node name="Scream 4"/>
+		<node name="Red Riding Hood"/>
+		<node name="Extremely Loud &amp; Incredibly Close"/>
+		<node name="Abduction"/>
+		<node name="Tinker Tailor Soldier Spy"/>
+		<node name="Dream House"/>
+		<node name="The Thing"/>
+		<node name="Atlas Shrugged: Part I"/>
+		<node name="Don 2"/>
+	</node>
+	
+	<node name="Sci-Fi">
+		<node name="Transformers: Dark of the Moon"/>
+		<node name="Rise of the Planet of the Apes"/>
+		<node name="Captain America: The First Avenger"/>
+		<node name="X-Men: First Class"/>
+		<node name="Super 8"/>
+		<node name="Green Lantern"/>
+		<node name="Cowboys &amp; Aliens"/>
+		<node name="The Green Hornet"/>
+		<node name="Real Steel"/>
+		<node name="Battle Los Angeles"/>
+		<node name="Limitless"/>
+		<node name="The Adjustment Bureau"/>
+		<node name="I Am Number Four"/>
+		<node name="Source Code"/>
+		<node name="Spy Kids: All the Time in the World in 4D"/>
+		<node name="In Time"/>
+		<node name="Paul"/>
+		<node name="Priest"/>
+		<node name="The Darkest Hour"/>
+		<node name="Mars Needs Moms"/>
+		<node name="Apollo 18"/>
+		<node name="The Thing"/>
+		<node name="Atlas Shrugged: Part I"/>
+	</node>
+</taxonomy>
