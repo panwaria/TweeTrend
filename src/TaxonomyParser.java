@@ -12,23 +12,32 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class TaxonomyParser  extends DefaultHandler
 {
+	/**
+	 *  Pre-processing of XML:
+	 *  Please note, before sending XML file to parser, we need to pre-process it to avoid any
+	 *  incompatibilities with the parser. For example, replace all the occurrences
+	 *  of '&' to '&amp;', '>' to '&gt;', etc. We can also trim any extra white 
+	 *  spaces in the node names. 
+	 */
+
 	private Node mCurrentNode = null;	// Current Node in question
 	private Node mRootNode = null;		// Root Node of the Tree
 	
 	private static final String ROOT_TAG = "taxonomy";
 	private static final String GENERAL_TAG = "node";
-	private static final boolean VERBOSE = false;
+	private static final boolean VERBOSE = true;
 	
 	/**
 	 * Method to create a Tree from given XML file
 	 * 
 	 * @param filename	XML file name
-	 * @return			Root Node of the generated tree
+	 * @return			Generated tree
 	 */
-	public Node createTreeFromXML(String filename)
+	public TaxonomyTree createTreeFromXML(String filename)
 	{
 		parseXML(filename);
-		return mRootNode;
+		
+		return TaxonomyTree.getTaxonomyTree();
 	}
 	
 	/**
@@ -56,16 +65,16 @@ public class TaxonomyParser  extends DefaultHandler
 	{
 		if(VERBOSE) System.out.println("Start Element : " + qname + "\t name : " + attributes.getValue("name"));
 		
+		// Get the TaxonomyTree Object	
+		TaxonomyTree taxonomyTree = TaxonomyTree.getTaxonomyTree();
+
 		if(qname.equalsIgnoreCase(ROOT_TAG))
 		{
-			mRootNode = new Node();
-			mCurrentNode = mRootNode;
+			// As it is the first XML tag, make RootNode the currently visiting node.
+			mCurrentNode = taxonomyTree.getRootNode();
 		}
 		else if(qname.equalsIgnoreCase(GENERAL_TAG))
-		{
-			Node childNode = new Node(attributes.getValue("name"), mCurrentNode);
-			mCurrentNode = childNode;
-		}
+			mCurrentNode = taxonomyTree.createNode(attributes.getValue("name"), mCurrentNode);
 	}
 		
 	@Override
@@ -77,11 +86,13 @@ public class TaxonomyParser  extends DefaultHandler
 		{
 			// Setting this node as a child of it's parent.
 			mCurrentNode.mParentNode.mChildNodeList.add(mCurrentNode);
+			
+			// Now let's go one level up.
 			mCurrentNode = mCurrentNode.mParentNode;
 		}
 		else if(qname.equalsIgnoreCase(ROOT_TAG))
 		{
-			// Do nothing
+			// Do nothing. We're actually done!
 		}
 	}
 }

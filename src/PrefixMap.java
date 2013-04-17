@@ -15,17 +15,27 @@ import java.util.Map;
  * System.out.println(pmap.retrieve("Politics").isLast());
  */
 
-public class PrefixMap //Singleton Class
+/**
+ * Singleton class to generate a PrefixMap for the TaxonomyTree created using TaxonomyParser.
+ */
+public class PrefixMap
 {
 	private static PrefixMap prefixmap;
 	
 	private Map<String, PrefixMapValue> map;
 	
+	/**
+	 * Default Constructor
+	 */
 	private PrefixMap()
 	{
 		map = new HashMap<String, PrefixMapValue>();
 	}
 	
+	/**
+	 * Method to get the singleton PrefixMap object.
+	 * @return	PrefixMap object
+	 */
 	public static PrefixMap getPrefixMap()
 	{
 		if(prefixmap == null)
@@ -33,23 +43,38 @@ public class PrefixMap //Singleton Class
 		return prefixmap;
 	}
 	
+	/**
+	 * Method to insert a key-value pair in the map.
+	 * 
+	 * @param str		Key in the Prefix Map
+	 * @param nodeId	Node Identifier
+	 */
 	public void insert(String str, int nodeId)
 	{
-		String[] tokens = str.split("\\s+");
+		String[] tokens = str.split("\\s+");	// TODO: Splitting string with white-spaces for now.
 		String key = "";
+		
+		// Iterating through all the tokens.
 		for(int i = 0; i < tokens.length; i++)
 		{
 			if(i != 0)
 				key += " ";
 			key += tokens[i];
+			
 			PrefixMapValue value = null;
 			int nodeIdValue = -1;
 			boolean isLastValue = false;
+			
+			// If we reach the last token of the string, we're sure that a node with this key 
+			// exists (with nodeID passed in the method). 
 			if(i == (tokens.length - 1))
 			{
 				nodeIdValue = nodeId;
 				isLastValue = true;
 			}
+			
+			// If Map already contains this key, we can append the nodeID to the list.
+			// TODO: We might need to change this if-block.
 			if(map.containsKey(key))
 			{
 				value = map.get(key);
@@ -65,10 +90,18 @@ public class PrefixMap //Singleton Class
 			{
 				value = new PrefixMapValue(nodeIdValue, isLastValue);
 			}
+			
+			// Add <key, value> pair to the map.
 			map.put(key, value);
 		}
 	}
 	
+	/**
+	 * Method to retrieve prefix-map value (nodeID, isLast) for a given string.
+	 * 
+	 * @param key	A String
+	 * @return		Prefix-Map Value (nodeID, isLast?)
+	 */
 	public PrefixMapValue retrieve(String key)
 	{
 		return map.get(key);

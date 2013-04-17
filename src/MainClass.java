@@ -7,14 +7,15 @@ public class MainClass
 	 */
 	public static void main(String[] args)
 	{
-		// Create a Taxonomy Parser
+		// Create a Taxonomy Parser.
 		TaxonomyParser taxonomyParser = new TaxonomyParser();
 		
-		// Generate a tree strcuture from XML file.
-		Node rootNode = taxonomyParser.createTreeFromXML("B:\\Codebase\\ws_cs784\\TweeTrend\\src\\Taxonomy_Movies.xml");
+		// Generate a tree structure from XML file.
+		TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML("B:\\Codebase\\ws_cs784\\TweeTrend\\src\\Taxonomy_Movies.xml");
 		
 		// [TESTING] Print the Tree.
-		rootNode.printTwoLevelTree();
+		taxonomyTree.print();
+		
+		// Next Step: Create a Prefix Map.
 	}
-
 }
