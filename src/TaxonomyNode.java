@@ -29,10 +29,10 @@ public class TaxonomyNode
 		for (TaxonomyNode node : mChildNodeList)
 		{
 			System.out.println("\t[" + node.mNodeID + "] " + node.mNodeName);
-			System.out.println("\t-----------");
+			System.out.println("\t-------------");
 			
 			for (TaxonomyNode childNode : node.mChildNodeList)
-				System.out.println("\t\t[" + childNode.mNodeID + "] " + childNode.mNodeName);
+				System.out.println("\t\t|--> [" + childNode.mNodeID + "] " + childNode.mNodeName);
 		}
 	}
 	
@@ -41,4 +41,6 @@ public class TaxonomyNode
 	public TaxonomyNode mParentNode = null;					// Parent node ('null' for Root Node)
 	public String mNodeName = null;						// Node Value
 	public long mNodeID = -1;						// NodeID
+	
+	public boolean mNodeVisited = false;
 }

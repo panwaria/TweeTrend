@@ -14,8 +14,12 @@ public class MainClass
 		TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML("B:\\Codebase\\ws_cs784\\TweeTrend\\src\\Taxonomy_Movies.xml");
 		
 		// [TESTING] Print the Tree.
-		taxonomyTree.print();
+		taxonomyTree.printTree();
 		
 		// Next Step: Create a Prefix Map.
+		taxonomyTree.createPrefixMap();
+		
+		// [TESTING] Print the Prefix Map.
+		taxonomyTree.printPrefixMap();
 	}
 }

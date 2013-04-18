@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Singleton class to represent the TaxonomyTree for the Taxonomy given in XML format.
@@ -42,9 +45,52 @@ public class TaxonomyTree
 	/**
 	 * Method to print all nodes in the tree.
 	 */
-	public void print()
+	public void printTree()
 	{
-		mRootNode.printTwoLevelTree();
+		System.out.println("\n--------------------------\nPRINTING TAXONOMY TREE\n--------------------------\n");
+
+		if(mRootNode != null)
+			mRootNode.printTwoLevelTree();
+		else
+			System.out.println("Tree has no nodes yet!");
+	}
+	
+	/**
+	 * Method to create a Prefix Map of the Taxonomy Tree.
+	 */
+	public TaxonomyPrefixMap createPrefixMap()
+	{
+		TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
+		
+		List<TaxonomyNode> nodeQueue = new ArrayList<TaxonomyNode>();
+		nodeQueue.add(mRootNode);
+				
+		while(!nodeQueue.isEmpty())
+		{
+			TaxonomyNode currentNode = nodeQueue.remove(0);
+			prefixMap.insert(currentNode.mNodeName, currentNode.mNodeID);
+			
+			if(currentNode.mChildNodeList.size() > 0)
+			{
+				for(TaxonomyNode node : currentNode.mChildNodeList)
+					nodeQueue.add(node);
+			}
+		}
+		
+		return prefixMap;
+	}
+	
+	/**
+	 * Method to print all nodes in the tree.
+	 */
+	public void printPrefixMap()
+	{
+		System.out.println("\n--------------------------\nPRINTING TAXONOMY PREFIX MAP\n--------------------------\n");
+
+		if(mRootNode != null)
+			TaxonomyPrefixMap.getPrefixMap().print();
+		else
+			System.out.println("Tree has no nodes yet!");
 	}
 	
 	// Member variables

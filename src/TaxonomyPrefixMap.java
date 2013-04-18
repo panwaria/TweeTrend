@@ -20,10 +20,6 @@ import java.util.Map;
  */
 public class TaxonomyPrefixMap
 {
-	private static TaxonomyPrefixMap sTaxonomyPrefixmap;
-	
-	private Map<String, TaxonomyPrefixMapValue> mMap;
-	
 	/**
 	 * Default Constructor
 	 */
@@ -49,9 +45,9 @@ public class TaxonomyPrefixMap
 	 * @param str		Key in the Prefix Map
 	 * @param nodeId	Node Identifier
 	 */
-	public void insert(String str, int nodeId)
+	public void insert(String str, long nodeId)
 	{
-		String[] tokens = str.split("\\s+");	// TODO: Splitting string with white-spaces for now.
+		String[] tokens = str.split(DELIMITER_STRING);
 		String key = "";
 		
 		// Iterating through all the tokens.
@@ -59,10 +55,10 @@ public class TaxonomyPrefixMap
 		{
 			if(i != 0)
 				key += " ";
-			key += tokens[i];
+			key += tokens[i].trim();		
 			
 			TaxonomyPrefixMapValue value = null;
-			int nodeIdValue = -1;
+			long nodeIdValue = -1;
 			boolean isLastValue = false;
 			
 			// If we reach the last token of the string, we're sure that a node with this key 
@@ -106,4 +102,28 @@ public class TaxonomyPrefixMap
 	{
 		return mMap.get(key);
 	}
+	
+	/**
+	 * Method to print the Prefix Map.
+	 */
+	public void print()
+	{
+		if(mMap.size() > 0)
+		{
+			for (Map.Entry<String, TaxonomyPrefixMapValue> entry : mMap.entrySet())
+			{
+				System.out.println("<" + entry.getValue().getNodeId() + ", " + entry.getValue().isLast()
+										+ "> \t - [" + entry.getKey() + "]");
+			}
+		}
+		else
+			System.out.println("No entries in the Prefix Map!");
+	}
+	
+	// Member Variables
+	private static TaxonomyPrefixMap sTaxonomyPrefixmap;
+	private Map<String, TaxonomyPrefixMapValue> mMap;
+	
+	private static final String DELIMITER_STRING = "\\s+|:|,|\\.|&";
+
 }

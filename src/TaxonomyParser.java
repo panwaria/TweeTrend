@@ -24,7 +24,7 @@ public class TaxonomyParser  extends DefaultHandler
 	
 	private static final String ROOT_TAG = "taxonomy";
 	private static final String GENERAL_TAG = "node";
-	private static final boolean VERBOSE = true;
+	private static final boolean VERBOSE = false;
 	
 	/**
 	 * Method to create a Tree from given XML file
