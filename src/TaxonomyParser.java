@@ -20,7 +20,7 @@ public class TaxonomyParser  extends DefaultHandler
 	 *  spaces in the node names. 
 	 */
 
-	private Node mCurrentNode = null;	// Current Node in question
+	private TaxonomyNode mCurrentNode = null;	// Current Node in question
 	
 	private static final String ROOT_TAG = "taxonomy";
 	private static final String GENERAL_TAG = "node";

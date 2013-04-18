@@ -9,7 +9,7 @@ public class TaxonomyTree
 	 */
 	private TaxonomyTree()
 	{
-		mRootNode = new Node(ROOT_NODE_VALUE, null, mNodeCount++);
+		mRootNode = new TaxonomyNode(ROOT_NODE_VALUE, null, mNodeCount++);
 	}
 	
 	/**
@@ -24,8 +24,8 @@ public class TaxonomyTree
 	}
 	
 	// Getter and setter for Root Node
-	public void setRootNode(Node rootNode) { mRootNode = rootNode; }
-	public Node getRootNode() { return mRootNode; }
+	public void setRootNode(TaxonomyNode rootNode) { mRootNode = rootNode; }
+	public TaxonomyNode getRootNode() { return mRootNode; }
 	
 	/**
 	 * A Utility method to create a node in the tree.
@@ -34,9 +34,9 @@ public class TaxonomyTree
 	 * @param parentNode	ParentNode
 	 * @return				Created Node
 	 */
-	public Node createNode(String name, Node parentNode)
+	public TaxonomyNode createNode(String name, TaxonomyNode parentNode)
 	{
-		return new Node(name, parentNode, mNodeCount++);
+		return new TaxonomyNode(name, parentNode, mNodeCount++);
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class TaxonomyTree
 	
 	// Member variables
 	private static TaxonomyTree sTaxonomyTree;		// Singleton TaxonomyTree Object
-	private Node mRootNode = null;					// Root Node of the tree
+	private TaxonomyNode mRootNode = null;					// Root Node of the tree
 	public long mNodeCount = 0;						// Cout of number of nodes in the tree.
 	
 	private static final String ROOT_NODE_VALUE = "ROOT";
