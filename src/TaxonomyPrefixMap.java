@@ -18,29 +18,29 @@ import java.util.Map;
 /**
  * Singleton class to generate a PrefixMap for the TaxonomyTree created using TaxonomyParser.
  */
-public class PrefixMap
+public class TaxonomyPrefixMap
 {
-	private static PrefixMap prefixmap;
+	private static TaxonomyPrefixMap sTaxonomyPrefixmap;
 	
-	private Map<String, PrefixMapValue> map;
+	private Map<String, TaxonomyPrefixMapValue> mMap;
 	
 	/**
 	 * Default Constructor
 	 */
-	private PrefixMap()
+	private TaxonomyPrefixMap()
 	{
-		map = new HashMap<String, PrefixMapValue>();
+		mMap = new HashMap<String, TaxonomyPrefixMapValue>();
 	}
 	
 	/**
 	 * Method to get the singleton PrefixMap object.
 	 * @return	PrefixMap object
 	 */
-	public static PrefixMap getPrefixMap()
+	public static TaxonomyPrefixMap getPrefixMap()
 	{
-		if(prefixmap == null)
-			prefixmap = new PrefixMap();
-		return prefixmap;
+		if(sTaxonomyPrefixmap == null)
+			sTaxonomyPrefixmap = new TaxonomyPrefixMap();
+		return sTaxonomyPrefixmap;
 	}
 	
 	/**
@@ -61,7 +61,7 @@ public class PrefixMap
 				key += " ";
 			key += tokens[i];
 			
-			PrefixMapValue value = null;
+			TaxonomyPrefixMapValue value = null;
 			int nodeIdValue = -1;
 			boolean isLastValue = false;
 			
@@ -75,10 +75,10 @@ public class PrefixMap
 			
 			// If Map already contains this key, we can append the nodeID to the list.
 			// TODO: We might need to change this if-block.
-			if(map.containsKey(key))
+			if(mMap.containsKey(key))
 			{
-				value = map.get(key);
-				map.remove(value);
+				value = mMap.get(key);
+				mMap.remove(value);
 				
 				//If the existing name was shorter, don't touch nodeId set earlier, just set isLast to false.
 				if(value.isLast())
@@ -88,11 +88,11 @@ public class PrefixMap
 			}
 			else
 			{
-				value = new PrefixMapValue(nodeIdValue, isLastValue);
+				value = new TaxonomyPrefixMapValue(nodeIdValue, isLastValue);
 			}
 			
 			// Add <key, value> pair to the map.
-			map.put(key, value);
+			mMap.put(key, value);
 		}
 	}
 	
@@ -102,8 +102,8 @@ public class PrefixMap
 	 * @param key	A String
 	 * @return		Prefix-Map Value (nodeID, isLast?)
 	 */
-	public PrefixMapValue retrieve(String key)
+	public TaxonomyPrefixMapValue retrieve(String key)
 	{
-		return map.get(key);
+		return mMap.get(key);
 	}
 }

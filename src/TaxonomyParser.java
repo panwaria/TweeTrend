@@ -21,7 +21,6 @@ public class TaxonomyParser  extends DefaultHandler
 	 */
 
 	private Node mCurrentNode = null;	// Current Node in question
-	private Node mRootNode = null;		// Root Node of the Tree
 	
 	private static final String ROOT_TAG = "taxonomy";
 	private static final String GENERAL_TAG = "node";
