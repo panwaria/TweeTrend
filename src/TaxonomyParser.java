@@ -19,12 +19,6 @@ public class TaxonomyParser  extends DefaultHandler
 	 *  of '&' to '&amp;', '>' to '&gt;', etc. We can also trim any extra white 
 	 *  spaces in the node names. 
 	 */
-
-	private TaxonomyNode mCurrentNode = null;	// Current Node in question
-	
-	private static final String ROOT_TAG = "taxonomy";
-	private static final String GENERAL_TAG = "node";
-	private static final boolean VERBOSE = false;
 	
 	/**
 	 * Method to create a Tree from given XML file
@@ -94,4 +88,12 @@ public class TaxonomyParser  extends DefaultHandler
 			// Do nothing. We're actually done!
 		}
 	}
+	
+	// Member Variables
+	private TaxonomyNode mCurrentNode = null;	// Current Node in question
+	
+	private static final String ROOT_TAG = "taxonomy";
+	private static final String GENERAL_TAG = "node";
+	private static final boolean VERBOSE = false;
+
 }

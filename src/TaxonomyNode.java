@@ -39,8 +39,8 @@ public class TaxonomyNode
 	// Member Variables -- Keeping all public for now.
 	public ArrayList<TaxonomyNode> mChildNodeList = null;	// List of child nodes
 	public TaxonomyNode mParentNode = null;					// Parent node ('null' for Root Node)
-	public String mNodeName = null;						// Node Value
-	public long mNodeID = -1;						// NodeID
+	public String mNodeName = null;							// Node Value
+	public long mNodeID = -1;								// NodeID
 	
 	public boolean mNodeVisited = false;
 }

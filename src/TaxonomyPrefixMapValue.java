@@ -3,9 +3,6 @@
  */
 public class TaxonomyPrefixMapValue
 {
-	private long mNodeID;			// Node Identifier
-	private boolean mIsLast;		// Should we look for other strings as prefixes in the map?
-	
 	/**
 	 * Constructor
 	 * 
@@ -26,4 +23,7 @@ public class TaxonomyPrefixMapValue
 	public boolean isLast() { return mIsLast; }
 	public void setLast(boolean isLast)	{ this.mIsLast = isLast; }
 	
+	// Member Variables
+	private long mNodeID;			// Node Identifier
+	private boolean mIsLast;		// Should we look for other strings as prefixes in the map?
 }

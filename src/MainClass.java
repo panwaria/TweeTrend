@@ -7,11 +7,20 @@ public class MainClass
 	 */
 	public static void main(String[] args)
 	{
+		// Prepare Taxonomy Data Strcutures - Tree + PrefixMap
+		prepareTaxonomyIndex();
+		
+		// Read Twitter Data and Process it.
+		TweetReader.read();		
+	}
+	
+	private static void prepareTaxonomyIndex()
+	{
 		// Create a Taxonomy Parser.
 		TaxonomyParser taxonomyParser = new TaxonomyParser();
 		
 		// Generate a tree structure from XML file.
-		TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML("B:\\Codebase\\ws_cs784\\TweeTrend\\src\\Taxonomy_Movies.xml");
+		TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML(AppConstants.TAXONOMY_SOURCE_XML);
 		
 		// [TESTING] Print the Tree.
 		taxonomyTree.printTree();
@@ -22,4 +31,5 @@ public class MainClass
 		// [TESTING] Print the Prefix Map.
 		taxonomyTree.printPrefixMap();
 	}
+	
 }

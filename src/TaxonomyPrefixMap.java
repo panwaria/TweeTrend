@@ -47,7 +47,7 @@ public class TaxonomyPrefixMap
 	 */
 	public void insert(String str, long nodeId)
 	{
-		String[] tokens = str.split(DELIMITER_STRING);
+		String[] tokens = str.split(AppConstants.TAXONOMY_DELIMITER_STRING);
 		String key = "";
 		
 		// Iterating through all the tokens.
@@ -124,6 +124,4 @@ public class TaxonomyPrefixMap
 	private static TaxonomyPrefixMap sTaxonomyPrefixmap;
 	private Map<String, TaxonomyPrefixMapValue> mMap;
 	
-	private static final String DELIMITER_STRING = "\\s+|:|,|\\.|&";
-
 }
