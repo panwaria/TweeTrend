@@ -11,7 +11,7 @@ public class MainClass
 		prepareTaxonomyIndex();
 		
 		// Read Twitter Data and Process it.
-		TweetReader.read();		
+		//TweetReader.read();		
 	}
 	
 	private static void prepareTaxonomyIndex()
@@ -24,6 +24,9 @@ public class MainClass
 		
 		// [TESTING] Print the Tree.
 		taxonomyTree.printTree();
+		
+		// [TESTING] Print the TaxonomyNodeHashMap
+		taxonomyTree.printTaxonomyNodeHashMap();
 		
 		// Next Step: Create a Prefix Map.
 		taxonomyTree.createPrefixMap();

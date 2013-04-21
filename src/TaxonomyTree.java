@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -12,7 +14,8 @@ public class TaxonomyTree
 	 */
 	private TaxonomyTree()
 	{
-		mRootNode = new TaxonomyNode(ROOT_NODE_VALUE, null, mNodeCount++);
+		mTaxonomyNodeHashMap = new HashMap<Long, TaxonomyNode>();
+		mRootNode = createNode(ROOT_NODE_VALUE, null);
 	}
 	
 	/**
@@ -28,7 +31,10 @@ public class TaxonomyTree
 	
 	// Getter and setter for Root Node
 	public void setRootNode(TaxonomyNode rootNode) { mRootNode = rootNode; }
-	public TaxonomyNode getRootNode() { return mRootNode; }
+	public final TaxonomyNode getRootNode() { return mRootNode; }
+	
+	// Getter for TaxonomyNodeHashMap
+	public final Map<Long, TaxonomyNode> getTaxonomyNodeHashMap() {	return mTaxonomyNodeHashMap; }
 	
 	/**
 	 * A Utility method to create a node in the tree.
@@ -39,7 +45,16 @@ public class TaxonomyTree
 	 */
 	public TaxonomyNode createNode(String name, TaxonomyNode parentNode)
 	{
-		return new TaxonomyNode(name, parentNode, mNodeCount++);
+		// Increase the node count first.
+		mNodeCount++;
+		
+		// Create the node.
+		TaxonomyNode node = new TaxonomyNode(name, parentNode, mNodeCount);
+		
+		// Also push node into the hash map.
+		mTaxonomyNodeHashMap.put(mNodeCount, node);
+		
+		return node;
 	}
 	
 	/**
@@ -62,6 +77,7 @@ public class TaxonomyTree
 	{
 		TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
 		
+		// Using Breadth First Traversal of the Tree to create PrefixMap
 		List<TaxonomyNode> nodeQueue = new ArrayList<TaxonomyNode>();
 		nodeQueue.add(mRootNode);
 				
@@ -93,10 +109,30 @@ public class TaxonomyTree
 			System.out.println("Tree has no nodes yet!");
 	}
 	
+	/**
+	 * Print the TaxonomyNodeHashMap
+	 */
+	public void printTaxonomyNodeHashMap()
+	{
+		System.out.println("\n--------------------------\nPRINTING TAXONOMYNODE HASH MAP\n--------------------------\n");
+
+		if(mTaxonomyNodeHashMap.size() > 0)
+		{
+			for (Map.Entry<Long, TaxonomyNode> entry : mTaxonomyNodeHashMap.entrySet())
+			{
+				System.out.println("[" + entry.getKey() + ", " + entry.getValue().mNodeName + "]");
+			}
+		}
+		else
+			System.out.println("No entries in the TaxonomyNode Hash Map!");
+
+	}
+	
 	// Member variables
 	private static TaxonomyTree sTaxonomyTree;		// Singleton TaxonomyTree Object
-	private TaxonomyNode mRootNode = null;					// Root Node of the tree
-	public long mNodeCount = 0;						// Cout of number of nodes in the tree.
+	private TaxonomyNode mRootNode = null;			// Root Node of the tree
+	private long mNodeCount = -1;					// Count of number of nodes in the tree
+	private Map<Long, TaxonomyNode> mTaxonomyNodeHashMap = null;	// Mapping of NodeID to Node object
 	
-	private static final String ROOT_NODE_VALUE = "ROOT";
+	private static final String ROOT_NODE_VALUE = "_ROOT_";
 }

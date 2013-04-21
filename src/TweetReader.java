@@ -18,7 +18,7 @@ public class TweetReader
 
 		try
 		{
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream(AppConstants.TWITTER_DATA_FILE), encoding));
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(AppConstants.TWITTER_DATA_FILE), encoding));
 		    
 		    for (String line; (line = reader.readLine()) != null;)
 		    {
@@ -38,9 +38,7 @@ public class TweetReader
 	        	{
 		        	String outputString = "";
 			        for(String token: tokens) 
-			        {
 			        	outputString += token + " ";
-			        }
 			        System.out.println("PREPROCESSED TWEET MESSAGE: \t" + outputString);
 	        	}
 		        
