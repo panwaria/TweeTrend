@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,6 +15,10 @@ public class TweetReader
 {
 	public static void read()
 	{
+		// Set LOG FILE NAME
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd_HH_mm_ss");
+		LOG_FILE_NAME = dateFormat.format(new Date()) + "_" + LOG_FILE_NAME;
+		
 		String encoding = "UTF-8";
 		BufferedReader reader = null;
 
@@ -25,26 +31,18 @@ public class TweetReader
 		    	// Find the actual Tweet JSON
 		    	String[] parts = line.split("\\[Twitter Firehose Receiver\\]");
 		    	String tweet = parts[1];
-		        System.out.println("TWEET: \t" + tweet);
+		        //printLog("<<TWEET>> : \t" + tweet);
 		        
 		        // Find the Tweet Message
 		        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
 		        String tweetMessage = getTweetMessage(tweet);
-		        System.out.println("TWEET MESSAGE: \t" + tweetMessage);
 		        
 		        // Pre-process the tweet message
 		        String[] tokens = preprocessTweetMessage(tweetMessage);
-		        if(tokens != null)
-	        	{
-		        	String outputString = "";
-			        for(String token: tokens) 
-			        	outputString += token + " ";
-			        System.out.println("PREPROCESSED TWEET MESSAGE: \t" + outputString);
-	        	}
 		        
 		        // Next Step: Compare the tweet with prefixMap
 		        
-		        System.out.println();
+		        printLog("\n*************************************************\n");
 		        //break;	// TODO: Processing just one tweet for now.
 		    }
 		} 
@@ -88,6 +86,9 @@ public class TweetReader
 			JSONParser parser = new JSONParser();
 			JSONObject obj = (JSONObject) parser.parse(tweet);
 			tweetMessage = (String) obj.get("text");
+			
+			// Logging Tweet Message
+			printLog("<<TWEET MESSAGE>> : \t" + tweetMessage);
 		}
 		catch(ParseException pe)
 		{
@@ -100,10 +101,31 @@ public class TweetReader
 	
 	public static String[] preprocessTweetMessage(String tweetMessage)
 	{
+		String tokens[] = null;
 		if(tweetMessage != null)
-			return tweetMessage.split(AppConstants.TWEET_DELIMITER_STRING);
-
-		return null;
+		{
+			tokens = tweetMessage.split(AppConstants.TWEET_DELIMITER_STRING);
+			
+			// Logging Pre-processed Tweet
+		    if((AppConstants.PRINT_DEST != AppConstants.TO_NONE) && tokens != null)
+			{
+		    	String outputString = "";
+		        for(String token: tokens) 
+		        	outputString += token + " ";
+		        outputString = "<<PREPROCESSED>> : \t" + outputString;
+		        
+		        printLog(outputString);
+			}
+		}
+		
+		return tokens;
 	}
+	
+	private static void printLog(String text)
+	{
+		AppUtils.printLog(LOG_FILE_NAME, text);
+	}
+	
+	private static String LOG_FILE_NAME = "tweet_log.txt";
 	
 }
