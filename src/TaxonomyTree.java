@@ -15,6 +15,8 @@ public class TaxonomyTree
 	private TaxonomyTree()
 	{
 		mTaxonomyNodeHashMap = new HashMap<Long, TaxonomyNode>();
+		mTaxonomyNodeNameList = new ArrayList<String>();
+		
 		mRootNode = createNode(ROOT_NODE_VALUE, null);
 	}
 	
@@ -36,6 +38,13 @@ public class TaxonomyTree
 	// Getter for TaxonomyNodeHashMap
 	public final Map<Long, TaxonomyNode> getTaxonomyNodeHashMap() {	return mTaxonomyNodeHashMap; }
 	
+	// Getter for TaxonomyNodeNameArray
+	public final String[] getTaxonomyNodeNameArray() 
+	{
+		String[] taxonomyNodeNameArray = mTaxonomyNodeNameList.toArray(new String[mTaxonomyNodeNameList.size()]);
+		return taxonomyNodeNameArray;
+	}
+	
 	/**
 	 * A Utility method to create a node in the tree.
 	 * 
@@ -53,6 +62,7 @@ public class TaxonomyTree
 		
 		// Also push node into the hash map.
 		mTaxonomyNodeHashMap.put(mNodeCount, node);
+		mTaxonomyNodeNameList.add(name);
 		
 		return node;
 	}
@@ -125,7 +135,26 @@ public class TaxonomyTree
 		}
 		else
 			System.out.println("No entries in the TaxonomyNode Hash Map!");
+	}
+	
+	/**
+	 * Print the TaxonomyNodeNameArray
+	 */
+	public void printTaxonomyNodeNameArray()
+	{
+		System.out.println("\n--------------------------\nPRINTING TAXONOMY NODE NAME ARRAY\n--------------------------\n");
 
+		String[] taxonomyNodeNameArray = getTaxonomyNodeNameArray();
+		int length = taxonomyNodeNameArray.length;
+		if(length > 0)
+		{
+			for (int i = 0; i < length; i++)
+			{
+				System.out.println("[" + i + "]\t" + taxonomyNodeNameArray[i]);
+			}
+		}
+		else
+			System.out.println("No entries in the Taxonomy Node Name Array!");
 	}
 	
 	// Member variables
@@ -134,5 +163,6 @@ public class TaxonomyTree
 	private long mNodeCount = -1;					// Count of number of nodes in the tree
 	private Map<Long, TaxonomyNode> mTaxonomyNodeHashMap = null;	// Mapping of NodeID to Node object
 	
+	private ArrayList<String> mTaxonomyNodeNameList = null;
 	private static final String ROOT_NODE_VALUE = "_ROOT_";
 }

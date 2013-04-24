@@ -7,7 +7,7 @@ public class MainClass
 	 */
 	public static void main(String[] args)
 	{
-		// Prepare Taxonomy Data Strcutures - Tree + PrefixMap
+		// Prepare Taxonomy Data Structures - Tree + PrefixMap
 		prepareTaxonomyIndex();
 		
 		// Read Twitter Data and Process it.
@@ -25,8 +25,10 @@ public class MainClass
 		// [TESTING] Print the Tree.
 		taxonomyTree.printTree();
 		
-		// [TESTING] Print the TaxonomyNodeHashMap
-		taxonomyTree.printTaxonomyNodeHashMap();
+// 		// [TESTING] Print the TaxonomyNodeHashMap
+//		taxonomyTree.printTaxonomyNodeHashMap();
+		// [TESTING] Print the Taxonomy Node Name Array
+		taxonomyTree.printTaxonomyNodeNameArray();
 		
 		// Next Step: Create a Prefix Map.
 		taxonomyTree.createPrefixMap();
