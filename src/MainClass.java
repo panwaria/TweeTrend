@@ -8,14 +8,14 @@ public class MainClass
 	public static void main(String[] args)
 	{
 		// Prepare Taxonomy Data Structures - Tree + PrefixMap
-		prepareTaxonomyIndex();
+		TaxonomyTree taxonomyTree = prepareTaxonomyIndex();
 		
 		// Read Twitter Data and Process it.
-		TweetProcessor tweetProcessor = new TweetProcessor(AppConstants.TWITTER_DATA_FILE);
+		TweetProcessor tweetProcessor = new TweetProcessor(taxonomyTree, AppConstants.TWITTER_DATA_FILE);
 		tweetProcessor.read();		
 	}
 	
-	private static void prepareTaxonomyIndex()
+	private static TaxonomyTree prepareTaxonomyIndex()
 	{
 		// Create a Taxonomy Parser.
 		TaxonomyParser taxonomyParser = new TaxonomyParser();
@@ -36,6 +36,8 @@ public class MainClass
 		
 		// [TESTING] Print the Prefix Map.
 		taxonomyTree.printPrefixMap();
+		
+		return taxonomyTree;
 	}
 	
 }

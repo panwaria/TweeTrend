@@ -19,9 +19,14 @@ public class TweetProcessor
 	 * Default Constructor
 	 * @param tweetSourceFileName	Twitter Data Source
 	 */
-	public TweetProcessor(String tweetSourceFileName)
+	public TweetProcessor(TaxonomyTree taxonomyTree, String tweetSourceFileName)
 	{
+		mTaxonomyTree = taxonomyTree;
+		mNodeNameArray = mTaxonomyTree.getTaxonomyNodeNameArray();
+		
 		mTweetSourceFileName = tweetSourceFileName;
+		
+		mTaxonomyNodeScoreMap = new HashMap<String, TaxonomyNodeScore> ();
 	}
 	
 	/**
@@ -47,19 +52,29 @@ public class TweetProcessor
 		    	String tweet = parts[1];
 		        //printLog("<<TWEET>> : \t" + tweet);
 		        
+		    	
+		    	// [STEP 01_05] Get TweetID
+		    	String tweetID = ""; // TODO: Implement getTweetID(tweet);
+		    	
+		    	
 		        // [STEP 02] Find the Tweet Message
 		        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
 		        String tweetMessage = getTweetMessage(tweet);
 		        
+		        
 		        // [STEP 03] Pre-process the tweet message
 		        String[] tokens = preprocessTweetMessage(tweetMessage);
 		        
+		        
 		        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
 		        
+		        
 		        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
-		        //		         filterMentions(threshold);
+		        filterMentions(THRESHOLD_VAL);
+		        
 		        
 		        // [STEP 06] Next Step: Update List<NodeName, List<TweetID>, cumulativeScore> 
+		        updateTaxonomyNodeScoreMap(tweetID);
 		        
 		        printLog("\n*************************************************\n");
 		        //break;	// TODO: Processing just one tweet for now.
@@ -158,10 +173,28 @@ public class TweetProcessor
 	{
 		if(mCurrentMentions != null && mCurrentMentions.size() > 0)
 		{
-			for (Map.Entry<Long, Double> entry : mCurrentMentions.entrySet())
+			for (Map.Entry<Integer, Double> entry : mCurrentMentions.entrySet())
 			{
 				if(entry.getValue().compareTo(threshold) < 0)
 					mCurrentMentions.remove(entry);
+			}
+		}
+	}	
+	
+	private void updateTaxonomyNodeScoreMap(String tweetID)
+	{
+		if(mCurrentMentions != null && mCurrentMentions.size() > 0)
+		{
+			for (Map.Entry<Integer, Double> entry : mCurrentMentions.entrySet())
+			{
+				int nodeID = entry.getKey();
+				String nodeName = mNodeNameArray[nodeID];
+				
+				if(mTaxonomyNodeScoreMap.containsKey(nodeName))
+				{
+					mTaxonomyNodeScoreMap.get(nodeName).mTweetIDList.add(tweetID);
+					mTaxonomyNodeScoreMap.get(nodeName).mNodeScore += entry.getValue();
+				}
 			}
 		}
 	}
@@ -176,9 +209,13 @@ public class TweetProcessor
 	
 	// Member Variables
 	private static String LOG_FILE_NAME = "tweet_log.txt";
+	private double THRESHOLD_VAL = 0.7;
 	
-	private Map<Long, Double> mCurrentMentions = null;
+	private Map<Integer /*nodeID*/, Double /*score*/> mCurrentMentions = null;
+	private Map<String, TaxonomyNodeScore> mTaxonomyNodeScoreMap = null;
 	
+	private TaxonomyTree mTaxonomyTree = null;
+	private String[] mNodeNameArray = null;
 	
 	private String mTweetSourceFileName = null;
 	
