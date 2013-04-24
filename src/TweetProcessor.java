@@ -11,8 +11,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class TweetReader
+public class TweetProcessor
 {
+	/**
+	 * Method to read the tweet and start processing it.
+	 */
 	public static void read()
 	{
 		// Set LOG FILE NAME
@@ -99,8 +102,16 @@ public class TweetReader
 		return tweetMessage;
 	}
 	
+	/**
+	 * Method to Preprocess the Tweet Message. Remove unnecessary words.
+	 * @param tweetMessage
+	 * @return
+	 */
 	public static String[] preprocessTweetMessage(String tweetMessage)
 	{
+		// TODO: Return null if the language is not English.
+		
+		// Tokenize the strings using a set of Delimiters.
 		String tokens[] = null;
 		if(tweetMessage != null)
 		{
@@ -121,11 +132,16 @@ public class TweetReader
 		return tokens;
 	}
 	
+	/**
+	 * Method to print any data in the log files.
+	 */
 	private static void printLog(String text)
 	{
 		AppUtils.printLog(LOG_FILE_NAME, text);
 	}
 	
+	
+	// Member Variables
 	private static String LOG_FILE_NAME = "tweet_log.txt";
 	
 }

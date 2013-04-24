@@ -11,7 +11,7 @@ public class MainClass
 		prepareTaxonomyIndex();
 		
 		// Read Twitter Data and Process it.
-		TweetReader.read();		
+		TweetProcessor.read();		
 	}
 	
 	private static void prepareTaxonomyIndex()
