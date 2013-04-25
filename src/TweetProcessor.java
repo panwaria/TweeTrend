@@ -86,7 +86,7 @@ public class TweetProcessor
 			        		currentToken += " ";
 			        	currentToken += token;
 			        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
-			        	mCurrentMentions.add();
+			        	mCurrentMentions.put(a.getNodeId(), );
 			        }
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
