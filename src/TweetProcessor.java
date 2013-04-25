@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -12,6 +14,8 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 public class TweetProcessor
 {
@@ -62,6 +66,8 @@ public class TweetProcessor
 			        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
 			        String tweetMessage = getTweetMessage(tweet);
 			        
+			        if(tweetMessage == null)
+			        	continue;
 			        
 			        // [STEP 03] Pre-process the tweet message
 			        String[] tokens = preprocessTweetMessage(tweetMessage);
@@ -117,10 +123,46 @@ public class TweetProcessor
 	
 	/**
 	 * Get Web Context of the message.
+	 * TODO: We can scale this method to go through *all* the URLs of the tweet.
 	 */
 	private String getWebContext(String tweetMessage)
 	{
-		
+		// Separate input by spaces ( URLs don't have spaces )
+        String [] parts = tweetMessage.split("\\s");
+
+        // Attempt to convert each item into an URL.   
+        for(String item : parts) 
+        try
+        {
+            URL url = new URL(item);
+            
+            // If possible then replace with anchor...
+            System.out.print("URL FOUND---------->>>> " + url + "\n");//<a href=\"" + url + "\">"+ url + "</a> " ); 
+            
+        	try 
+        	{
+        		Document doc = Jsoup.connect(url.toString())
+          			.timeout(10*1000)
+          			.get();
+        		
+        		if(doc != null)
+        		{
+        			String title = doc.title();
+        			System.out.print("TITLE---------->>>> " + title + "\n");
+        			
+        			return title;
+        		}
+        	}
+	    	catch (IOException e) 
+	    	{
+	            continue;	// Go to next URL, if any.
+	    	}
+        } 
+        catch (MalformedURLException e)
+        {
+            // Just ignore, see if next item is a URL.
+        }
+
 		return null;
 	}
 	
