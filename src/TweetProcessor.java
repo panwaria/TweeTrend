@@ -63,7 +63,7 @@ public class TweetProcessor
 		    	{
 			    	String[] parts = line.split("\\[Twitter Firehose Receiver\\]");
 			    	String tweet = parts[1];
-			        printLog("<<TWEET>> : \t" + tweet);
+			        //printLog("<<TWEET>> : \t" + tweet);
 			    	
 			    	// [STEP 01_05] Get TweetID
 			    	String tweetID = ""; // TODO: Implement getTweetID(tweet);
@@ -82,19 +82,43 @@ public class TweetProcessor
 			        String webContext = getWebContext(tweetMessage);
 			        String[] webTokens = preprocessTweetMessage(webContext);
 			        
+			        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
+			        String currentToken = "";
+			        
+			        for(String token : webTokens)
+			        {
+			        	if(!currentToken.equals(""))
+			        		currentToken += " ";
+			        	currentToken += token;
+			        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
+			        	if(a != null)
+			        	{
+			        		if(a.getNodeId() != -1)
+			        			mCurrentMentions.put(a.getNodeId(), 1.0);
+			        		if(a.isLast())
+			        			currentToken = "";
+			        	}
+			        	currentToken = "";
+			        }
 			        
 			        // [STEP 04] Next Step: Compare the tweet with prefixMap.
 			        // OUTPUT: Map<nodeID, score>
 			        // mCurrentMentions
-			        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
-			        String currentToken = "";
+			        currentToken = "";
 			        for(String token : tokens)
 			        {
 			        	if(!currentToken.equals(""))
 			        		currentToken += " ";
 			        	currentToken += token;
 			        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
-			        	mCurrentMentions.put(a.getNodeId(), );
+			        	if(a != null)
+			        	{
+			        		if(a.getNodeId() != -1)
+			        			mCurrentMentions.put(a.getNodeId(), 1.0);
+			        		if(a.isLast())
+			        			currentToken = "";
+			        	}
+			        	currentToken = "";
 			        }
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
@@ -225,7 +249,7 @@ public class TweetProcessor
 		// TODO: Return null if the language is not English.
 		
 		// Tokenize the strings using a set of Delimiters.
-		String tokens[] = null;
+		String tokens[] = new String[1];
 		if(tweetMessage != null)
 		{
 			tokens = tweetMessage.split(AppConstants.TWEET_DELIMITER_STRING);
@@ -252,7 +276,7 @@ public class TweetProcessor
 	{
 		if(mCurrentMentions != null && mCurrentMentions.size() > 0)
 		{
-			for (Map.Entry<Integer, Double> entry : mCurrentMentions.entrySet())
+			for (Map.Entry<Long, Double> entry : mCurrentMentions.entrySet())
 			{
 				if(entry.getValue().compareTo(threshold) < 0)
 					mCurrentMentions.remove(entry);
@@ -264,10 +288,10 @@ public class TweetProcessor
 	{
 		if(mCurrentMentions != null && mCurrentMentions.size() > 0)
 		{
-			for (Map.Entry<Integer, Double> entry : mCurrentMentions.entrySet())
+			for (Map.Entry<Long, Double> entry : mCurrentMentions.entrySet())
 			{
-				int nodeID = entry.getKey();
-				String nodeName = mNodeNameArray[nodeID];
+				long nodeID = entry.getKey();
+				String nodeName = mNodeNameArray[(int) nodeID];
 				
 				if(mTaxonomyNodeScoreMap.containsKey(nodeName))
 				{
@@ -290,7 +314,7 @@ public class TweetProcessor
 	private static String LOG_FILE_NAME = "tweet_log.txt";
 	private double THRESHOLD_VAL = 0.7;
 	
-	private Map<Integer /*nodeID*/, Double /*score*/> mCurrentMentions = null;
+	private Map<Long /*nodeID*/, Double /*score*/> mCurrentMentions = new HashMap<Long, Double>();
 	private Map<String, TaxonomyNodeScore> mTaxonomyNodeScoreMap = null;
 	
 	private TaxonomyTree mTaxonomyTree = null;
