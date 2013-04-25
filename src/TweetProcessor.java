@@ -48,36 +48,45 @@ public class TweetProcessor
 		    for (String line; (line = reader.readLine()) != null;)
 		    {
 		    	// [STEP 01] Find the actual Tweet JSON
-		    	String[] parts = line.split("\\[Twitter Firehose Receiver\\]");
-		    	String tweet = parts[1];
-		        //printLog("<<TWEET>> : \t" + tweet);
-		        
-		    	
-		    	// [STEP 01_05] Get TweetID
-		    	String tweetID = ""; // TODO: Implement getTweetID(tweet);
-		    	
-		    	
-		        // [STEP 02] Find the Tweet Message
-		        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
-		        String tweetMessage = getTweetMessage(tweet);
-		        
-		        
-		        // [STEP 03] Pre-process the tweet message
-		        String[] tokens = preprocessTweetMessage(tweetMessage);
-		        
-		        
-		        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
-		        
-		        
-		        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
-		        filterMentions(THRESHOLD_VAL);
-		        
-		        
-		        // [STEP 06] Next Step: Update List<NodeName, List<TweetID>, cumulativeScore> 
-		        updateTaxonomyNodeScoreMap(tweetID);
-		        
-		        printLog("\n*************************************************\n");
-		        //break;	// TODO: Processing just one tweet for now.
+		    	try
+		    	{
+			    	String[] parts = line.split("\\[Twitter Firehose Receiver\\]");
+			    	String tweet = parts[1];
+			        printLog("<<TWEET>> : \t" + tweet);
+			    	
+			    	// [STEP 01_05] Get TweetID
+			    	String tweetID = ""; // TODO: Implement getTweetID(tweet);
+			    	
+			    	
+			        // [STEP 02] Find the Tweet Message
+			        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
+			        String tweetMessage = getTweetMessage(tweet);
+			        
+			        
+			        // [STEP 03] Pre-process the tweet message
+			        String[] tokens = preprocessTweetMessage(tweetMessage);
+			        
+			        String webContext = getWebContext(tweetMessage);
+			        
+			        
+			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
+			        
+			        
+			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
+			        filterMentions(THRESHOLD_VAL);
+			        
+			        
+			        // [STEP 06] Next Step: Update List<NodeName, List<TweetID>, cumulativeScore> 
+			        updateTaxonomyNodeScoreMap(tweetID);
+			        
+			        printLog("\n*************************************************\n");
+			        //break;	// TODO: Processing just one tweet for now.
+		    	}
+		    	catch (IndexOutOfBoundsException e)
+		    	{
+		    		// Just ignore this tweet
+		    		continue;
+		    	}
 		    }
 		    
 		    // Here, you'd have got FINAL List<NodeName, List<TweetID>, cumulativeScore> , which 
@@ -104,6 +113,15 @@ public class TweetProcessor
 	            e.printStackTrace();
             }
 		}
+	}
+	
+	/**
+	 * Get Web Context of the message.
+	 */
+	private String getWebContext(String tweetMessage)
+	{
+		
+		return null;
 	}
 	
 	/**
