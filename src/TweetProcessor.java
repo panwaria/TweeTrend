@@ -82,44 +82,12 @@ public class TweetProcessor
 			        String webContext = getWebContext(tweetMessage);
 			        String[] webTokens = preprocessTweetMessage(webContext);
 			        
-			        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
-			        String currentToken = "";
-			        
-			        for(String token : webTokens)
-			        {
-			        	if(!currentToken.equals(""))
-			        		currentToken += " ";
-			        	currentToken += token;
-			        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
-			        	if(a != null)
-			        	{
-			        		if(a.getNodeId() != -1)
-			        			mCurrentMentions.put(a.getNodeId(), 1.0);
-			        		if(a.isLast())
-			        			currentToken = "";
-			        	}
-			        	currentToken = "";
-			        }
+			        updateCurrentMentions(webTokens);
 			        
 			        // [STEP 04] Next Step: Compare the tweet with prefixMap.
 			        // OUTPUT: Map<nodeID, score>
 			        // mCurrentMentions
-			        currentToken = "";
-			        for(String token : tokens)
-			        {
-			        	if(!currentToken.equals(""))
-			        		currentToken += " ";
-			        	currentToken += token;
-			        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
-			        	if(a != null)
-			        	{
-			        		if(a.getNodeId() != -1)
-			        			mCurrentMentions.put(a.getNodeId(), 1.0);
-			        		if(a.isLast())
-			        			currentToken = "";
-			        	}
-			        	currentToken = "";
-			        }
+			        updateCurrentMentions(tokens);
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
 			        filterMentions(THRESHOLD_VAL);
@@ -164,6 +132,28 @@ public class TweetProcessor
 		}
 	}
 	
+	private void updateCurrentMentions(String[] tokens)
+	{
+		TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
+		String currentToken = "";
+        for(String token : tokens)
+        {
+        	if(!currentToken.equals(""))
+        		currentToken += " ";
+        	currentToken += token;
+        	TaxonomyPrefixMapValue prefixValue = prefixMap.retrieve(currentToken);
+        	if(prefixValue != null)
+        	{
+        		if(prefixValue.getNodeId() != -1)
+        			mCurrentMentions.put(prefixValue.getNodeId(), 1.0);
+        		if(prefixValue.isLast())
+        			currentToken = "";
+        	}
+        	currentToken = "";
+        }
+        
+	}
+
 	/**
 	 * Get Web Context of the message.
 	 * TODO: We can scale this method to go through *all* the URLs of the tweet.
