@@ -69,8 +69,19 @@ public class TweetProcessor
 			        String webContext = getWebContext(tweetMessage);
 			        
 			        
-			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
-			        
+			        // [STEP 04] Next Step: Compare the tweet with prefixMap.
+			        // OUTPUT: Map<nodeID, score>
+			        // mCurrentMentions
+			        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
+			        String currentToken = "";
+			        for(String token : tokens)
+			        {
+			        	if(!currentToken.equals(""))
+			        		currentToken += " ";
+			        	currentToken += token;
+			        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
+			        	mCurrentMentions.add();
+			        }
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
 			        filterMentions(THRESHOLD_VAL);
