@@ -17,6 +17,13 @@ import org.json.simple.parser.ParseException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+
+/**
+ * TODOs:
+ * 1. [OPTIMIZATION] Find part of speech, and we an pass on the 'nouns' to check for the movie rather than all the tokens/
+ * 2. Give more weight to the node if it appears in #hashtag
+ *
+ */
 public class TweetProcessor
 {
 	/**
@@ -73,6 +80,7 @@ public class TweetProcessor
 			        String[] tokens = preprocessTweetMessage(tweetMessage);
 			        
 			        String webContext = getWebContext(tweetMessage);
+			        String[] webTokens = preprocessTweetMessage(webContext);
 			        
 			        
 			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
