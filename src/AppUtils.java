@@ -1,8 +1,11 @@
-import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class AppUtils
 {
@@ -56,4 +59,63 @@ public class AppUtils
 			return false;
 		}
 	}
+	
+	public static Map<String, Double> generateGoWordsMap(String fileName)
+	{
+		Map<String, Double> goWordsMap = null;
+
+		Scanner fileScanner = null;
+		try 
+		{
+			fileScanner = new Scanner(new File(fileName));
+		} 
+		catch(FileNotFoundException e) 
+		{
+			System.err.println("File- '" + fileName + "' not found!");
+			return null;
+		}
+		
+		goWordsMap = new HashMap<String, Double>();
+		
+		while(fileScanner.hasNext()) 
+		{
+			String line = fileScanner.nextLine().trim();
+			
+			// Skip the comments or the blank lines.
+			if(line.length() == 0 || line.startsWith("//")) 
+				continue;
+			
+			String[] parts = line.split("\\s+");
+			
+			double val = -1.0;
+			try
+			{
+				val = Double.parseDouble(parts[1]);
+			}
+			catch(NumberFormatException e)
+			{
+				continue;
+			}
+			
+			goWordsMap.put(parts[0], val);
+		}
+		
+		fileScanner.close();
+		
+		return goWordsMap;
+	}
+	
+	public static void printGoWordsMap(Map<String, Double> goWordsMap)
+	{
+		System.out.println("\n--------------------------\nPRINTING GO-WORDS MAP\n--------------------------\n");
+
+		if(goWordsMap != null && goWordsMap.size() > 0)
+		{
+			for (Map.Entry<String, Double> entry : goWordsMap.entrySet())
+				System.out.println("[" + entry.getKey() + ", " + entry.getValue() + "]");
+		}
+		else
+			System.out.println("No entries in the Go-Words Map!\n");
+	}
+	
 }

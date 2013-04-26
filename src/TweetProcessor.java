@@ -38,6 +38,10 @@ public class TweetProcessor
 		mTweetSourceFileName = tweetSourceFileName;
 		
 		mTaxonomyNodeScoreMap = new HashMap<String, TaxonomyNodeScore> ();
+		
+		// Create Go-Words Map for multiplication factor
+		mGoWordsMap = AppUtils.generateGoWordsMap("src//go_words.dat");
+		AppUtils.printGoWordsMap(mGoWordsMap);
 	}
 	
 	/**
@@ -82,44 +86,11 @@ public class TweetProcessor
 			        String webContext = getWebContext(tweetMessage);
 			        String[] webTokens = preprocessTweetMessage(webContext);
 			        
-			        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
-			        String currentToken = "";
-			        
-			        for(String token : webTokens)
-			        {
-			        	if(!currentToken.equals(""))
-			        		currentToken += " ";
-			        	currentToken += token;
-			        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
-			        	if(a != null)
-			        	{
-			        		if(a.getNodeId() != -1)
-			        			mCurrentMentions.put(a.getNodeId(), 1.0);
-			        		if(a.isLast())
-			        			currentToken = "";
-			        	}
-			        	currentToken = "";
-			        }
-			        
-			        // [STEP 04] Next Step: Compare the tweet with prefixMap.
-			        // OUTPUT: Map<nodeID, score>
-			        // mCurrentMentions
-			        currentToken = "";
-			        for(String token : tokens)
-			        {
-			        	if(!currentToken.equals(""))
-			        		currentToken += " ";
-			        	currentToken += token;
-			        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
-			        	if(a != null)
-			        	{
-			        		if(a.getNodeId() != -1)
-			        			mCurrentMentions.put(a.getNodeId(), 1.0);
-			        		if(a.isLast())
-			        			currentToken = "";
-			        	}
-			        	currentToken = "";
-			        }
+			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
+			        extractMentions(tokens);
+			        extractMentions(webTokens);
+
+			        // [STEP 04_05] Next Step: Get Multiplication Factor
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
 			        filterMentions(THRESHOLD_VAL);
@@ -210,6 +181,33 @@ public class TweetProcessor
 	}
 	
 	/**
+	 * Method to extract mentions.
+	 * 
+	 * @param tokens	Tokens from tweet
+	 */
+	private void extractMentions(String[] tokens)
+	{
+        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
+        String currentToken = "";
+        
+        for(String token : tokens)
+        {
+        	if(!currentToken.equals(""))
+        		currentToken += " ";
+        	currentToken += token;
+        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
+        	if(a != null)
+        	{
+        		if(a.getNodeId() != -1)
+        			mCurrentMentions.put(a.getNodeId(), 1.0);
+        		if(a.isLast())
+        			currentToken = "";
+        	}
+        	currentToken = "";
+        }
+	}
+	
+	/**
 	 * JSON Library: https://code.google.com/p/json-simple/
 	 * @param tweet
 	 * @return
@@ -284,6 +282,10 @@ public class TweetProcessor
 		}
 	}	
 	
+	/**
+	 * Method to update Final TaxonomyNode Score Map.
+	 * @param tweetID
+	 */
 	private void updateTaxonomyNodeScoreMap(String tweetID)
 	{
 		if(mCurrentMentions != null && mCurrentMentions.size() > 0)
@@ -313,6 +315,8 @@ public class TweetProcessor
 	// Member Variables
 	private static String LOG_FILE_NAME = "tweet_log.txt";
 	private double THRESHOLD_VAL = 0.7;
+	
+	private Map<String, Double> mGoWordsMap = null;
 	
 	private Map<Long /*nodeID*/, Double /*score*/> mCurrentMentions = new HashMap<Long, Double>();
 	private Map<String, TaxonomyNodeScore> mTaxonomyNodeScoreMap = null;

@@ -134,7 +134,7 @@ public class TaxonomyTree
 			}
 		}
 		else
-			System.out.println("No entries in the TaxonomyNode Hash Map!");
+			System.out.println("No entries in the TaxonomyNode Hash Map!\n");
 	}
 	
 	/**
@@ -154,7 +154,7 @@ public class TaxonomyTree
 			}
 		}
 		else
-			System.out.println("No entries in the Taxonomy Node Name Array!");
+			System.out.println("No entries in the Taxonomy Node Name Array!\n");
 	}
 	
 	// Member variables
