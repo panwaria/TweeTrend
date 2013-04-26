@@ -91,6 +91,7 @@ public class TweetProcessor
 			        extractMentions(webTokens);
 
 			        // [STEP 04_05] Next Step: Get Multiplication Factor
+
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
 			        filterMentions(THRESHOLD_VAL);
@@ -181,33 +182,6 @@ public class TweetProcessor
 	}
 	
 	/**
-	 * Method to extract mentions.
-	 * 
-	 * @param tokens	Tokens from tweet
-	 */
-	private void extractMentions(String[] tokens)
-	{
-        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
-        String currentToken = "";
-        
-        for(String token : tokens)
-        {
-        	if(!currentToken.equals(""))
-        		currentToken += " ";
-        	currentToken += token;
-        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
-        	if(a != null)
-        	{
-        		if(a.getNodeId() != -1)
-        			mCurrentMentions.put(a.getNodeId(), 1.0);
-        		if(a.isLast())
-        			currentToken = "";
-        	}
-        	currentToken = "";
-        }
-	}
-	
-	/**
 	 * JSON Library: https://code.google.com/p/json-simple/
 	 * @param tweet
 	 * @return
@@ -265,6 +239,33 @@ public class TweetProcessor
 		}
 		
 		return tokens;
+	}
+	
+	/**
+	 * Method to extract mentions.
+	 * 
+	 * @param tokens	Tokens from tweet
+	 */
+	private void extractMentions(String[] tokens)
+	{
+        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
+        String currentToken = "";
+        
+        for(String token : tokens)
+        {
+        	if(!currentToken.equals(""))
+        		currentToken += " ";
+        	currentToken += token;
+        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
+        	if(a != null)
+        	{
+        		if(a.getNodeId() != -1)
+        			mCurrentMentions.put(a.getNodeId(), 1.0);
+        		if(a.isLast())
+        			currentToken = "";
+        	}
+        	currentToken = "";
+        }
 	}
 	
 	/**
