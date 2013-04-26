@@ -90,12 +90,12 @@ public class TweetProcessor
 			        extractMentions(tokens);
 			        extractMentions(webTokens);
 
-			        // [STEP 04_05] Next Step: Get Multiplication Factor
-
+			        // [STEP 04_05] Next Step: Get Multiplication Factor and apply it on current mentions
+			        double mulFactor = getMultiplicationFactor(tokens);
+			        applyMultiplicationFactor(mulFactor);
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
 			        filterMentions(THRESHOLD_VAL);
-			        
 			        
 			        // [STEP 06] Next Step: Update List<NodeName, List<TweetID>, cumulativeScore> 
 			        updateTaxonomyNodeScoreMap(tweetID);
@@ -266,6 +266,46 @@ public class TweetProcessor
         	}
         	currentToken = "";
         }
+	}
+	
+	/**
+	 * TODO: Make it more efficient. Do we really need Map for GoWords?
+	 * @param tokens
+	 * @return
+	 */
+	private double getMultiplicationFactor(String[] tokens)
+	{
+		if(tokens == null || tokens.length <= 0)
+			return 0.0;
+		
+		Double mulFactor = 0.0;
+		
+		for (Map.Entry<String, Double> entry : mGoWordsMap.entrySet())
+		{
+			String goWord = entry.getKey();
+			Double goWordScore = entry.getValue();
+			
+			for(String token : tokens)
+			{
+				if(token.startsWith(goWord))
+					mulFactor = AppUtils.normalizeValues(mulFactor, goWordScore);
+			}
+		}
+		
+		return mulFactor;		
+	}
+	
+	/**
+	 * Apply Multiplication Factor
+	 * @param mulFactor
+	 */
+	private void applyMultiplicationFactor(Double mulFactor)
+	{
+		if(mCurrentMentions != null && mCurrentMentions.size() > 0)
+		{
+			for (Map.Entry<Long, Double> entry : mCurrentMentions.entrySet())
+				mCurrentMentions.put(entry.getKey(), mulFactor * entry.getValue());
+		}
 	}
 	
 	/**

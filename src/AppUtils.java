@@ -118,4 +118,9 @@ public class AppUtils
 			System.out.println("No entries in the Go-Words Map!\n");
 	}
 	
+	public static Double normalizeValues(Double a, Double b)
+	{
+		return (a + b - (a*b));
+	}
+	
 }
