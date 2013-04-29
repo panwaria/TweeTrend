@@ -72,12 +72,12 @@ public class TaxonomyTree
 	 */
 	public void printTree()
 	{
-		System.out.println("\n--------------------------\nPRINTING TAXONOMY TREE\n--------------------------\n");
+		AppUtils.println("\n--------------------------\nPRINTING TAXONOMY TREE\n--------------------------\n");
 
 		if(mRootNode != null)
 			mRootNode.printTwoLevelTree();
 		else
-			System.out.println("Tree has no nodes yet!");
+			AppUtils.println("Tree has no nodes yet!");
 	}
 	
 	/**
@@ -111,12 +111,12 @@ public class TaxonomyTree
 	 */
 	public void printPrefixMap()
 	{
-		System.out.println("\n--------------------------\nPRINTING TAXONOMY PREFIX MAP\n--------------------------\n");
+		AppUtils.println("\n--------------------------\nPRINTING TAXONOMY PREFIX MAP\n--------------------------\n");
 
 		if(mRootNode != null)
 			TaxonomyPrefixMap.getPrefixMap().print();
 		else
-			System.out.println("Tree has no nodes yet!");
+			AppUtils.println("Tree has no nodes yet!");
 	}
 	
 	/**
@@ -124,17 +124,17 @@ public class TaxonomyTree
 	 */
 	public void printTaxonomyNodeHashMap()
 	{
-		System.out.println("\n--------------------------\nPRINTING TAXONOMYNODE HASH MAP\n--------------------------\n");
+		AppUtils.println("\n--------------------------\nPRINTING TAXONOMYNODE HASH MAP\n--------------------------\n");
 
 		if(mTaxonomyNodeHashMap.size() > 0)
 		{
 			for (Map.Entry<Long, TaxonomyNode> entry : mTaxonomyNodeHashMap.entrySet())
 			{
-				System.out.println("[" + entry.getKey() + ", " + entry.getValue().mNodeName + "]");
+				AppUtils.println("[" + entry.getKey() + ", " + entry.getValue().mNodeName + "]");
 			}
 		}
 		else
-			System.out.println("No entries in the TaxonomyNode Hash Map!\n");
+			AppUtils.println("No entries in the TaxonomyNode Hash Map!\n");
 	}
 	
 	/**
@@ -142,7 +142,7 @@ public class TaxonomyTree
 	 */
 	public void printTaxonomyNodeNameArray()
 	{
-		System.out.println("\n--------------------------\nPRINTING TAXONOMY NODE NAME ARRAY\n--------------------------\n");
+		AppUtils.println("\n--------------------------\nPRINTING TAXONOMY NODE NAME ARRAY\n--------------------------\n");
 
 		String[] taxonomyNodeNameArray = getTaxonomyNodeNameArray();
 		int length = taxonomyNodeNameArray.length;
@@ -150,11 +150,11 @@ public class TaxonomyTree
 		{
 			for (int i = 0; i < length; i++)
 			{
-				System.out.println("[" + i + "]\t" + taxonomyNodeNameArray[i]);
+				AppUtils.println("[" + i + "]\t" + taxonomyNodeNameArray[i]);
 			}
 		}
 		else
-			System.out.println("No entries in the Taxonomy Node Name Array!\n");
+			AppUtils.println("No entries in the Taxonomy Node Name Array!\n");
 	}
 	
 	// Member variables

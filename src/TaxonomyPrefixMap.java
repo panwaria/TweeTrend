@@ -7,12 +7,12 @@ import java.util.Map;
  * PrefixMap pmap = PrefixMap.getPrefixMap();
  * pmap.insert("Politics of Love", 1);
  * pmap.insert("Politics", 2);
- * System.out.println(pmap.retrieve("Politics of Love").getNodeId());
- * System.out.println(pmap.retrieve("Politics of Love").isLast());
- * System.out.println(pmap.retrieve("Politics of").getNodeId());
- * System.out.println(pmap.retrieve("Politics of").isLast());
- * System.out.println(pmap.retrieve("Politics").getNodeId());
- * System.out.println(pmap.retrieve("Politics").isLast());
+ * AppUtils.println(pmap.retrieve("Politics of Love").getNodeId());
+ * AppUtils.println(pmap.retrieve("Politics of Love").isLast());
+ * AppUtils.println(pmap.retrieve("Politics of").getNodeId());
+ * AppUtils.println(pmap.retrieve("Politics of").isLast());
+ * AppUtils.println(pmap.retrieve("Politics").getNodeId());
+ * AppUtils.println(pmap.retrieve("Politics").isLast());
  */
 
 /**
@@ -108,16 +108,17 @@ public class TaxonomyPrefixMap
 	 */
 	public void print()
 	{
+		
 		if(mMap.size() > 0)
 		{
 			for (Map.Entry<String, TaxonomyPrefixMapValue> entry : mMap.entrySet())
 			{
-				System.out.println("<" + entry.getValue().getNodeId() + ", " + entry.getValue().isLast()
+				AppUtils.println("<" + entry.getValue().getNodeId() + ", " + entry.getValue().isLast()
 										+ "> \t - [" + entry.getKey() + "]");
 			}
 		}
 		else
-			System.out.println("No entries in the Prefix Map!");
+			AppUtils.println("No entries in the Prefix Map!");
 	}
 	
 	// Member Variables

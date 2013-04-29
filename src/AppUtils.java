@@ -9,6 +9,18 @@ import java.util.Scanner;
 
 public class AppUtils
 {
+	public static void println(String text)
+	{
+		if(AppConstants.PRINT_TO_CONSOLE_ALLOWED)
+			System.out.println(text);
+	}
+
+	public static void print(String text)
+	{
+		if(AppConstants.PRINT_TO_CONSOLE_ALLOWED)
+			System.out.print(text);
+	}
+	
 	public static void printLog(String fileName, String text)
 	{
 	    if(AppConstants.PRINT_DEST == AppConstants.TO_CONSOLE)
@@ -107,15 +119,15 @@ public class AppUtils
 	
 	public static void printGoWordsMap(Map<String, Double> goWordsMap)
 	{
-		System.out.println("\n--------------------------\nPRINTING GO-WORDS MAP\n--------------------------\n");
+		println("\n--------------------------\nPRINTING GO-WORDS MAP\n--------------------------\n");
 
 		if(goWordsMap != null && goWordsMap.size() > 0)
 		{
 			for (Map.Entry<String, Double> entry : goWordsMap.entrySet())
-				System.out.println("[" + entry.getKey() + ", " + entry.getValue() + "]");
+				println("[" + entry.getKey() + ", " + entry.getValue() + "]");
 		}
 		else
-			System.out.println("No entries in the Go-Words Map!\n");
+			println("No entries in the Go-Words Map!\n");
 	}
 	
 	public static Double normalizeValues(Double a, Double b)

@@ -12,7 +12,8 @@ public class MainClass
 		
 		// Read Twitter Data and Process it.
 		TweetProcessor tweetProcessor = new TweetProcessor(taxonomyTree, AppConstants.TWITTER_DATA_FILE);
-		tweetProcessor.read();		
+		tweetProcessor.processTweets();		
+        System.out.println("CHECKPOINT: Final Taxonomy Node Score Updated.");
 	}
 	
 	private static TaxonomyTree prepareTaxonomyIndex()
@@ -22,6 +23,7 @@ public class MainClass
 		
 		// Generate a tree structure from XML file.
 		TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML(AppConstants.TAXONOMY_SOURCE_XML);
+		System.out.println("CHECKPOINT: Taxonomy Tree Created.");
 		
 		// [TESTING] Print the Tree.
 		taxonomyTree.printTree();
@@ -33,6 +35,7 @@ public class MainClass
 		
 		// Next Step: Create a Prefix Map.
 		taxonomyTree.createPrefixMap();
+		System.out.println("CHECKPOINT: Taxonomy Prefix Map Generated.");
 		
 		// [TESTING] Print the Prefix Map.
 		taxonomyTree.printPrefixMap();

@@ -3,10 +3,12 @@
  */
 public class AppConstants
 {
+	// DEBUGGING Related
+	public static final int PROCESSING_TWEET_LIMIT = 1000;
+	public static final boolean PRINT_TO_CONSOLE_ALLOWED = false;
 	
 	// TAXONOMY Related
 	public static final String TAXONOMY_SOURCE_XML = "C:\\Tweets\\Taxonomy_Movies.xml";
-	
 	public static final String TAXONOMY_DELIMITER_STRING = "\\s+|:|,|\\.|&|-";
 	
 	// TWEETS Related

@@ -23,16 +23,16 @@ public class TaxonomyNode
 	 */
 	public void printTwoLevelTree()
 	{
-		System.out.println("Printing tree beneath the node with value = "  + mNodeName);
-		System.out.println("=================================================");
+		AppUtils.println("Printing tree beneath the node with value = "  + mNodeName);
+		AppUtils.println("=================================================");
 		
 		for (TaxonomyNode node : mChildNodeList)
 		{
-			System.out.println("\t[" + node.mNodeID + "] " + node.mNodeName);
-			System.out.println("\t-------------");
+			AppUtils.println("\t[" + node.mNodeID + "] " + node.mNodeName);
+			AppUtils.println("\t-------------");
 			
 			for (TaxonomyNode childNode : node.mChildNodeList)
-				System.out.println("\t\t|--> [" + childNode.mNodeID + "] " + childNode.mNodeName);
+				AppUtils.println("\t\t|--> [" + childNode.mNodeID + "] " + childNode.mNodeName);
 		}
 	}
 	

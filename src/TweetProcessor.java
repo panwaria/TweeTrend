@@ -20,7 +20,7 @@ import org.jsoup.nodes.Document;
 
 /**
  * TODOs:
- * 1. [OPTIMIZATION] Find part of speech, and we an pass on the 'nouns' to check for the movie rather than all the tokens/
+ * 1. [OPTIMIZATION] Find part of speech, and we can pass on the 'nouns' to check for the movie rather than all the tokens/
  * 2. Give more weight to the node if it appears in #hashtag
  *
  */
@@ -32,26 +32,30 @@ public class TweetProcessor
 	 */
 	public TweetProcessor(TaxonomyTree taxonomyTree, String tweetSourceFileName)
 	{
+		// Variables from Main Class
 		mTaxonomyTree = taxonomyTree;
 		mNodeNameArray = mTaxonomyTree.getTaxonomyNodeNameArray();
-		
 		mTweetSourceFileName = tweetSourceFileName;
 		
+		// Initialize data structures to store mentions needed to evaluate user's query.
+		mCurrentMentions = new HashMap<Long, Double>();
 		mTaxonomyNodeScoreMap = new HashMap<String, TaxonomyNodeScore> ();
 		
 		// Create Go-Words Map for multiplication factor
 		mGoWordsMap = AppUtils.generateGoWordsMap("src//go_words.dat");
+		System.out.println("CHECKPOINT: GoWords Map Generated.");
 		AppUtils.printGoWordsMap(mGoWordsMap);
 	}
 	
 	/**
 	 * Method to read the tweet and start processing it.
 	 */
-	public void read()
+	public void processTweets()
 	{
 		// Set LOG FILE NAME
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd_HH_mm_ss");
-		LOG_FILE_NAME = dateFormat.format(new Date()) + "_" + LOG_FILE_NAME;
+		Date date = new Date();
+		LOG_FILE_NAME = dateFormat.format(date) + "_" + LOG_FILE_NAME;
 		
 		String encoding = "UTF-8";
 		BufferedReader reader = null;
@@ -60,8 +64,13 @@ public class TweetProcessor
 		{
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(mTweetSourceFileName), encoding));
 		    
-		    for (String line; (line = reader.readLine()) != null;)
+			long numTweets = 0;
+			long MAX_LIMIT = 2000;
+			long MIN_LIMIT = 1000;
+			
+		    for (String line; (line = reader.readLine()) != null && numTweets < MAX_LIMIT; numTweets++)
 		    {
+		    	if(numTweets < MIN_LIMIT) continue;
 		    	// [STEP 01] Find the actual Tweet JSON
 		    	try
 		    	{
@@ -84,11 +93,11 @@ public class TweetProcessor
 			        String[] tokens = preprocessTweetMessage(tweetMessage);
 			        
 			        String webContext = getWebContext(tweetMessage);
-			        String[] webTokens = preprocessTweetMessage(webContext);
+			        //String[] webTokens = preprocessTweetMessage(webContext);
 			        
 			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
 			        extractMentions(tokens);
-			        extractMentions(webTokens);
+			        //extractMentions(webTokens);
 
 			        // [STEP 04_05] Next Step: Get Multiplication Factor and apply it on current mentions
 			        double mulFactor = getMultiplicationFactor(tokens);
@@ -100,7 +109,7 @@ public class TweetProcessor
 			        // [STEP 06] Next Step: Update List<NodeName, List<TweetID>, cumulativeScore> 
 			        updateTaxonomyNodeScoreMap(tweetID);
 			        
-			        printLog("\n*************************************************\n");
+//			        printLog("\n*************************************************\n");
 			        //break;	// TODO: Processing just one tweet for now.
 		    	}
 		    	catch (IndexOutOfBoundsException e)
@@ -112,6 +121,8 @@ public class TweetProcessor
 		    
 		    // Here, you'd have got FINAL List<NodeName, List<TweetID>, cumulativeScore> , which 
 		    // we can compare to the query of the user, and print tagCloud.
+	        printFinalTaxonomyNodeScoreMap();
+
 		} 
 		catch (UnsupportedEncodingException | FileNotFoundException e)
         {
@@ -134,6 +145,10 @@ public class TweetProcessor
 	            e.printStackTrace();
             }
 		}
+		
+		Date newDate = new Date();
+		double diffMinutes = (newDate.getTime() - date.getTime())/ ((double)1000 * 60);
+		printLog("Total Time Taken: " + diffMinutes);
 	}
 	
 	/**
@@ -152,7 +167,7 @@ public class TweetProcessor
             URL url = new URL(item);
             
             // If possible then replace with anchor...
-            System.out.print("URL FOUND---------->>>> " + url + "\n");//<a href=\"" + url + "\">"+ url + "</a> " ); 
+            AppUtils.print("URL FOUND---------->>>> " + url + "\n");//<a href=\"" + url + "\">"+ url + "</a> " ); 
             
         	try 
         	{
@@ -163,7 +178,7 @@ public class TweetProcessor
         		if(doc != null)
         		{
         			String title = doc.title();
-        			System.out.print("TITLE---------->>>> " + title + "\n");
+        			AppUtils.print("TITLE---------->>>> " + title + "\n");
         			
         			return title;
         		}
@@ -200,11 +215,11 @@ public class TweetProcessor
 			tweetMessage = (String) obj.get("text");
 			
 			// Logging Tweet Message
-			printLog("<<TWEET MESSAGE>> : \t" + tweetMessage);
+			//printLog("<<TWEET MESSAGE>> : \t" + tweetMessage);
 		}
 		catch(ParseException pe)
 		{
-		    System.out.println("position: " + pe.getPosition());
+			System.out.println("position: " + pe.getPosition());
 		    System.out.println(pe);
 		}
 		
@@ -234,7 +249,7 @@ public class TweetProcessor
 		        	outputString += token + " ";
 		        outputString = "<<PREPROCESSED>> : \t" + outputString;
 		        
-		        printLog(outputString);
+		        //printLog(outputString);
 			}
 		}
 		
@@ -285,11 +300,18 @@ public class TweetProcessor
 			String goWord = entry.getKey();
 			Double goWordScore = entry.getValue();
 			
+			boolean goWordFound = false;
 			for(String token : tokens)
 			{
 				if(token.startsWith(goWord))
+				{
 					mulFactor = AppUtils.normalizeValues(mulFactor, goWordScore);
+					goWordFound = true;
+				}
 			}
+			
+			if(!goWordFound)	// If goWord is not found, then the multiplication factor should be even less.
+				mulFactor = AppUtils.normalizeValues(mulFactor, 1 - goWordScore);
 		}
 		
 		return mulFactor;		
@@ -338,11 +360,35 @@ public class TweetProcessor
 				
 				if(mTaxonomyNodeScoreMap.containsKey(nodeName))
 				{
+					// Update List of TweetIDs associated with the node -- as Metadata for TagCloud
 					mTaxonomyNodeScoreMap.get(nodeName).mTweetIDList.add(tweetID);
-					mTaxonomyNodeScoreMap.get(nodeName).mNodeScore += entry.getValue();
+					
+					// Update nodeScore -- This will act as weight of the word in the TagCloud.
+					double oldScore = mTaxonomyNodeScoreMap.get(nodeName).mNodeScore;
+					mTaxonomyNodeScoreMap.get(nodeName).mNodeScore = AppUtils.normalizeValues(oldScore,  entry.getValue());
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Print Final Taxonomy Node Score Map
+	 */
+	private void printFinalTaxonomyNodeScoreMap()
+	{
+		printLog("-------------------------------------------");
+		printLog("PRINTING FINAL **TAXONOMY NODE SCORE** MAP");
+		printLog("-------------------------------------------\n");
+
+		if(mTaxonomyNodeScoreMap.size() > 0)
+		{
+			for (Map.Entry<String, TaxonomyNodeScore> entry : mTaxonomyNodeScoreMap.entrySet())
+			{
+				printLog("[" + entry.getKey() + ", " + entry.getValue().mNodeScore + "]");
+			}
+		}
+		else
+			printLog("No entries in the Taxonomy Node Score Map!\n");
 	}
 	
 	/**
@@ -353,13 +399,14 @@ public class TweetProcessor
 		AppUtils.printLog(LOG_FILE_NAME, text);
 	}
 	
+	
 	// Member Variables
 	private static String LOG_FILE_NAME = "tweet_log.txt";
 	private double THRESHOLD_VAL = 0.7;
 	
 	private Map<String, Double> mGoWordsMap = null;
 	
-	private Map<Long /*nodeID*/, Double /*score*/> mCurrentMentions = new HashMap<Long, Double>();
+	private Map<Long /*nodeID*/, Double /*score*/> mCurrentMentions = null;
 	private Map<String, TaxonomyNodeScore> mTaxonomyNodeScoreMap = null;
 	
 	private TaxonomyTree mTaxonomyTree = null;
