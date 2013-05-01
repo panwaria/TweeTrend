@@ -72,6 +72,49 @@ public class AppUtils
 		}
 	}
 	
+	public static Trie generateGoWordsTrie(String fileName)
+	{
+		Trie goWordsTrie = new Trie();
+		
+		Scanner fileScanner = null;
+		try 
+		{
+			fileScanner = new Scanner(new File(fileName));
+		} 
+		catch(FileNotFoundException e) 
+		{
+			System.err.println("File- '" + fileName + "' not found!");
+			return null;
+		}
+		
+		while(fileScanner.hasNext()) 
+		{
+			String line = fileScanner.nextLine().trim();
+			
+			// Skip the comments or the blank lines.
+			if(line.length() == 0 || line.startsWith("//")) 
+				continue;
+			
+			String[] parts = line.split("\\s+");
+			
+			double val = -1.0;
+			try
+			{
+				val = Double.parseDouble(parts[1]);
+			}
+			catch(NumberFormatException e)
+			{
+				continue;
+			}
+			
+			goWordsTrie.insert(parts[0], val);
+		}
+		
+		fileScanner.close();
+		
+		return goWordsTrie;
+	}
+	
 	public static Map<String, Double> generateGoWordsMap(String fileName)
 	{
 		Map<String, Double> goWordsMap = null;

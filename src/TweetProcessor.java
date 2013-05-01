@@ -42,9 +42,10 @@ public class TweetProcessor
 		mTaxonomyNodeScoreMap = new HashMap<String, TaxonomyNodeScore> ();
 		
 		// Create Go-Words Map for multiplication factor
-		mGoWordsMap = AppUtils.generateGoWordsMap("src//go_words.dat");
+		//mGoWordsMap = AppUtils.generateGoWordsMap("src//go_words.dat");
+		mGoWordsTrie = AppUtils.generateGoWordsTrie("src//go_words.dat");
 		System.out.println("CHECKPOINT: GoWords Map Generated.");
-		AppUtils.printGoWordsMap(mGoWordsMap);
+		//AppUtils.printGoWordsMap(mGoWordsMap);
 	}
 	
 	/**
@@ -67,6 +68,8 @@ public class TweetProcessor
 			long numTweets = 0;
 			long MAX_LIMIT = 2000;
 			long MIN_LIMIT = 1000;
+			
+			mGoWordsTrie = new Trie();
 			
 		    for (String line; (line = reader.readLine()) != null && numTweets < MAX_LIMIT; numTweets++)
 		    {
@@ -292,9 +295,12 @@ public class TweetProcessor
 	{
 		if(tokens == null || tokens.length <= 0)
 			return 0.0;
+
+		double mulFactor = 0.0;
+		double defaultMulFactor = mGoWordsTrie.getDefaultValue();
+		boolean goWordFound = false;
 		
-		Double mulFactor = 0.0;
-		
+		/*
 		for (Map.Entry<String, Double> entry : mGoWordsMap.entrySet())
 		{
 			String goWord = entry.getKey();
@@ -313,8 +319,21 @@ public class TweetProcessor
 			if(!goWordFound)	// If goWord is not found, then the multiplication factor should be even less.
 				mulFactor = AppUtils.normalizeValues(mulFactor, 1 - goWordScore);
 		}
+		*/
 		
-		return mulFactor;		
+		for(String token : tokens)
+		{
+			double goWordScore = mGoWordsTrie.get(token);
+			if(goWordScore != 0.0)
+			{
+				mulFactor = AppUtils.normalizeValues(mulFactor, goWordScore);
+				goWordFound = true;
+			}
+		}
+		
+		if(goWordFound)
+			return mulFactor;
+		return defaultMulFactor;
 	}
 	
 	/**
@@ -404,7 +423,7 @@ public class TweetProcessor
 	private static String LOG_FILE_NAME = "tweet_log.txt";
 	private double THRESHOLD_VAL = 0.7;
 	
-	private Map<String, Double> mGoWordsMap = null;
+	//private Map<String, Double> mGoWordsMap = null;
 	
 	private Map<Long /*nodeID*/, Double /*score*/> mCurrentMentions = null;
 	private Map<String, TaxonomyNodeScore> mTaxonomyNodeScoreMap = null;
@@ -414,4 +433,5 @@ public class TweetProcessor
 	
 	private String mTweetSourceFileName = null;
 	
+	private Trie mGoWordsTrie = null;
 }
