@@ -42,7 +42,7 @@ public class TweetProcessor
 		mTaxonomyNodeScoreMap = new HashMap<String, TaxonomyNodeScore> ();
 		
 		// Create Go-Words Map for multiplication factor
-		mGoWordsMap = AppUtils.generateGoWordsMap("src//go_words.dat");
+		mGoWordsMap = AppUtils.generateGoWordsMap(AppConstants.GO_WORDS_SOURCE_FILE);
 		System.out.println("CHECKPOINT: GoWords Map Generated.");
 		AppUtils.printGoWordsMap(mGoWordsMap);
 	}
@@ -65,8 +65,8 @@ public class TweetProcessor
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(mTweetSourceFileName), encoding));
 		    
 			long numTweets = 0;
-			long MAX_LIMIT = 2000;
-			long MIN_LIMIT = 1000;
+			long MAX_LIMIT = 10000;
+			long MIN_LIMIT = 0;
 			
 		    for (String line; (line = reader.readLine()) != null && numTweets < MAX_LIMIT; numTweets++)
 		    {
@@ -183,7 +183,7 @@ public class TweetProcessor
         			return title;
         		}
         	}
-	    	catch (IOException e) 
+	    	catch (IOException | IllegalArgumentException e) 
 	    	{
 	            continue;	// Go to next URL, if any.
 	    	}
@@ -402,7 +402,7 @@ public class TweetProcessor
 	
 	// Member Variables
 	private static String LOG_FILE_NAME = "tweet_log.txt";
-	private double THRESHOLD_VAL = 0.7;
+	private double THRESHOLD_VAL = 0.0;
 	
 	private Map<String, Double> mGoWordsMap = null;
 	
