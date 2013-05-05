@@ -46,6 +46,8 @@ public class TweetProcessor
 		mGoWordsTrie = AppUtils.generateGoWordsTrie("src//go_words.dat");
 		System.out.println("CHECKPOINT: GoWords Map Generated.");
 		//AppUtils.printGoWordsMap(mGoWordsMap);
+		
+		mEnglishWordsTrie = AppUtils.generateEnglishWordsTrie(AppConstants.ENGLISH_WORDS_FILE);
 	}
 	
 	/**
@@ -69,9 +71,7 @@ public class TweetProcessor
 			long MAX_LIMIT = 2000;
 			long MIN_LIMIT = 1000;
 			
-			mGoWordsTrie = new Trie();
-			
-		    for (String line; (line = reader.readLine()) != null && numTweets < MAX_LIMIT; numTweets++)
+			for (String line; (line = reader.readLine()) != null && numTweets < MAX_LIMIT; numTweets++)
 		    {
 		    	if(numTweets < MIN_LIMIT) continue;
 		    	// [STEP 01] Find the actual Tweet JSON
@@ -88,12 +88,18 @@ public class TweetProcessor
 			        // [STEP 02] Find the Tweet Message
 			        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
 			        String tweetMessage = getTweetMessage(tweet);
-			        
 			        if(tweetMessage == null)
 			        	continue;
 			        
 			        // [STEP 03] Pre-process the tweet message
 			        String[] tokens = preprocessTweetMessage(tweetMessage);
+			        
+			        if(!isEnglish(tokens))
+			        {
+			        	numTweets--;
+			        	continue;
+			        }
+			        System.out.println(tweetMessage + "\n");
 			        
 			        String webContext = getWebContext(tweetMessage);
 			        //String[] webTokens = preprocessTweetMessage(webContext);
@@ -154,6 +160,21 @@ public class TweetProcessor
 		printLog("Total Time Taken: " + diffMinutes);
 	}
 	
+	private boolean isEnglish(String[] tokens)
+	{
+		int numEnglishWords = 0;
+		for(String token : tokens)
+		{
+			if(mEnglishWordsTrie.containsStrict(token))
+				numEnglishWords++;
+		}
+		
+		if(numEnglishWords > tokens.length / 2)
+			return true;
+		
+		return false;
+	}
+
 	/**
 	 * Get Web Context of the message.
 	 * TODO: We can scale this method to go through *all* the URLs of the tweet.
@@ -434,4 +455,5 @@ public class TweetProcessor
 	private String mTweetSourceFileName = null;
 	
 	private Trie mGoWordsTrie = null;
+	private Trie mEnglishWordsTrie = null;
 }

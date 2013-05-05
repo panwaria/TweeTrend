@@ -48,6 +48,31 @@ public class Trie
 			{
 				if(curr.hasChild(ch))
 					curr = curr.getChild(ch);
+				else
+					return false;
+			}
+		}
+		
+		return curr.isLeaf();
+	}
+	
+	public boolean containsStrict(String word)
+	{
+		word = word.toLowerCase();
+		char[] wordCharArray = word.toCharArray();
+		TrieNode curr = root;
+		for(char ch : wordCharArray)
+		{
+			if(((ch - 'a') >= 0) && ((ch - 'a') < 26))
+			{
+				if(curr.hasChild(ch))
+					curr = curr.getChild(ch);
+				else
+					return false;
+			}
+			else
+			{
+				return false;
 			}
 		}
 		

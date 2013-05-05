@@ -28,8 +28,8 @@ public class MainClass
 		// [TESTING] Print the Tree.
 		taxonomyTree.printTree();
 		
-// 		// [TESTING] Print the TaxonomyNodeHashMap
-//		taxonomyTree.printTaxonomyNodeHashMap();
+ 		// [TESTING] Print the TaxonomyNodeHashMap
+		//taxonomyTree.printTaxonomyNodeHashMap();
 		// [TESTING] Print the Taxonomy Node Name Array
 		taxonomyTree.printTaxonomyNodeNameArray();
 		
