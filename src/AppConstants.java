@@ -10,7 +10,7 @@ public class AppConstants
 	// TAXONOMY Related
 	public static final String TAXONOMY_SOURCE_XML = "C:\\Tweets\\Taxonomy_Movies.xml";
 	public static final String TAXONOMY_DELIMITER_STRING = "\\s+|:|,|\\.|&|-";
-	public static final String GO_WORDS_SOURCE_FILE = "src//go_words.dat";
+	public static final String GO_WORDS_SOURCE_FILE = "src\\go_words.dat";
 	
 	// TWEETS Related
 	public static final String TWITTER_DATA_FILE = "C:\\Tweets\\twitter_20110731-12.log";

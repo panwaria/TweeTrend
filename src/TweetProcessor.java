@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -61,7 +63,7 @@ public class TweetProcessor
 	/**
 	 * Method to read the tweet and start processing it.
 	 */
-	public void processTweets()
+	private void processTweets()
 	{
 		// Set LOG FILE NAME
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd_HH_mm_ss");
@@ -243,7 +245,7 @@ public class TweetProcessor
 	 * @param tweet
 	 * @return
 	 */
-	public String getTweetMessage(String tweet)
+	private String getTweetMessage(String tweet)
 	{
 		String tweetMessage = null;
 		
@@ -273,7 +275,7 @@ public class TweetProcessor
 	 * @param tweetMessage
 	 * @return
 	 */
-	public String[] preprocessTweetMessage(String tweetMessage)
+	private String[] preprocessTweetMessage(String tweetMessage)
 	{
 		// TODO: Return null if the language is not English.
 		
@@ -297,11 +299,11 @@ public class TweetProcessor
 		
 		return tokens;
 	}
+	
 	private void resetCurrentMentions()
 	{
 		mCurrentMentions.clear();
 	}
-	
 	
 	/**
 	 * Method to extract mentions.
@@ -468,7 +470,7 @@ public class TweetProcessor
 		{
 			for (Map.Entry<String, TaxonomyNodeScore> entry : mTaxonomyNodeScoreMap.entrySet())
 			{
-				printLog(entry.getKey() + "~~" + entry.getValue().mNodeScore);
+				AppUtils.printToFile(TAXONOMY_NODE_SCORE_FILENAME, entry.getKey() + "~~" + entry.getValue().mNodeScore);
 			}
 		}
 	}
@@ -495,6 +497,60 @@ public class TweetProcessor
 	
 	public Map<String, TaxonomyNodeScore> getTaxonomyNodeScoreMap()
 	{
+		boolean needToProcessTweets = false;
+		
+		Scanner fileScanner = null;
+		try 
+		{
+			fileScanner = new Scanner(new File(AppConstants.LOGS_DIRECTORY_NAME + "\\" + TAXONOMY_NODE_SCORE_FILENAME));
+		} 
+		catch(FileNotFoundException e) 
+		{
+			System.err.println("File- '" + TAXONOMY_NODE_SCORE_FILENAME + "' not found!");
+			needToProcessTweets = true;
+		}
+		
+		if(!needToProcessTweets)
+		{
+			while(fileScanner.hasNext()) 
+			{
+				String line = fileScanner.nextLine().trim();
+				
+				// Skip the comments or the blank lines.
+				if(line.length() == 0 || line.startsWith("//") || !line.contains("~~")) 
+					continue;
+				
+				String[] parts = line.split("~~");
+				
+				double val = -1.0;
+				try
+				{
+					val = Double.parseDouble(parts[1]);
+				}
+				catch(NumberFormatException e)
+				{
+					needToProcessTweets = true;
+					break;
+				}
+				
+				TaxonomyNodeScore taxonomyNodeScore = new TaxonomyNodeScore();
+				taxonomyNodeScore.mNodeScore = val;
+				mTaxonomyNodeScoreMap.put(parts[0], taxonomyNodeScore);
+			}
+			
+			fileScanner.close();
+		}
+		
+		if(needToProcessTweets || mTaxonomyNodeScoreMap.size() == 0)
+		{
+			System.out.println("CHECKPOINT: Processing Tweets");
+			
+			mTaxonomyNodeScoreMap.clear();
+			processTweets();
+		}
+//		else
+//			printFinalTaxonomyNodeScoreMap();
+		
 		return mTaxonomyNodeScoreMap;
 	}
 	
@@ -509,6 +565,7 @@ public class TweetProcessor
 	
 	// Member Variables
 	private static String LOG_FILE_NAME = "tweet_log.txt";
+	private static final String TAXONOMY_NODE_SCORE_FILENAME = "taxonomy_node_score.dat";
 	private double THRESHOLD_VAL = 0.0;
 	
 	//private Map<String, Double> mGoWordsMap = null;
