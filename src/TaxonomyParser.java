@@ -1,9 +1,16 @@
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
 import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -45,7 +52,18 @@ public class TaxonomyParser  extends DefaultHandler
 		try
 		{
 			SAXParser parser = factory.newSAXParser();
-			parser.parse(filename, this);
+			
+			File file = new File(filename);
+			InputStream inputStream= new FileInputStream(file);
+			Reader reader = new InputStreamReader(inputStream,"UTF-8");
+			 
+			InputSource is = new InputSource(reader);
+			is.setEncoding("UTF-8");
+			 
+			parser.parse(is, this);
+			
+//			SAXParser parser = factory.newSAXParser();
+//			parser.parse(filename, this);
 		} 
 		catch (ParserConfigurationException | SAXException | IOException e) 
 		{
