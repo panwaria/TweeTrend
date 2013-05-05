@@ -12,8 +12,13 @@ public class MainClass
 		
 		// Read Twitter Data and Process it.
 		TweetProcessor tweetProcessor = new TweetProcessor(taxonomyTree, AppConstants.TWITTER_DATA_FILE);
-		tweetProcessor.processTweets();		
+//		tweetProcessor.processTweets();	
+		tweetProcessor.getTaxonomyNodeScoreMap();
         System.out.println("CHECKPOINT: Final Taxonomy Node Score Updated.");
+        
+        // Process User's Query
+        processUserQuery();
+        
 	}
 	
 	private static TaxonomyTree prepareTaxonomyIndex()
@@ -41,6 +46,11 @@ public class MainClass
 		taxonomyTree.printPrefixMap();
 		
 		return taxonomyTree;
+	}
+	
+	private static void processUserQuery()
+	{
+		
 	}
 	
 }
