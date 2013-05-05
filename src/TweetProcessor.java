@@ -20,6 +20,10 @@ import org.jsoup.nodes.Document;
 
 /**
  * TODOs:
+ * 1. See if it important to normalize values, as most of them are reaching 0.99999.
+ * 2. Class to read nodescore from file and display output.
+ * 3. Integrate OpenCloud Library.
+ * 
  * 1. [OPTIMIZATION] Find part of speech, and we can pass on the 'nouns' to check for the movie rather than all the tokens/
  * 2. Give more weight to the node if it appears in #hashtag
  *
@@ -64,7 +68,7 @@ public class TweetProcessor
 		
 		String encoding = "UTF-8";
 		BufferedReader reader = null;
-
+		
 		try
 		{
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(mTweetSourceFileName), encoding));
@@ -73,7 +77,7 @@ public class TweetProcessor
 			
 			mGoWordsTrie = new Trie();
 			
-		    for (String line; (line = reader.readLine()) != null /*&& numTweets < MAX_LIMIT*/; numTweets++)
+		    for (String line; (line = reader.readLine()) != null && numTweets < MAX_LIMIT; numTweets++)
 		    {
 		    	if(numTweets < MIN_LIMIT) continue;
 		    	
@@ -136,7 +140,9 @@ public class TweetProcessor
 		    
 		    // Here, you'd have got FINAL List<NodeName, List<TweetID>, cumulativeScore> , which 
 		    // we can compare to the query of the user, and print tagCloud.
-	        printFinalTaxonomyNodeScoreMap();
+		    printFinalTaxonomyNodeScoreMapToResultFile();
+//	        printFinalTaxonomyNodeScoreMap();
+	        AppUtils.println("We processed " + numTweets + " tweets!!");
 
 		} 
 		catch (UnsupportedEncodingException | FileNotFoundException e)
@@ -435,6 +441,17 @@ public class TweetProcessor
 		}
 	}
 	
+	private void printFinalTaxonomyNodeScoreMapToResultFile()
+	{
+		if(mTaxonomyNodeScoreMap.size() > 0)
+		{
+			for (Map.Entry<String, TaxonomyNodeScore> entry : mTaxonomyNodeScoreMap.entrySet())
+			{
+				printLog(entry.getKey() + "~~" + entry.getValue().mNodeScore);
+			}
+		}
+	}
+	
 	/**
 	 * Print Final Taxonomy Node Score Map
 	 */
@@ -453,6 +470,11 @@ public class TweetProcessor
 		}
 		else
 			printLog("No entries in the Taxonomy Node Score Map!\n");
+	}
+	
+	public Map<String, TaxonomyNodeScore> getTaxonomyNodeScoreMap()
+	{
+		return mTaxonomyNodeScoreMap;
 	}
 	
 	/**
