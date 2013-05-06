@@ -178,4 +178,34 @@ public class AppUtils
 		return (a + b - (a*b));
 	}
 	
+	public static Trie generateEnglishWordsTrie(String fileName)
+	{
+		Trie englishWordsTrie = new Trie();
+		
+		Scanner fileScanner = null;
+		try 
+		{
+			fileScanner = new Scanner(new File(fileName));
+		} 
+		catch(FileNotFoundException e) 
+		{
+			System.err.println("File- '" + fileName + "' not found!");
+			return null;
+		}
+		
+		while(fileScanner.hasNext()) 
+		{
+			String line = fileScanner.nextLine().trim();
+			
+			// Skip the comments or the blank lines.
+			if(line.length() == 0 || line.startsWith("//")) 
+				continue;
+			
+			englishWordsTrie.insert(line);
+		}
+		
+		fileScanner.close();
+		
+		return englishWordsTrie;
+	}
 }

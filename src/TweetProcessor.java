@@ -56,6 +56,8 @@ public class TweetProcessor
 		mGoWordsTrie = AppUtils.generateGoWordsTrie(AppConstants.GO_WORDS_SOURCE_FILE);
 		System.out.println("CHECKPOINT: GoWords Trie Generated.");
 		//AppUtils.printGoWordsMap(mGoWordsMap);
+		
+		mEnglishWordsTrie = AppUtils.generateEnglishWordsTrie(AppConstants.ENGLISH_WORDS_FILE);
 	}
 	
 	/**
@@ -98,12 +100,18 @@ public class TweetProcessor
 			        // [STEP 02] Find the Tweet Message
 			        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
 			        String tweetMessage = getTweetMessage(tweet);
-			        
 			        if(tweetMessage == null)
 			        	continue;
 			        
 			        // [STEP 03] Pre-process the tweet message
 			        String[] tokens = preprocessTweetMessage(tweetMessage);
+			        
+			        if(!isEnglish(tokens))
+			        {
+			        	numTweets--;
+			        	continue;
+			        }
+			        //System.out.println(tweetMessage + "\n");
 			        
 			        //String webContext = getWebContext(tweetMessage);
 			        //String[] webTokens = preprocessTweetMessage(webContext);
@@ -174,6 +182,21 @@ public class TweetProcessor
 		printLog("Total Time Taken: " + diffMinutes);
 	}
 	
+	private boolean isEnglish(String[] tokens)
+	{
+		int numEnglishWords = 0;
+		for(String token : tokens)
+		{
+			if(mEnglishWordsTrie.containsStrict(token))
+				numEnglishWords++;
+		}
+		
+		if(numEnglishWords > tokens.length / 2)
+			return true;
+		
+		return false;
+	}
+
 	/**
 	 * Get Web Context of the message.
 	 * TODO: We can scale this method to go through *all* the URLs of the tweet.
@@ -558,4 +581,5 @@ public class TweetProcessor
 	private String mTweetSourceFileName = null;
 	
 	private Trie mGoWordsTrie = null;
+	private Trie mEnglishWordsTrie = null;
 }

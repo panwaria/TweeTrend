@@ -22,5 +22,6 @@ public class AppConstants
 	public static final int TO_CONSOLE = 1;
 	public static final int TO_FILE = 2;
 	public static final int PRINT_DEST = TO_FILE;
-
+	
+	public static final String ENGLISH_WORDS_FILE = "src\\words.dat";
 }
