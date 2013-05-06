@@ -24,4 +24,6 @@ public class AppConstants
 	public static final int PRINT_DEST = TO_FILE;
 	
 	public static final String ENGLISH_WORDS_FILE = "src\\words.dat";
+	
+	public static final String TMDB_API_KEY = "68493e79cf1639dadb814fcc797ab58d";
 }

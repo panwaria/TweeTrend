@@ -54,11 +54,16 @@ public class TaxonomyTree
 	 */
 	public TaxonomyNode createNode(String name, TaxonomyNode parentNode)
 	{
+		return createNode(name, parentNode, -1);
+	}
+	
+	public TaxonomyNode createNode(String name, TaxonomyNode parentNode, int tmdbNodeId)
+	{
 		// Increase the node count first.
 		mNodeCount++;
 		
 		// Create the node.
-		TaxonomyNode node = new TaxonomyNode(name, parentNode, mNodeCount);
+		TaxonomyNode node = new TaxonomyNode(name, parentNode, mNodeCount, tmdbNodeId);
 		
 		// Also push node into the hash map.
 		mTaxonomyNodeHashMap.put(mNodeCount, node);

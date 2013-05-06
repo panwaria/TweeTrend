@@ -58,6 +58,8 @@ public class TweetProcessor
 		//AppUtils.printGoWordsMap(mGoWordsMap);
 		
 		mEnglishWordsTrie = AppUtils.generateEnglishWordsTrie(AppConstants.ENGLISH_WORDS_FILE);
+		System.out.println("CHECKPOINT: English Dictionary Trie Generated.");
+		
 	}
 	
 	/**
@@ -79,9 +81,7 @@ public class TweetProcessor
 		    
 			long numTweets = 0;
 			
-			mGoWordsTrie = new Trie();
-			
-		    for (String line; (line = reader.readLine()) != null /*&& numTweets < MAX_LIMIT*/; numTweets++)
+			for (String line; (line = reader.readLine()) != null /*&& numTweets < MAX_LIMIT*/; numTweets++)
 		    {
 		    	if(numTweets < MIN_LIMIT) continue;
 		    	
@@ -100,7 +100,7 @@ public class TweetProcessor
 			        // [STEP 02] Find the Tweet Message
 			        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
 			        String tweetMessage = getTweetMessage(tweet);
-			        if(tweetMessage == null)
+			        if((tweetMessage == null) || (tweetMessage.equals("")))
 			        	continue;
 			        
 			        // [STEP 03] Pre-process the tweet message
@@ -119,15 +119,15 @@ public class TweetProcessor
 			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
 			        extractMentions(tokens);
 			        //extractMentions(webTokens);
-//			        AppUtils.println("After Simply Extracting Mentions");
-//			        printCurrentMentions();
-
+			        //AppUtils.println("After Simply Extracting Mentions");
+			        //printCurrentMentions();
+			        
 			        // [STEP 04_05] Next Step: Get Multiplication Factor and apply it on current mentions
 			        double mulFactor = getMultiplicationFactor(tokens);
 			        applyMultiplicationFactor(mulFactor);
 
-//			        AppUtils.println("After Applying Multiplication Factor");
-//			        printCurrentMentions();
+			        //AppUtils.println("After Applying Multiplication Factor");
+			        //printCurrentMentions();
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
 			        filterMentions(THRESHOLD_VAL);

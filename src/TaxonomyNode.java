@@ -17,6 +17,15 @@ public class TaxonomyNode
 		mChildNodeList  = new ArrayList<TaxonomyNode>();
 	}
 	
+	public TaxonomyNode (String name, TaxonomyNode parentNode, long nodeID, int tmdbMovieId)
+	{
+		mNodeName = name;
+		mNodeID = nodeID;
+		mParentNode = parentNode;
+		mChildNodeList  = new ArrayList<TaxonomyNode>();
+		mTmdbMovieId = tmdbMovieId;
+	}
+	
 	/**
 	 * Method to print a two-level tree. This method can 
 	 * work for our case as we have just two-level taxonomy.
@@ -41,6 +50,6 @@ public class TaxonomyNode
 	public TaxonomyNode mParentNode = null;					// Parent node ('null' for Root Node)
 	public String mNodeName = null;							// Node Value
 	public long mNodeID = -1;								// NodeID
-	
+	public int mTmdbMovieId = -1;
 	public boolean mNodeVisited = false;
 }

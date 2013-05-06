@@ -14,6 +14,9 @@ public class MainClass
 		// Prepare Taxonomy Data Structures - Tree + PrefixMap
 		TaxonomyTree taxonomyTree = prepareTaxonomyIndex();
 		
+		// Prepare Movie Cast Trie
+		MovieCastTrie movieCastTrie = prepareMovieCastTrie(taxonomyTree);
+		
 		// Read Twitter Data and Process it.
 		TweetProcessor tweetProcessor = new TweetProcessor(taxonomyTree, AppConstants.TWITTER_DATA_FILE);
 		//tweetProcessor.processTweets();	
@@ -23,6 +26,14 @@ public class MainClass
         // Process User's Query
         processUserQuery(taxonomyTree, scoreMap);
         
+	}
+	
+	private static MovieCastTrie prepareMovieCastTrie(TaxonomyTree taxonomyTree)
+	{
+		MovieCastTrie movieCastTrie = new MovieCastTrie();
+		movieCastTrie.updateMovieCastTrie(taxonomyTree);
+		
+		return movieCastTrie;
 	}
 	
 	private static TaxonomyTree prepareTaxonomyIndex()
@@ -36,19 +47,19 @@ public class MainClass
 		System.out.println("CHECKPOINT: Taxonomy Tree Created.");
 		
 		// [TESTING] Print the Tree.
-//		taxonomyTree.printTree();
+		//taxonomyTree.printTree();
 		
  		// [TESTING] Print the TaxonomyNodeHashMap
 		//taxonomyTree.printTaxonomyNodeHashMap();
 		// [TESTING] Print the Taxonomy Node Name Array
-//		taxonomyTree.printTaxonomyNodeNameArray();
+		//taxonomyTree.printTaxonomyNodeNameArray();
 		
 		// Next Step: Create a Prefix Map.
 		taxonomyTree.createPrefixMap();
 		System.out.println("CHECKPOINT: Taxonomy Prefix Map Generated.");
 		
 		// [TESTING] Print the Prefix Map.
-//		taxonomyTree.printPrefixMap();
+		//taxonomyTree.printPrefixMap();
 		
 		return taxonomyTree;
 	}
@@ -60,7 +71,7 @@ public class MainClass
 	      
 	    System.out.println("Enter a string: \t");
 	    String input = in.nextLine();
-//	    System.out.println("You entered string "+ input);
+	    //System.out.println("You entered string "+ input);
 	    
 	    // Linear Search for now.
 	    String[] nodeNameArray = tree.getTaxonomyNodeNameArray();
@@ -85,7 +96,7 @@ public class MainClass
 	    	System.out.println("NodeName [" + input + "] found with NodeID=" + nodeID);
 	    	
 	    	// Get Node Object out of nodeID
-//	    	tree.printTaxonomyNodeHashMap();
+	    	//tree.printTaxonomyNodeHashMap();
 	    	
 	    	Map<Integer, TaxonomyNode> nodeHashMap = tree.getTaxonomyNodeHashMap();
 	    	TaxonomyNode node = null;

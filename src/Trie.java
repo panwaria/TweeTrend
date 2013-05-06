@@ -14,7 +14,23 @@ public class Trie
 		return root;
 	}
 	
-	public void insert(String word, double value)
+	public void insertCast(String castName, Long taxonomyNodeId)
+	{
+		castName = castName.toLowerCase();
+		char[] wordCharArray = castName.toCharArray();
+		TrieNode curr = root;
+		for(char ch : wordCharArray)
+		{
+			if(((ch - 'a') >= 0) && ((ch - 'a') < 26))
+			{
+				curr = curr.getChild(ch);
+			}
+		}
+		curr.getMovieNodes().add(taxonomyNodeId);
+		curr.setLeaf(true);
+	}
+	
+	public void insert(String word, Double value)
 	{
 		word = word.toLowerCase();
 		char[] wordCharArray = word.toCharArray();

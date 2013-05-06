@@ -9,9 +9,6 @@ import com.omertron.themoviedbapi.model.MovieDb;
 public class TaxonomyCreator
 {
 	
-	// API Key
-    private static final String API_KEY = "68493e79cf1639dadb814fcc797ab58d";
-    
 	public static TaxonomyTree constructTaxonomyTree()
 	{
 		TaxonomyTree taxonomyTree = TaxonomyTree.getTaxonomyTree();
@@ -19,7 +16,7 @@ public class TaxonomyCreator
 		TheMovieDbApi tmdb;
 		try
 		{
-			tmdb = new TheMovieDbApi(API_KEY);
+			tmdb = new TheMovieDbApi(AppConstants.TMDB_API_KEY);
 			
 			List<Genre> allGenres = tmdb.getGenreList("");
 	        for(Genre genre : allGenres)
@@ -33,7 +30,7 @@ public class TaxonomyCreator
 	        		for(MovieDb movie : allMovies)
 	            	{
 	            		//System.out.println("\t" + movie.getTitle());
-	        			TaxonomyNode movieNode = taxonomyTree.createNode(movie.getTitle(), genreNode);
+	        			TaxonomyNode movieNode = taxonomyTree.createNode(movie.getTitle(), genreNode, movie.getId());
 	            		genreNode.mChildNodeList.add(movieNode);
 	            	}
 	        	}
