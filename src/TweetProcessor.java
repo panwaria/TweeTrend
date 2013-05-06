@@ -109,7 +109,7 @@ public class TweetProcessor
 			        	numTweets--;
 			        	continue;
 			        }
-			        System.out.println(tweetMessage + "\n");
+			        //System.out.println(tweetMessage + "\n");
 			        
 			        //String webContext = getWebContext(tweetMessage);
 			        //String[] webTokens = preprocessTweetMessage(webContext);
