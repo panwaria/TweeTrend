@@ -60,17 +60,17 @@ public class MainClass
 	    System.out.println("Enter a string: \t");
 	    String input = in.nextLine();
 //	    System.out.println("You entered string "+ input);
-	      
-
 	    
 	    // Linear Search for now.
 	    String[] nodeNameArray = tree.getTaxonomyNodeNameArray();
-	    AppUtils.println("Size of NodeNameArray = " + nodeNameArray.length);
+	    tree.printTaxonomyNodeNameArray();
+	    System.out.println("Size of NodeNameArray = " + nodeNameArray.length);
+	    
 	    int nodeID = 0;
 	    boolean nodeNameFound = false;
 	    for(String nodeName : nodeNameArray)
 	    {
-//	    	AppUtils.println("node["+ nodeID + "] = " + nodeName);
+	    	AppUtils.println("node["+ nodeID + "] = " + nodeName);
 	    	if(input.toLowerCase().equals(nodeName.toLowerCase()))
 	    	{
 	    		nodeNameFound = true;
@@ -81,7 +81,7 @@ public class MainClass
 	      
 	    if(nodeNameFound)
 	    {
-	    	AppUtils.println("NodeName [" + input + "] found with NodeID=" + nodeID);
+	    	System.out.println("NodeName [" + input + "] found with NodeID=" + nodeID);
 	    	
 	    	// Get Node Object out of nodeID
 //	    	tree.printTaxonomyNodeHashMap();
@@ -94,7 +94,7 @@ public class MainClass
 	    	}
 	    	else
 	    	{
-	    		AppUtils.println("\nSOMETHING BAD HAPPENED nodeID=" + nodeID);
+	    		System.out.println("\nSOMETHING BAD HAPPENED nodeID=" + nodeID);
 	    	}
 	    	
 	    	// Since it is just one-level tree for now
@@ -111,15 +111,16 @@ public class MainClass
 	    	AppUtils.println("NodeName [" + input + "] NOT FOUND");
     	
 	      
-		AppUtils.println("-------------------------------------------");
-		AppUtils.println("RESULTS for Query=" + input);
-		AppUtils.println("-------------------------------------------\n");
+	    System.out.println("-------------------------------------------");
+	    System.out.println("RESULTS for Query=" + input);
+	    System.out.println("-------------------------------------------\n");
 
 		if(queryScoreMap.size() > 0)
 		{
+			System.out.println("No. of movies in this category = " + queryScoreMap.size() + "\n");
 			for (Map.Entry<String, TaxonomyNodeScore> entry : queryScoreMap.entrySet())
 			{
-				AppUtils.println("[" + entry.getKey() + ", " + entry.getValue().mNodeScore + "]");
+				System.out.println("[" + entry.getKey() + ", " + entry.getValue().mNodeScore + "]");
 			}
 		}    
 		else
