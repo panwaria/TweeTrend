@@ -12,7 +12,7 @@ public class MainClass
 		
 		// Read Twitter Data and Process it.
 		TweetProcessor tweetProcessor = new TweetProcessor(taxonomyTree, AppConstants.TWITTER_DATA_FILE);
-//		tweetProcessor.processTweets();	
+		//tweetProcessor.processTweets();	
 		tweetProcessor.getTaxonomyNodeScoreMap();
         System.out.println("CHECKPOINT: Final Taxonomy Node Score Updated.");
         
@@ -24,10 +24,11 @@ public class MainClass
 	private static TaxonomyTree prepareTaxonomyIndex()
 	{
 		// Create a Taxonomy Parser.
-		TaxonomyParser taxonomyParser = new TaxonomyParser();
+		//TaxonomyParser taxonomyParser = new TaxonomyParser();
 		
 		// Generate a tree structure from XML file.
-		TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML(AppConstants.TAXONOMY_SOURCE_XML);
+		//TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML(AppConstants.TAXONOMY_SOURCE_XML);
+		TaxonomyTree taxonomyTree = TaxonomyCreator.constructTaxonomyTree();
 		System.out.println("CHECKPOINT: Taxonomy Tree Created.");
 		
 		// [TESTING] Print the Tree.

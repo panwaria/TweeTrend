@@ -4,5 +4,50 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="libs/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="libs/jsoup-1.6.3.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/allocine-api-1.2.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/anidb-0.3.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/commons-codec-1.7.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/commons-configuration-1.9.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/fanarttvapi-1.4.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/filters-2.0.235-1.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/hibernate-commons-annotations-4.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/hibernate-core-4.1.9.Final.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/jackson-annotations-2.1.2.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/jackson-core-2.1.2.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/jackson-databind-2.1.2.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/javassist-3.17.1-GA.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/javolution-5.3.1.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/jaxb-api-2.2.3.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/jaxb-impl-2.2.4-1.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/mjbsqldb-1.3.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/mucommander-0.8.5.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/ormlite-core-4.42.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/ormlite-jdbc-4.42.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/pojava-2.8.1.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/rottentomatoesapi-1.3.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/sanselan-0.97-incubator.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/saxonhe-9.3.0.5.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/simmetrics-1.6.2.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/sqlite-jdbc-3.7.2.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/subbabaapi-1.1.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/themoviedbapi-3.3.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/thetvdbapi-1.5.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/traileraddictapi-1.4.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/tvrageapi-1.4.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/ws-commons-util-1.0.2.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/xml-apis-1.0.b2.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/xmlrpc-client-3.1.3.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/xmlrpc-common-3.1.3.jar"/>
+	<classpathentry kind="lib" path="libs/tmdb/yamj-2.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
