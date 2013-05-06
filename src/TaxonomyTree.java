@@ -14,7 +14,7 @@ public class TaxonomyTree
 	 */
 	private TaxonomyTree()
 	{
-		mTaxonomyNodeHashMap = new HashMap<Long, TaxonomyNode>();
+		mTaxonomyNodeHashMap = new HashMap<Integer, TaxonomyNode>();
 		mTaxonomyNodeNameList = new ArrayList<String>();
 		
 		mRootNode = createNode(ROOT_NODE_VALUE, null);
@@ -33,13 +33,13 @@ public class TaxonomyTree
 	
 	// Getter and setter for Root Node
 	public void setRootNode(TaxonomyNode rootNode) { mRootNode = rootNode; }
-	public final TaxonomyNode getRootNode() { return mRootNode; }
+	public TaxonomyNode getRootNode() { return mRootNode; }
 	
 	// Getter for TaxonomyNodeHashMap
-	public final Map<Long, TaxonomyNode> getTaxonomyNodeHashMap() {	return mTaxonomyNodeHashMap; }
+	public Map<Integer, TaxonomyNode> getTaxonomyNodeHashMap() {	return mTaxonomyNodeHashMap; }
 	
 	// Getter for TaxonomyNodeNameArray
-	public final String[] getTaxonomyNodeNameArray() 
+	public String[] getTaxonomyNodeNameArray() 
 	{
 		String[] taxonomyNodeNameArray = mTaxonomyNodeNameList.toArray(new String[mTaxonomyNodeNameList.size()]);
 		return taxonomyNodeNameArray;
@@ -128,7 +128,7 @@ public class TaxonomyTree
 
 		if(mTaxonomyNodeHashMap.size() > 0)
 		{
-			for (Map.Entry<Long, TaxonomyNode> entry : mTaxonomyNodeHashMap.entrySet())
+			for (Map.Entry<Integer, TaxonomyNode> entry : mTaxonomyNodeHashMap.entrySet())
 			{
 				AppUtils.println("[" + entry.getKey() + ", " + entry.getValue().mNodeName + "]");
 			}
@@ -160,8 +160,8 @@ public class TaxonomyTree
 	// Member variables
 	private static TaxonomyTree sTaxonomyTree;		// Singleton TaxonomyTree Object
 	private TaxonomyNode mRootNode = null;			// Root Node of the tree
-	private long mNodeCount = -1;					// Count of number of nodes in the tree
-	private Map<Long, TaxonomyNode> mTaxonomyNodeHashMap = null;	// Mapping of NodeID to Node object
+	private int mNodeCount = -1;					// Count of number of nodes in the tree
+	private Map<Integer, TaxonomyNode> mTaxonomyNodeHashMap = null;	// Mapping of NodeID to Node object
 	
 	private ArrayList<String> mTaxonomyNodeNameList = null;
 	private static final String ROOT_NODE_VALUE = "_ROOT_";

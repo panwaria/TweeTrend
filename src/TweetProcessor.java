@@ -79,7 +79,9 @@ public class TweetProcessor
 		    
 			long numTweets = 0;
 			
-			for (String line; (line = reader.readLine()) != null && numTweets < MAX_LIMIT; numTweets++)
+			mGoWordsTrie = new Trie();
+			
+		    for (String line; (line = reader.readLine()) != null /*&& numTweets < MAX_LIMIT*/; numTweets++)
 		    {
 		    	if(numTweets < MIN_LIMIT) continue;
 		    	
