@@ -1,19 +1,9 @@
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
 import java.util.List;
-
-import org.xml.sax.InputSource;
 
 import com.omertron.themoviedbapi.MovieDbException;
 import com.omertron.themoviedbapi.TheMovieDbApi;
@@ -24,7 +14,7 @@ import com.omertron.themoviedbapi.model.MovieDb;
 public class TaxonomyCreator
 {
 	
-	public static void constructTaxonomyTree(String fileName)
+	public static void writeToTaxonomyXML(String fileName)
 	{
 		try
 		{

@@ -15,14 +15,13 @@ public class MainClass
 		TaxonomyTree taxonomyTree = prepareTaxonomyIndex();
 		
 		// Prepare Movie Cast Trie
-//		MovieCastTrie movieCastTrie = prepareMovieCastTrie(taxonomyTree);
+		MovieCastTrie movieCastTrie = prepareMovieCastTrie(taxonomyTree);
 		
 		// Read Twitter Data and Process it.
 		TweetProcessor tweetProcessor = new TweetProcessor(taxonomyTree, AppConstants.TWITTER_DATA_FILE);
 		//tweetProcessor.processTweets();	
 		Map<String, TaxonomyNodeScore> scoreMap = tweetProcessor.getTaxonomyNodeScoreMap();
         System.out.println("CHECKPOINT: Final Taxonomy Node Score Updated.");
-        
         // Process User's Query
         processUserQuery(taxonomyTree, scoreMap);
         
@@ -30,8 +29,14 @@ public class MainClass
 	
 	private static MovieCastTrie prepareMovieCastTrie(TaxonomyTree taxonomyTree)
 	{
-		MovieCastTrie movieCastTrie = new MovieCastTrie();
-		movieCastTrie.updateMovieCastTrie(taxonomyTree);
+		
+		MovieCastCreator.writeToMovieCastXML(AppConstants.MOVIE_CAST_SOURCE_XML, taxonomyTree);
+		
+		// Generate a trie structure from XML file.
+		MovieCastParser movieCastParser = new MovieCastParser();
+		MovieCastTrie movieCastTrie = movieCastParser.createTrieFromXML(AppConstants.MOVIE_CAST_SOURCE_XML);
+		
+		System.out.println("CHECKPOINT: Movie Cast Trie Created.");
 		
 		return movieCastTrie;
 	}
@@ -39,7 +44,7 @@ public class MainClass
 	private static TaxonomyTree prepareTaxonomyIndex()
 	{
 		// Generate taxonomy XML file from TMDB API.
-		TaxonomyCreator.constructTaxonomyTree(AppConstants.TAXONOMY_SOURCE_XML);
+		TaxonomyCreator.writeToTaxonomyXML(AppConstants.TAXONOMY_SOURCE_XML);
 		
 		// Create a Taxonomy Parser.
 		TaxonomyParser taxonomyParser = new TaxonomyParser();

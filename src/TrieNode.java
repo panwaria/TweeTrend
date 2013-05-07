@@ -21,9 +21,9 @@ public class TrieNode
 	
 	public TrieNode getChild(char ch)
 	{
-		if(children[ch - 'a'] == null)
-			children[ch - 'a'] = new TrieNode();
-		return children[ch - 'a'];
+		if(children[ch] == null)
+			children[ch] = new TrieNode();
+		return children[ch];
 	}
 	
 	public boolean isLeaf()
@@ -38,7 +38,7 @@ public class TrieNode
 
 	public boolean hasChild(char ch)
 	{
-		if(children[ch - 'a'] == null)
+		if(children[ch] == null)
 			return false;
 		return true;
 	}

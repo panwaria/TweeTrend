@@ -8,47 +8,31 @@ import com.omertron.themoviedbapi.model.Person;
 public class MovieCastTrie
 {
 	
-	private Trie mCastTrie;
+	private Trie mCastTrie = null;
+	private static MovieCastTrie mMovieCastTrie = null;
 	
-	public MovieCastTrie()
+	
+	private MovieCastTrie()
 	{
 		mCastTrie = new Trie();
 	}
 	
-	public Trie getCastTrie()
+	public static MovieCastTrie getMovieCastTrie()
 	{
-		return mCastTrie;
+		if(mMovieCastTrie == null)
+			mMovieCastTrie = new MovieCastTrie();
+		return mMovieCastTrie;
 	}
 	
 	public void addCast(String castName, long taxonomyNodeId)
 	{
-		mCastTrie.insertCast(castName, taxonomyNodeId);
+		String[] tokens = castName.split(AppConstants.TWEET_DELIMITER_STRING);
+		for(String token : tokens)
+			mCastTrie.insertCast(token, taxonomyNodeId);
 	}
 	
-	public void updateMovieCastTrie(TaxonomyTree taxonomyTree)
+	public List<Long> getMovieNodeIdList(String castName)
 	{
-		TaxonomyNode root = taxonomyTree.getRootNode();
-		try
-		{
-			TheMovieDbApi tmdb = new TheMovieDbApi(AppConstants.TMDB_API_KEY);
-			for(TaxonomyNode genreNode : root.mChildNodeList) //All genres
-			{
-				List<TaxonomyNode> movieList = genreNode.mChildNodeList;
-					
-				for(TaxonomyNode movieNode : movieList) //All movies of that genre
-				{
-					List<Person> movieCast = tmdb.getMovieCasts(movieNode.mTmdbMovieId);
-					for(Person cast : movieCast)
-					{
-						addCast(cast.getName(), movieNode.mNodeID);
-						//System.out.println("Adding cast \"" + cast.getName() + "\" for movie \"" + movieNode.mNodeName + "\"");
-					}
-				}
-			}
-		}
-		catch (MovieDbException e)
-		{
-			e.printStackTrace();
-		}
+		return mCastTrie.getMovieNodeIdList(castName);
 	}
 }

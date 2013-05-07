@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -333,10 +334,28 @@ public class TweetProcessor
 	 */
 	private void extractMentions(ArrayList<String> tokens, boolean isHash)
 	{
+        extractMentionsOfMovies(tokens, isHash);
+        extractMentionsOfMovieCasts(tokens, isHash);
+	}
+	
+	private void extractMentionsOfMovieCasts(ArrayList<String> tokens, boolean isHash)
+	{
+		double SCORE = isHash ? 1.0 : 0.5;
+		for(String token : tokens)
+		{
+			List<Long> movieNodeIds = MovieCastTrie.getMovieCastTrie().getMovieNodeIdList(token);
+			for(Long movieNodeId : movieNodeIds)
+				mCurrentMentions.put(movieNodeId, SCORE);
+		}
+	}
+	
+	private void extractMentionsOfMovies(ArrayList<String> tokens, boolean isHash)
+	{
 		double SCORE = isHash ? 1.0 : 0.5;
 		
-        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
-        String currentToken = "";
+		TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
+
+		String currentToken = "";
         
         for(int curIndex = 0; curIndex < tokens.size(); curIndex++)
         {
