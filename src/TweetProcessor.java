@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -104,26 +105,29 @@ public class TweetProcessor
 			        	continue;
 			        
 			        // [STEP 03] Pre-process the tweet message
-			        String[] tokens = preprocessTweetMessage(tweetMessage);
+			        ArrayList<String> normalTokens = new ArrayList<String>();
+			        ArrayList<String> hashTokens = new ArrayList<String>();
+			        preprocessTweetMessage(tweetMessage, normalTokens, hashTokens);
 			        
-			        if(!isEnglish(tokens))
-			        {
-			        	numTweets--;
-			        	continue;
-			        }
+			        if(normalTokens.size() == 0 && hashTokens.size() == 0) continue;
+
 			        //System.out.println(tweetMessage + "\n");
 			        
 			        //String webContext = getWebContext(tweetMessage);
 			        //String[] webTokens = preprocessTweetMessage(webContext);
 			        
 			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
-			        extractMentions(tokens);
+			        extractMentions(normalTokens, false);
+			        extractMentions(hashTokens, true);
 			        //extractMentions(webTokens);
 			        //AppUtils.println("After Simply Extracting Mentions");
 			        //printCurrentMentions();
 			        
 			        // [STEP 04_05] Next Step: Get Multiplication Factor and apply it on current mentions
-			        double mulFactor = getMultiplicationFactor(tokens);
+			        double mulFactor = getMultiplicationFactor(normalTokens, false);
+			        applyMultiplicationFactor(mulFactor);
+			        
+			        mulFactor = getMultiplicationFactor(hashTokens, true);
 			        applyMultiplicationFactor(mulFactor);
 
 			        //AppUtils.println("After Applying Multiplication Factor");
@@ -277,29 +281,44 @@ public class TweetProcessor
 	 * @param tweetMessage
 	 * @return
 	 */
-	private String[] preprocessTweetMessage(String tweetMessage)
+	private void preprocessTweetMessage(String tweetMessage, ArrayList<String> normalTokens, ArrayList<String> hashTokens)
 	{
+		if(tweetMessage == null) return;
+		
 		// TODO: Return null if the language is not English.
 		
 		// Tokenize the strings using a set of Delimiters.
-		String tokens[] = new String[1];
-		if(tweetMessage != null)
+		String[] tokens = tweetMessage.split(AppConstants.TWEET_DELIMITER_STRING);
+		
+		if(!isEnglish(tokens)) return;
+		
+		for(String token : tokens)
 		{
-			tokens = tweetMessage.split(AppConstants.TWEET_DELIMITER_STRING);
-			
-			// Logging Pre-processed Tweet
-		    if((AppConstants.PRINT_DEST != AppConstants.TO_NONE) && tokens != null)
+			if(token.startsWith("#"))
 			{
-		    	String outputString = "";
-		        for(String token: tokens) 
-		        	outputString += token + " ";
-		        outputString = "<<PREPROCESSED>> : \t" + outputString;
-		        
-		        //printLog(outputString);
+				hashTokens.add(token.substring(1));
+				continue;
 			}
+			
+			if(!token.startsWith("@") || !token.equals("RT"))
+				normalTokens.add(token);				
 		}
 		
-		return tokens;
+		// Logging Pre-processed Tweet
+	    if((AppConstants.PRINT_DEST != AppConstants.TO_NONE) && tokens != null)
+		{
+	    	String outputString = "";
+	        for(String token: normalTokens) 
+	        	outputString += token + " ";
+	        outputString = "<<PREPROCESSED NORMAL>> : \t" + outputString;
+	        
+	    	outputString = "";
+	        for(String token: hashTokens) 
+	        	outputString += token + " ";
+	        outputString = "<<PREPROCESSED HASH>> : \t" + outputString;
+	        
+	        //printLog(outputString);
+		}
 	}
 	
 	private void resetCurrentMentions()
@@ -312,29 +331,58 @@ public class TweetProcessor
 	 * 
 	 * @param tokens	Tokens from tweet
 	 */
-	private void extractMentions(String[] tokens)
+	private void extractMentions(ArrayList<String> tokens, boolean isHash)
 	{
+		double SCORE = isHash ? 1.0 : 0.5;
+		
         TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
         String currentToken = "";
         
-        for(String token : tokens)
+        for(int curIndex = 0; curIndex < tokens.size(); curIndex++)
         {
+        	String token = tokens.get(curIndex);
+        	
         	if(!currentToken.equals(""))
         		currentToken += " ";
         	currentToken += token;
         	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
-        	if(a != null)
-        	{
-        		if(a.getNodeId() != -1)
-        		{
-        			AppUtils.println("Mention Found: token-[" + token + "]");
-        			mCurrentMentions.put(a.getNodeId(), 1.0);
-        		}
-        		if(a.isLast())
-        			currentToken = "";
-        	}
+
+        	if( a!= null && a.getNodeId() != -1)
+    		{
+    			AppUtils.println("Mention Found: token-[" + token + "]");
+    			mCurrentMentions.put(a.getNodeId(), SCORE);
+    			
+    			if(a.isLast())
+    			{
+    				currentToken = ""; 
+    				continue;
+    			}
+    			
+    			for (int i = curIndex + 1; i < tokens.size(); i++)
+    			{
+    				String newToken = tokens.get(i);
+    				
+    	        	currentToken += " ";
+    	        	currentToken += newToken;
+    	        	
+    	        	TaxonomyPrefixMapValue b = prefixMap.retrieve(currentToken);
+    	        	
+    	        	if(b!= null && b.getNodeId() != -1)
+    	        	{
+    	        		AppUtils.println("Mention Found: token-[" + currentToken + "]");
+            			mCurrentMentions.put(b.getNodeId(), SCORE);
+            			
+    	        		if(b.isLast())
+    	        			break;
+    	        	}
+    	        	else
+    	        		break;
+    	        	
+    			}
+    		}
         	currentToken = "";
         }
+
 	}
 	
 	private void printCurrentMentions()
@@ -359,13 +407,13 @@ public class TweetProcessor
 	 * @param tokens
 	 * @return
 	 */
-	private double getMultiplicationFactor(String[] tokens)
+	private double getMultiplicationFactor(ArrayList<String> tokens, boolean isHash)
 	{
-		if(tokens == null || tokens.length <= 0)
+		if(tokens == null || tokens.size() <= 0)
 			return 0.0;
 
 		double mulFactor = 0.0;
-		double defaultMulFactor = 0.2; //mGoWordsTrie.getDefaultValue();
+		double defaultMulFactor = mGoWordsTrie.getDefaultValue();
 		boolean goWordFound = false;
 		
 		/*
@@ -400,7 +448,12 @@ public class TweetProcessor
 		}
 		
 		if(goWordFound)
-			return mulFactor;
+		{
+			if(isHash)
+				return 2*mulFactor;
+			else
+				return mulFactor;
+		}
 		
 		return defaultMulFactor;
 	}

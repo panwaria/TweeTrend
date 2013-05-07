@@ -208,4 +208,17 @@ public class AppUtils
 		
 		return englishWordsTrie;
 	}
+	
+	public static int getTagCloudLevel(double score)
+	{
+		if (score <= 0 || score > 1.0)
+		{
+			System.err.println("Invalid Score:" + score);
+			return -1;
+		}
+		
+		int level =  (int) (score * 10);
+		
+		return level + 1;
+	}
 }
