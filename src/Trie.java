@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Trie
 {
@@ -93,6 +96,29 @@ public class Trie
 		}
 		
 		return curr.isLeaf();
+	}
+	
+	public List<Long> getMovieNodeIdList(String word)
+	{
+		word = word.toLowerCase();
+		char[] wordCharArray = word.toCharArray();
+		TrieNode curr = root;
+		for(char ch : wordCharArray)
+		{
+			if(Character.isAlphabetic(ch) || Character.isDigit(ch))
+			{
+				if(curr.hasChild(ch))
+					curr = curr.getChild(ch);
+				else
+					return new ArrayList<Long>();
+			}
+			else
+			{
+				return new ArrayList<Long>();
+			}
+		}
+		
+		return curr.getMovieNodes();
 	}
 	
 	public double get(String word)

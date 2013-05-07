@@ -10,6 +10,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -314,7 +315,23 @@ public class TweetProcessor
 	 */
 	private void extractMentions(String[] tokens)
 	{
-        TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
+        extractMentionsOfMovies(tokens);
+        extractMentionsOfMovieCasts(tokens);
+	}
+	
+	private void extractMentionsOfMovieCasts(String[] tokens)
+	{
+		for(String token : tokens)
+		{
+			List<Long> movieNodeIds = MovieCastTrie.getMovieCastTrie().getMovieNodeIdList(token);
+			for(Long movieNodeId : movieNodeIds)
+				mCurrentMentions.put(movieNodeId, 1.0);
+		}
+	}
+	
+	private void extractMentionsOfMovies(String[] tokens)
+	{
+		TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
         String currentToken = "";
         
         for(String token : tokens)

@@ -24,7 +24,7 @@ import com.omertron.themoviedbapi.model.MovieDb;
 public class TaxonomyCreator
 {
 	
-	public static void constructTaxonomyTree(String fileName)
+	public static void writeToTaxonomyXML(String fileName)
 	{
 		try
 		{
