@@ -9,21 +9,13 @@ public class TaxonomyNode
 	 * @param parentNode	Parent Node
 	 * @param nodeID		Node Identifier
 	 */
-	public TaxonomyNode (String name, TaxonomyNode parentNode, long nodeID)
+	public TaxonomyNode (String name, TaxonomyNode parentNode, long nodeID, String tmdbMovieId)
 	{
 		mNodeName = name;
 		mNodeID = nodeID;
 		mParentNode = parentNode;
 		mChildNodeList  = new ArrayList<TaxonomyNode>();
-	}
-	
-	public TaxonomyNode (String name, TaxonomyNode parentNode, long nodeID, int tmdbMovieId)
-	{
-		mNodeName = name;
-		mNodeID = nodeID;
-		mParentNode = parentNode;
-		mChildNodeList  = new ArrayList<TaxonomyNode>();
-		mTmdbMovieId = tmdbMovieId;
+		mTmdbMovieId = Integer.parseInt(tmdbMovieId);
 	}
 	
 	/**

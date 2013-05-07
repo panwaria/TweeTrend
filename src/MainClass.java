@@ -38,12 +38,15 @@ public class MainClass
 	
 	private static TaxonomyTree prepareTaxonomyIndex()
 	{
+		// Generate taxonomy XML file from TMDB API.
+		TaxonomyCreator.constructTaxonomyTree(AppConstants.TAXONOMY_SOURCE_XML);
+		
 		// Create a Taxonomy Parser.
-		//TaxonomyParser taxonomyParser = new TaxonomyParser();
+		TaxonomyParser taxonomyParser = new TaxonomyParser();
 		
 		// Generate a tree structure from XML file.
-		//TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML(AppConstants.TAXONOMY_SOURCE_XML);
-		TaxonomyTree taxonomyTree = TaxonomyCreator.constructTaxonomyTree();
+		TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML(AppConstants.TAXONOMY_SOURCE_XML);
+		
 		System.out.println("CHECKPOINT: Taxonomy Tree Created.");
 		
 		// [TESTING] Print the Tree.

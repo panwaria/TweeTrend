@@ -85,7 +85,7 @@ public class TaxonomyParser  extends DefaultHandler
 			mCurrentNode = taxonomyTree.getRootNode();
 		}
 		else if(qname.equalsIgnoreCase(GENERAL_TAG))
-			mCurrentNode = taxonomyTree.createNode(attributes.getValue("name"), mCurrentNode);
+			mCurrentNode = taxonomyTree.createNode(attributes.getValue("name"), mCurrentNode, attributes.getValue("id"));
 	}
 		
 	@Override

@@ -1,4 +1,19 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.List;
+
+import org.xml.sax.InputSource;
 
 import com.omertron.themoviedbapi.MovieDbException;
 import com.omertron.themoviedbapi.TheMovieDbApi;
@@ -9,46 +24,53 @@ import com.omertron.themoviedbapi.model.MovieDb;
 public class TaxonomyCreator
 {
 	
-	public static TaxonomyTree constructTaxonomyTree()
+	public static void constructTaxonomyTree(String fileName)
 	{
-		TaxonomyTree taxonomyTree = TaxonomyTree.getTaxonomyTree();
-		
-		TheMovieDbApi tmdb;
 		try
 		{
-			tmdb = new TheMovieDbApi(AppConstants.TMDB_API_KEY);
+			File file = new File(fileName);
+			
+			if (!file.exists())
+				file.createNewFile();
+			else
+				return;
+			
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			bw.write("<taxonomy>\n");
+			
+			TheMovieDbApi tmdb = new TheMovieDbApi(AppConstants.TMDB_API_KEY);
 			
 			List<Genre> allGenres = tmdb.getGenreList("");
 	        for(Genre genre : allGenres)
 	        {
-	        	//System.out.println(genre.getName());
-	        	TaxonomyNode genreNode = taxonomyTree.createNode(genre.getName(), taxonomyTree.getRootNode());
-	        	taxonomyTree.getRootNode().mChildNodeList.add(genreNode);
-	        	for(int page = 1; page <= 1; page++)
+	        	bw.write("\t<node name=\"" + genre.getName() + "\" " + "id=\"" + "-1" + "\"" + ">\n");
+	        	for(int page = 1; page <= 10; page++)
 	        	{
 	        		List<MovieDb> allMovies = tmdb.getGenreMovies(genre.getId(), "", page);
 	        		for(MovieDb movie : allMovies)
 	            	{
-	            		//System.out.println("\t" + movie.getTitle());
-	        			TaxonomyNode movieNode = taxonomyTree.createNode(movie.getTitle(), genreNode, movie.getId());
-	            		genreNode.mChildNodeList.add(movieNode);
+	        			bw.write("\t\t<node name=\"" + movie.getTitle().replace("&", "&amp;") + "\" " + "id=\"" + movie.getId() + "\"" + "/>\n");
 	            	}
 	        	}
-	        	
-	        	//List<Person> people2 = tmdb.getMovieCasts(results1.get(0).getId());
-	            
-	        	//List<MovieDb> results2 = tmdb.getGenreMovies(genre.getId(), "", 1);
-	        	
+	        	bw.write("\t</node>\n");
 	        }
+			
+	        bw.write("</taxonomy>");
+			bw.close();
+			
 		}
-		catch (MovieDbException e)
+		catch (FileNotFoundException e)
 		{
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		} catch (MovieDbException e)
+		{
 			e.printStackTrace();
 		}
-    	
-        
-        return taxonomyTree;
 	}
 
 }

@@ -17,7 +17,7 @@ public class TaxonomyTree
 		mTaxonomyNodeHashMap = new HashMap<Integer, TaxonomyNode>();
 		mTaxonomyNodeNameList = new ArrayList<String>();
 		
-		mRootNode = createNode(ROOT_NODE_VALUE, null);
+		mRootNode = createNode(ROOT_NODE_VALUE, null, "-1");
 	}
 	
 	/**
@@ -45,19 +45,7 @@ public class TaxonomyTree
 		return taxonomyNodeNameArray;
 	}
 	
-	/**
-	 * A Utility method to create a node in the tree.
-	 * 
-	 * @param name			Node Name
-	 * @param parentNode	ParentNode
-	 * @return				Created Node
-	 */
-	public TaxonomyNode createNode(String name, TaxonomyNode parentNode)
-	{
-		return createNode(name, parentNode, -1);
-	}
-	
-	public TaxonomyNode createNode(String name, TaxonomyNode parentNode, int tmdbNodeId)
+	public TaxonomyNode createNode(String name, TaxonomyNode parentNode, String tmdbNodeId)
 	{
 		// Increase the node count first.
 		mNodeCount++;

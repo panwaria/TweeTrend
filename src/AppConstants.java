@@ -8,7 +8,7 @@ public class AppConstants
 	public static final boolean PRINT_TO_CONSOLE_ALLOWED = false;
 	
 	// TAXONOMY Related
-	public static final String TAXONOMY_SOURCE_XML = "C:\\Tweets\\Taxonomy_Movies.xml";
+	public static final String TAXONOMY_SOURCE_XML = "src\\Taxonomy_Movies.xml";
 	public static final String TAXONOMY_DELIMITER_STRING = "\\s+|:|,|\\.|&|-";
 	public static final String GO_WORDS_SOURCE_FILE = "src\\go_words.dat";
 	

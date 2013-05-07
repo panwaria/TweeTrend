@@ -41,7 +41,7 @@ public class MovieCastTrie
 					for(Person cast : movieCast)
 					{
 						addCast(cast.getName(), movieNode.mNodeID);
-						System.out.println("Adding cast \"" + cast.getName() + "\" for movie \"" + movieNode.mNodeName + "\"");
+						//System.out.println("Adding cast \"" + cast.getName() + "\" for movie \"" + movieNode.mNodeName + "\"");
 					}
 				}
 			}
