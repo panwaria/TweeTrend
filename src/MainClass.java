@@ -15,14 +15,13 @@ public class MainClass
 		TaxonomyTree taxonomyTree = prepareTaxonomyIndex();
 		
 		// Prepare Movie Cast Trie
-		MovieCastTrie movieCastTrie = prepareMovieCastTrie(taxonomyTree);
+		//MovieCastTrie movieCastTrie = prepareMovieCastTrie(taxonomyTree);
 		
 		// Read Twitter Data and Process it.
 		TweetProcessor tweetProcessor = new TweetProcessor(taxonomyTree, AppConstants.TWITTER_DATA_FILE);
 		//tweetProcessor.processTweets();	
 		Map<String, TaxonomyNodeScore> scoreMap = tweetProcessor.getTaxonomyNodeScoreMap();
         System.out.println("CHECKPOINT: Final Taxonomy Node Score Updated.");
-        
         // Process User's Query
         processUserQuery(taxonomyTree, scoreMap);
         

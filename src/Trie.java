@@ -21,7 +21,7 @@ public class Trie
 		TrieNode curr = root;
 		for(char ch : wordCharArray)
 		{
-			if(((ch - 'a') >= 0) && ((ch - 'a') < 26))
+			if(Character.isAlphabetic(ch) || Character.isDigit(ch))
 			{
 				curr = curr.getChild(ch);
 			}
@@ -37,7 +37,7 @@ public class Trie
 		TrieNode curr = root;
 		for(char ch : wordCharArray)
 		{
-			if(((ch - 'a') >= 0) && ((ch - 'a') < 26))
+			if(Character.isAlphabetic(ch) || Character.isDigit(ch))
 			{
 				curr = curr.getChild(ch);
 			}
@@ -60,7 +60,7 @@ public class Trie
 		TrieNode curr = root;
 		for(char ch : wordCharArray)
 		{
-			if(((ch - 'a') >= 0) && ((ch - 'a') < 26))
+			if(Character.isAlphabetic(ch) || Character.isDigit(ch))
 			{
 				if(curr.hasChild(ch))
 					curr = curr.getChild(ch);
@@ -79,7 +79,7 @@ public class Trie
 		TrieNode curr = root;
 		for(char ch : wordCharArray)
 		{
-			if(((ch - 'a') >= 0) && ((ch - 'a') < 26))
+			if(Character.isAlphabetic(ch) || Character.isDigit(ch))
 			{
 				if(curr.hasChild(ch))
 					curr = curr.getChild(ch);
@@ -102,7 +102,7 @@ public class Trie
 		TrieNode curr = root;
 		for(char ch : wordCharArray)
 		{
-			if(((ch - 'a') >= 0) && ((ch - 'a') < 26))
+			if(Character.isAlphabetic(ch) || Character.isDigit(ch))
 			{
 				if(curr.hasChild(ch))
 					curr = curr.getChild(ch);
