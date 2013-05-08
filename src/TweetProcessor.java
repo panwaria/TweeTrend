@@ -316,7 +316,7 @@ public class TweetProcessor
 	private void extractMentions(String[] tokens)
 	{
         extractMentionsOfMovies(tokens);
-        extractMentionsOfMovieCasts(tokens);
+        //extractMentionsOfMovieCasts(tokens);
 	}
 	
 	private void extractMentionsOfMovieCasts(String[] tokens)

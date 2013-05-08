@@ -38,13 +38,18 @@ public class MovieCastCreator
 					
 				for(TaxonomyNode movieNode : movieList) //All movies of that genre
 				{
-					bw.write("\t<movie name=\"" + movieNode.mNodeName + "\" " + "id=\"" + movieNode.mTmdbMovieId + "\">\n");
+					bw.write("\t<movie name=\"" + movieNode.mNodeName.replace("&", "&amp;") + "\" " + "id=\"" + movieNode.mTmdbMovieId + "\">\n");
 		        	
 					List<Person> movieCast = tmdb.getMovieCasts(movieNode.mTmdbMovieId);
+					int maxCastsPerMovie = 5;
+					int i = 0;
 					for(Person cast : movieCast)
 					{
+						if(i >= maxCastsPerMovie)
+							break;
 						bw.write("\t\t<cast name=\"" + cast.getName().replace('"', ' ') + "\"" + "/>\n");
 			        	//addCast(cast.getName(), movieNode.mNodeID);
+						i++;
 					}
 					bw.write("\t</movie>\n");
 				}
