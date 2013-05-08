@@ -75,12 +75,18 @@ public class MainClass
 	private static void processUserQuery(TaxonomyTree tree, Map<String, TaxonomyNodeScore> scoreMap)
 	{
 		Map<String, TaxonomyNodeScore> queryScoreMap = new HashMap<String, TaxonomyNodeScore>();
-	    Scanner in = new Scanner(System.in);
-	      
-	    System.out.println("Enter a string: \t");
-	    String input = in.nextLine();
+	  
+//		Scanner in = new Scanner(System.in);
+//	    System.out.println("Enter a string: \t");
+//	    String input = in.nextLine();
 	    //System.out.println("You entered string "+ input);
 	    
+	    System.out.println("Resutls for ALL GENRES :");
+	    TaxonomyNode rootNode = tree.getRootNode();
+	    for(TaxonomyNode genreNode : rootNode.mChildNodeList)
+	    {
+	    	queryScoreMap.clear();
+	    	/*
 	    // Linear Search for now.
 	    String[] nodeNameArray = tree.getTaxonomyNodeNameArray();
 	    tree.printTaxonomyNodeNameArray();
@@ -97,8 +103,12 @@ public class MainClass
 	    		break;
 	    	}
 	    	nodeID++;
-	    }
+	    }*/
 	      
+    	String input = genreNode.mNodeName;
+    	int nodeID = (int) genreNode.mNodeID;
+    	
+	    boolean	nodeNameFound = true;
 	    if(nodeNameFound)
 	    {
 	    	System.out.println("NodeName [" + input + "] found with NodeID=" + nodeID);
@@ -135,18 +145,31 @@ public class MainClass
 	    System.out.println("RESULTS for Query=" + input);
 	    System.out.println("-------------------------------------------\n");
 
+	    String htmlString = "";
 		if(queryScoreMap.size() > 0)
 		{
 			System.out.println("No. of movies in this category = " + queryScoreMap.size() + "\n");
 			for (Map.Entry<String, TaxonomyNodeScore> entry : queryScoreMap.entrySet())
 			{
 				System.out.println("[" + entry.getKey() + ", " + entry.getValue().mNodeScore + "]");
+				
+				int level = AppUtils.getTagCloudLevel(entry.getValue().mNodeScore);
+				if (level == -1) continue;
+				
+				htmlString += AppConstants.OUTPUT_HTML_PART1 + level + AppConstants.OUTPUT_HTML_PART2 + 
+							entry.getKey() + AppConstants.OUTPUT_HTML_PART3;
 			}
+			
+			String finalString = AppConstants.OUTPUT_HTML_START_STRING + htmlString + AppConstants.OUTPUT_HTML_END_STRING;
+			
+			AppUtils.printToFile(AppConstants.OUTPUT_HTML_FILE_BASE_NAME + input +".html", finalString);
 		}    
 		else
-			AppUtils.println("No entries in the User Query Score Map!\n");  
+			AppUtils.println("No entries in the User Query Score Map!\n");
 		
-	    in.close();
+	    }
+		
+//	    in.close();
 	}
 	
 }
