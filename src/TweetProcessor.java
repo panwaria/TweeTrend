@@ -98,7 +98,6 @@ public class TweetProcessor
 			    	// [STEP 01_05] Get TweetID
 			    	String tweetID = ""; // TODO: Implement getTweetID(tweet);
 			    	
-			    	
 			        // [STEP 02] Find the Tweet Message
 			        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
 			        String tweetMessage = getTweetMessage(tweet);
@@ -125,17 +124,16 @@ public class TweetProcessor
 			        //printCurrentMentions();
 			        
 			        // [STEP 04_05] Next Step: Get Multiplication Factor and apply it on current mentions
-			        double mulFactor = getMultiplicationFactor(normalTokens, false);
-			        applyMultiplicationFactor(mulFactor);
-			        
-			        mulFactor = getMultiplicationFactor(hashTokens, true);
-			        applyMultiplicationFactor(mulFactor);
+			        double mulFactor1 = getMultiplicationFactor(normalTokens, false);
+			        double mulFactor2 = getMultiplicationFactor(hashTokens, true);
+			        double normMulFactor = AppUtils.normalizeValues(mulFactor1, mulFactor2);
+			        applyMultiplicationFactor(normMulFactor);
 
 			        //AppUtils.println("After Applying Multiplication Factor");
 			        //printCurrentMentions();
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
-			        filterMentions(THRESHOLD_VAL);
+			        filterMentions(AppConstants.THRESHOLD_VAL);
 			        
 			        AppUtils.println("After Filtering Mentions");
 			        printCurrentMentions();
@@ -177,7 +175,6 @@ public class TweetProcessor
             } 
 		    catch (IOException e)
             {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
             }
 		}
@@ -457,8 +454,11 @@ public class TweetProcessor
 	 * Apply Multiplication Factor
 	 * @param mulFactor
 	 */
-	private void applyMultiplicationFactor(Double mulFactor)
+	private void applyMultiplicationFactor(double mulFactor)
 	{
+		if(mulFactor == 0.0)
+			return;
+		
 		if(mCurrentMentions != null && mCurrentMentions.size() > 0)
 		{
 			for (Map.Entry<Long, Double> entry : mCurrentMentions.entrySet())
@@ -507,6 +507,9 @@ public class TweetProcessor
 				{
 					TaxonomyNodeScore taxonomyNodeScore = new TaxonomyNodeScore();
 					taxonomyNodeScore.mNodeScore = entry.getValue();
+					
+					if(taxonomyNodeScore.mNodeScore == 0)
+						System.err.println("Node Name with score '0' = " + nodeName);
 					
 					mTaxonomyNodeScoreMap.put(nodeName, taxonomyNodeScore);
 				}
@@ -616,10 +619,7 @@ public class TweetProcessor
 	// Member Variables
 	private static String LOG_FILE_NAME = "tweet_log.txt";
 	private static final String TAXONOMY_NODE_SCORE_FILENAME = "taxonomy_node_score.dat";
-	private double THRESHOLD_VAL = 0.0;
-	
-	//private Map<String, Double> mGoWordsMap = null;
-	
+
 	private Map<Long /*nodeID*/, Double /*score*/> mCurrentMentions = null;
 	private Map<String, TaxonomyNodeScore> mTaxonomyNodeScoreMap = null;
 	

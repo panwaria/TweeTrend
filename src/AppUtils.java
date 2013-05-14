@@ -209,15 +209,32 @@ public class AppUtils
 		return englishWordsTrie;
 	}
 	
-	public static int getTagCloudLevel(double score)
+	public static int getTagCloudLevel(double score, double[] thresholdArr)
 	{
-		if (score <= 0 || score > 1.0)
+		int index = 0;
+		for(double threshold : thresholdArr)
+		{
+			if(score > threshold)
+				return 10 - index;
+			
+			index++;
+		}
+		
+		return -1;
+	}
+	
+	public static int getTagCloudLevel(double score, double min, double max)
+	{
+		double normTotal = max - min;
+		double normScore = (score - min) / normTotal;
+		
+		if (normScore < 0.0 || normScore > 1.0)
 		{
 			System.err.println("Invalid Score:" + score);
 			return -1;
 		}
 		
-		int level =  (int) (score * 10);
+		int level =  (int) (normScore * 10);
 		
 		return level + 1;
 	}

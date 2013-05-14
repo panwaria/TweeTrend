@@ -3,6 +3,10 @@
  */
 public class AppConstants
 {
+	// Final Control
+	public static final int MAX_TOP_LIMIT = 30;
+	public static final double THRESHOLD_VAL = 0.0;
+	
 	// DEBUGGING Related
 	public static final int PROCESSING_TWEET_LIMIT = 1000;
 	public static final boolean PRINT_TO_CONSOLE_ALLOWED = false;
