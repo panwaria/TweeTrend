@@ -435,43 +435,19 @@ public class TweetProcessor
 		double defaultMulFactor = mGoWordsTrie.getDefaultValue();
 		boolean goWordFound = false;
 		
-		/*
-		for (Map.Entry<String, Double> entry : mGoWordsMap.entrySet())
-		{
-			String goWord = entry.getKey();
-			Double goWordScore = entry.getValue();
-			
-			boolean goWordFound = false;
-			for(String token : tokens)
-			{
-				if(token.startsWith(goWord))
-				{
-					mulFactor = AppUtils.normalizeValues(mulFactor, goWordScore);
-					goWordFound = true;
-				}
-			}
-			
-			if(!goWordFound)	// If goWord is not found, then the multiplication factor should be even less.
-				mulFactor = AppUtils.normalizeValues(mulFactor, 1 - goWordScore);
-		}
-		*/
-		
 		for(String token : tokens)
 		{
 			double goWordScore = mGoWordsTrie.get(token);
 			if(goWordScore != 0.0)
 			{
-				mulFactor = AppUtils.normalizeValues(mulFactor, goWordScore);
+				mulFactor = Math.max(mulFactor, goWordScore);
 				goWordFound = true;
 			}
 		}
 		
 		if(goWordFound)
 		{
-			if(isHash)
-				return 2*mulFactor;
-			else
-				return mulFactor;
+			return mulFactor;
 		}
 		
 		return defaultMulFactor;
@@ -525,7 +501,7 @@ public class TweetProcessor
 					
 					// Update nodeScore -- This will act as weight of the word in the TagCloud.
 					double oldScore = mTaxonomyNodeScoreMap.get(nodeName).mNodeScore;
-					mTaxonomyNodeScoreMap.get(nodeName).mNodeScore = AppUtils.normalizeValues(oldScore,  entry.getValue());
+					mTaxonomyNodeScoreMap.get(nodeName).mNodeScore = oldScore +  entry.getValue();
 				}
 				else
 				{
