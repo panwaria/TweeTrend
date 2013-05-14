@@ -16,6 +16,7 @@ public class AppConstants
 	// TWEETS Related
 	public static final String TWITTER_DATA_FILE = "C:\\Tweets\\twitter_20110731-12.log";
 	public static final String TWEET_DELIMITER_STRING = "\\s+|:|,|\\.|&|-|\\?";
+	public static final String GOLDEN_DATA_LOCATION = "golden_data";
 	
 	// DEBUGGING Related
 	public static final String LOGS_DIRECTORY_NAME = "logs";

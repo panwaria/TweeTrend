@@ -82,7 +82,7 @@ public class Trie
 		TrieNode curr = root;
 		for(char ch : wordCharArray)
 		{
-			if(Character.isAlphabetic(ch) || Character.isDigit(ch))
+			if(((ch >= 'a') && (ch <= 'z')) || ((ch >= '0') && (ch <= '9')))
 			{
 				if(curr.hasChild(ch))
 					curr = curr.getChild(ch);
