@@ -7,6 +7,7 @@ trailer		0.78
 imdb		0.75
 blockbuster	0.70
 cinema		0.70
+theater		0.70
 oscar		0.80
 actor		0.65
 actress		0.65
@@ -28,14 +29,11 @@ scifi		0.60
 war			0.60
 
 // Adjectives
-excit		0.55
-boring		0.54
-hilarious	0.55
-pathetic	0.60
+excit		0.35
+boring		0.34
+hilarious	0.35
+pathetic	0.40
 
 // Verbs
 watch		0.65
 releas		0.65
-
-
-

@@ -340,7 +340,7 @@ public class TweetProcessor
 	
 	private void extractMentionsOfMovieCasts(ArrayList<String> tokens, boolean isHash)
 	{
-		double SCORE = isHash ? 1.0 : 0.5;
+		double SCORE = isHash ? 0.5 : 0.25;
 		for(String token : tokens)
 		{
 			List<Long> movieNodeIds = MovieCastTrie.getMovieCastTrie().getMovieNodeIdList(token);
