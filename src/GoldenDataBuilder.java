@@ -27,38 +27,31 @@ public class GoldenDataBuilder
 	 */
 	public static void main(String[] args) throws TwitterException, MovieDbException, IOException
 	{
-		mTmdb = new TheMovieDbApi(AppConstants.TMDB_API_KEY);
 		mTwitter = TwitterFactory.getSingleton();
 		mEnglishWordsTrie  = AppUtils.generateEnglishWordsTrie(AppConstants.ENGLISH_WORDS_FILE);
 	    
-		List<Genre> allGenres = mTmdb.getGenreList("");
-        for(Genre genre : allGenres)
-        	createGoldenDataFile(genre.getName(), AppConstants.GOLDEN_DATA_LOCATION + "\\" + genre.getName() + ".xml");
+		createGoldenDataFile("", AppConstants.GOLDEN_DATA_LOCATION + "\\" + "golden_tweets" + ".xml");
     }
 	
 	private static void createGoldenDataFile(String genreName, String fileName) throws TwitterException, IOException
 	{
     	File file = new File(fileName);
 		
-    	/*
-		if (!file.exists())
-			file.createNewFile();
-		else
-			return;
-		*/
-    	
-		FileWriter fw = new FileWriter(file.getAbsoluteFile());
+    	FileWriter fw = new FileWriter(file.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
 		
-		Query query = new Query(genreName);
-	    query.setCount(100);
-	    QueryResult result = mTwitter.search(query);
-	    
-	    for (Status status : result.getTweets()) {
-	    	String tweet = status.getText();
-	    	if(isEnglish(tweet.split(AppConstants.TWEET_DELIMITER_STRING)))
-	    		bw.write("<tweet>\n\t" + tweet + "\n</tweet>\n");
-	    }
+		Twitter twitter = new TwitterFactory().getInstance(); 
+		
+		for(int page = 1; page <= 50; page++)
+		{
+			Paging paging = new Paging(2);
+			List<Status> statuses = twitter.getUserTimeline("Movies", paging); 
+			for (Status status : statuses) {
+		    	String tweet = status.getText();
+		    	if(isEnglish(tweet.split(AppConstants.TWEET_DELIMITER_STRING)))
+		    		bw.write("<tweet>\n\t" + tweet + "\n</tweet>\n");
+		    }
+		}
 	    
 	    bw.close();
 	}
