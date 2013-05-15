@@ -55,7 +55,7 @@ public class MainClass
 		System.out.println("CHECKPOINT: Taxonomy Tree Created.");
 		
 		// [TESTING] Print the Tree.
-		//taxonomyTree.printTree();
+		taxonomyTree.printTree();
 		
  		// [TESTING] Print the TaxonomyNodeHashMap
 		//taxonomyTree.printTaxonomyNodeHashMap();
@@ -172,7 +172,7 @@ public class MainClass
 		}
 	    
 	    System.out.println("-------------------------------------------");
-	    System.out.println("RESULTS for Query =" + input.toUpperCase());
+	    System.out.println("RESULTS for Query = " + input.toUpperCase());
 	    System.out.println("-------------------------------------------\n");
 
 	    String htmlString = "";

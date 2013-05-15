@@ -65,12 +65,12 @@ public class TaxonomyTree
 	 */
 	public void printTree()
 	{
-		AppUtils.println("\n--------------------------\nPRINTING TAXONOMY TREE\n--------------------------\n");
+		AppUtils.printLog("TaxonomyTree", "\n--------------------------\nPRINTING TAXONOMY TREE\n--------------------------\n");
 
 		if(mRootNode != null)
 			mRootNode.printTwoLevelTree();
 		else
-			AppUtils.println("Tree has no nodes yet!");
+			AppUtils.printLog("TaxonomyTree", "Tree has no nodes yet!");
 	}
 	
 	/**
