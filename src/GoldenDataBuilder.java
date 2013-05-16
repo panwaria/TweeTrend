@@ -44,7 +44,7 @@ public class GoldenDataBuilder
 		
 		for(int page = 1; page <= 50; page++)
 		{
-			Paging paging = new Paging(2);
+			Paging paging = new Paging(page);
 			List<Status> statuses = twitter.getUserTimeline("Movies", paging); 
 			for (Status status : statuses) {
 		    	String tweet = status.getText();
