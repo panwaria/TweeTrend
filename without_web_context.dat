@@ -1,1809 +1,575 @@
-   36--Cinderella
-    7--Silent Hill
-   30--London Boulevard
-   24--Les Mis?rables
-   24--The Shawshank Redemption
-   15--[REC]
-   18--Harry Potter and the Order of the Phoenix
-    7--Wallace and Gromit: The Wrong Trousers
-   24--Click
-   62--Man On a Ledge
-   23--The Good, the Bad and the Ugly
-   25--Miss Congeniality
-   28--Duck, You Sucker
-    9--Zeitgeist: Addendum
-   30--Rocky Balboa
-    9--Meet the Parents
-   22--Hitch
-   25--Scrooged
-   26--City of Ember
-   20--The Recruit
-   20--Ong Bak 2
-   20--Ong Bak 3
-  210--Vexille
-  290--Patton
-   63--Smurfs
-   76--9
-   23--The Pink Panther 2
-   62--Big Sur
-   16--Mission: Impossible 4
-   53--Shooter
-   62--The Three Musketeers
-   26--Stone
-   11--M
-   29--The Godfather: Part II
-   64--Side Effects
-   52--Megamind
-    8--New Nightmare
-    6--Lethal Weapon 3
-    6--Lethal Weapon 2
-   64--Action
-   17--Spartacus
-   62--Elysium
-   16--Superman: The Man of Steel
-    7--Shanghai Knights
-   44--Rango
-   16--Sex and the City 2
-   18--The Amazing Spider-Man
-  143--Percy Jackson & the Olympians: The Lightning Thief
-   27--Rosemary's Baby
-   33--To Kill a Mockingbird
-   23--Battleship
-   22--X-Men: The Last Stand
-   41--Treasure Planet
-   14--Around the World in 80 Days
-   62--Bully
-   21--Four Rooms
-    7--Forbidden Planet
-  144--Halloween
-   25--War Horse
-   62--The Art of Getting By
-   28--Tombstone
-   62--Love Wedding Marriage
-   64--Scott Pilgrim Vs. The World
-   37--Pink Floyd The Wall
-   33--Atonement
-   25--Insomnia
-   62--Girl in Progress
-   10--Cowboys & Aliens
-   27--From Paris with Love
-   20--Mesrine: Public Enemy #1
-   16--Snow White And The Huntsman
-   27--Blades of Glory
-   27--The Boy in the Striped Pajamas
-   25--Bambi
-    9--Going the Distance
-   28--Windtalkers
-    8--The 13th Warrior
-   12--Eyes Wide Shut
-   25--Bridget Jones's Diary
-   37--The Bridge on the River Kwai
-   75--Wreck-It Ralph
-   17--Immortals
-  213--Tangled
-    5--Sympathy for Mr. Vengeance
-   59--The Lion King
-   25--Sintel
-   32--Nanny McPhee and the Big Bang
-    7--Good Night, and Good Luck.
-   29--Starship Troopers: Invasion
-    6--Admiral
-   34--Coming to America
-   45--Heat
-    9--Dirty Dancing
-  144--They Live
-   25--Justin Bieber: Never Say Never
-   16--Madagascar 3
-    8--A Scanner Darkly
-   21--Twister
-   27--The Jungle Book
-   34--Meet the Robinsons
-   22--THX 1138
-   23--The Bride of Frankenstein
-   32--The Enforcer
-   64--3D Shark Night
-   22--As Good as It Gets
-    9--Zeitgeist: The Movie
-   20--Night of the Living Dead
-    8--The NeverEnding Story
-   11--Saw 3D: The Final Chapter
-   11--Indiana Jones and the Last Crusade
-   30--Over the Hedge
-   23--Sleepers
-   24--Robin Hood: Prince of Thieves
-   27--Friday
-   26--Lucky Number Slevin
-   23--The Bone Collector
-   24--Brother Bear
-   19--Hobbit
-   24--Titan A.E.
-   74--1408
-   16--Taken 2
-    9--Inside Man
-   16--Dear John
-   21--Sudden Impact
-   62--Ghost Rider 2
-   40--Race to Witch Mountain
-   76--Zeitgeist: Moving Forward
-   62--Puncture
-   21--The Texas Chainsaw Massacre
-   20--Equilibrium
-   15--Dirty Harry
-   33--The Wicker Man
-   62--Father of Invention
-  214--Miller's Crossing
-   25--Knight and Day
-   44--Where Eagles Dare
-   16--Last Airbender
-   27--Annie Hall
-   11--The Holiday
-   35--Oz: The Great and Powerful
-   75--The Proposal
-    6--Rescue Dawn
-   16--Lorax
-   30--Stalag 17
-   26--The Abyss
-   22--Death Becomes Her
-   17--Midnight in Paris
-   48--Why Stop Now
-   65--Ted
-   40--Body of Lies
+   80--Stuck by Lightning
+   84--Breaking Dawn
+   80--White House Down
+   80--London Boulevard
+   81--Conan the Barbarian
+   80--The Hangover II
+   80--Resident Evil
+   80--The Son of No One
+   80--Hansel and Gretel, Witch Hunters
+   83--2012
+   80--The Internship
+   80--Spring Breakers
+   82--2010
+   80--Moneyball
+   80--Center of the Earth
+   80--Black Swan
+   80--Man On a Ledge
+   80--The Myth of the American Sleepover
+   80--Vampires
+   80--The Green Lantern
+   82--Parker
+   80--Dead Man Down
+   80--Meet the Fockers
+   80--Never Ending Story
+   80--Real Steel
+   80--Pirates of Silicon Valley
+   80--Patton
+   80--Spy Kids: All the Time in the World
+   81--Smurfs
+   81--9
+   80--Big Sur
+   80--The Girl with the Dragon Tattoo
+   80--Mission: Impossible 4
+   80--American Pie
+   80--He's Just Not That Into You
+   80--Attack the Block
+   80--The Three Musketeers
+   80--The Girl With the Dragon Tattoo
+   80--Details
+   80--Secretariat
+   81--Stone
+   80--M
+   80--Looper
+   80--The Apparition
+   80--Side Effects
+   89--Twilight
+   80--The Whistleblower
+   80--William and Kate
+   80--Action
+   80--Slumdog
+   80--Elysium
+   80--Superman: The Man of Steel
+   80--Terminator Salvation
+   80--Rango
+   80--Seven Days in Utopia
+   81--Cars 2
+   80--Stuck in Love
+   80--Night at the Museum 2
+   80--Sex and the City 2
+   80--Being Elmo
+   84--The Amazing Spider-Man
+   80--Pain and Gain
+   80--Battleship
+   80--Rumblewick
+   80--Bully
+   80--How to Train Your Dragon
+   80--Tinker Tailor Soldier Spy
+   80--Hotel Transylvania
+   80--True Grit
+   80--Halloween
+   80--Nine
+   80--The Art of Getting By
+   80--Love Wedding Marriage
+   80--Scott Pilgrim Vs. The World
+   80--The Silver Linings Playbook
+   83--Aliens
+   81--Taken
+   80--Hawaiian Vacation
+   80--Young Adult
+   80--Girl in Progress
+   80--The Iron Lady
+   80--Arthur Christmas
+   80--Snow White And The Huntsman
+   80--Jurassic Park
+   82--Breaking Dawn Part 1
+   80--Red Tails
+   84--James Bond
+   80--Crazy Stupid Love
+   80--Jack Goes Boating
+   80--The Dark Fields
+   80--Hummingbird
+   80--Prom
+   80--Wreck-It Ralph
+   80--Martha Marcy May Marlene
+   80--Life of Pi
+   82--Immortals
+   80--Abduction
+   80--The Grove
+   80--The Lion King
+   81--A-Team
+   80--Trance
+   80--Perfect Sense
+   80--Dream House
+   82--Wild Things
+   80--Playing for Keeps
+   80--Abraham Lincoln Vampire Hunter
+   81--Angelina Jolie
+   81--Total Recall
+   80--Top Gun 2
+   80--G.I. Joe: Retaliation
+   80--Valentine's Day
+   80--Contraband
+   80--Killing Bono
+   80--Casa De Mi Padre
+   80--Seven Psychopaths
+   80--One for the Money
+   80--Frankenweenie
+   80--Alexander
+   80--Madagascar 3
+   80--Jack Reacher
+   80--The Three Stooges
+   80--One Day
+   80--Beautiful Creatures
+   80--Happy Feet 2
+   80--Observe and Report
+   80--The Rock
+   80--Transformers: Dark of the Moon
+   80--3D Shark Night
+   80--The Decoy Bride
+   80--The Mortal Instruments
+   80--Lawless
+   80--Carrie
+   80--Tempest
+   80--Bad Teacher
+   80--Red Riding Hood
+   88--Hobbit
+   80--We Bought a Zoo
+   82--Green Lantern
+   80--Diary of a Wimpy Kid: Dog Days
+   81--Taken 2
+   80--Dear John
+   80--The Woman in Black
+   80--Race to Witch Mountain
+   80--Ghost Rider 2
+   80--Transformers 3: Dark of the Moon
+   80--Puncture
+   80--Carnage
+   80--Savages
+   82--Red Band
+   80--Sucker Punch
+   80--Father of Invention
+   80--Ocean of Pandora
+   80--Star Wars: Episode VII
+   80--Twilight Eclipse
+   80--Last Airbender
+   80--Safe Haven
+   80--Hangover 2
+   80--Five Against a Bullet
+   80--The Proposal
+   80--Oz: The Great and Powerful
+   80--World of Warcraft
+   80--Black Death
+   80--The Master
+   82--Lorax
+   80--Hitchcock
+   80--Zoolander 2
+   80--Midnight in Paris
+   80--The Mortal Instruments: City of Bones
+   80--Why Stop Now
+   80--Winnie the Pooh
+   81--Ted
+   80--Prince of Persia: The Sands of Time
+   80--Your Highness
+   82--The Expendables 2
+   80--Beauty and the Beast
+   80--The Croods
+   80--Sherlock Holmes: A Game of Shadows
    80--The Way
-   62--Fast and Furious 6
-   26--The Losers
-   37--Ghosts of Girlfriends Past
-   19--Dark Knight
-   26--Monty Python's Life of Brian
-   21--The Descendants
-   75--Jackie Brown
-   36--Madagascar
-   11--Deliverance
-   23--Friday the 13th
-   44--Documentary
-   28--Austin Powers: International Man of Mystery
-   62--Tanner Hall
-   75--The Aviator
-   30--Donnie Darko
-    6--The Duchess
-   62--American Reunion Red Band
-   62--Rampart
-   62--Game Change
-   14--The Name of the Rose
-   23--Walk the Line
-   62--Kick-Ass 2
-   26--The Sum of All Fears
-   21--28 Weeks Later
-   62--Twilight: Eclipse
-   30--Darkman
-   23--The Big Blue
-   13--Source Code
-   22--The Double
-   25--Caligula
-   16--Mirror Mirror
-   35--Say Anything...
-  145--The Godfather
-   18--New Moon
-   33--Groundhog Day
-   25--Friday Night Lights
-   62--The Ides of March
-   62--50/50
-   63--Titans
-   62--Apollo 18
-   21--The Evil Dead
-   32--Apollo 13
-   22--What Women Want
-   20--Resident Evil: Afterlife
-   23--The Lovely Bones
-   74--The Lucky One
-   52--End of Watch
-   23--The Wrestler
-  148--Teen Wolf
-   34--Papillon
-   20--Hotel Rwanda
-   22--The Brothers Grimm
-   62--The Bling Ring
-   30--How the Grinch Stole Christmas
-   29--Sweeney Todd: The Demon Barber of Fleet Street
-    8--The Wild Bunch
-   62--Passion
-   17--DragonHeart
-   31--The Host
-   25--Star Trek III: The Search for Spock
-   22--Lock, Stock and Two Smoking Barrels
-   40--Donnie Brasco
-    6--Downfall
-   18--Everything is Illuminated
-   16--The Librarian
-   15--Revolutionary Road
-    5--House of Flying Daggers
-   16--Home Alone
-   27--Punch-Drunk Love
-   22--Phone Booth
-   24--Leap Year
-   62--The Five-Year Engagement
-   21--The Secret in Their Eyes
-   23--Night at the Museum
-   28--The Messenger: The Story of Joan of Arc
-   26--Lady and the Tramp
-   32--Empire of the Sun
-   20--The French Connection
-  143--Short Circuit
-   39--The Hudsucker Proxy
-    6--Star Trek: Insurrection
-   16--Beginners
-   17--Blade
-   25--Fight Club
-   13--Kiss of the Dragon
-   22--The Lake House
-   13--All Good Things
-   35--The Fast and the Furious
-   49--The Girl Who Played with Fire
-   16--Couples Retreat
-   34--Deception
-   25--Gandhi
-   64--Spiders
-   23--City Lights
-   20--The American
-   34--Ice Age: Dawn of the Dinosaurs
-   40--Striking Distance
-   28--Mr. Brooks
-    6--Rambo: First Blood Part II
-   18--Cradle 2 the Grave
-   32--Unknown
-   62--Journey 2: The Mysterious Island
-   62--Texas Killing Fields
-   16--Sinister
-   27--Music and Lyrics
-   62--Killing Them Softly
-   26--Midnight Express
-   16--Love, Wedding, Marriage
-   30--Enter the Dragon
-   11--The Fox and the Hound
-   29--Terminator 2: Judgment Day
-   21--Inside Job
-   26--The Number 23
-   14--WALL?E
-   52--Bedtimes Stories
-   31--Saving Private Ryan
-    7--Ghost in the Shell 2: Innocence
-   38--Labyrinth
-   26--Wanted
-   29--Carriers
-   21--They Call Me Trinity
-   27--Scoop
-    5--Avalon
-   62--The Other Guys
-   62--Country Strong
-   16--This is 40
-   57--World War Z
-    6--The American Matrix - Age Of Deception
-   20--The Jewel of the Nile
-   21--Blue Velvet
-   22--Battle Los Angeles
-   51--Edward Scissorhands
-    7--Predator 2
-   21--Appaloosa
-   28--Tenacious D in The Pick of Destiny
-   33--Corpse Bride
-   62--Family
-   20--Asterix & Obelix: Mission Cleopatra
-   20--The Baader Meinhof Complex
-   32--District 9
-   28--I Am Legend
-   10--Goodbye Lenin!
-   54--Man of Steel
-   29--Twelve Monkeys
-   21--Jack the Giant Slayer
-   62--The Hangover: Part 2
-   26--Gremlins
-   62--The Caller
-   13--The Notebook
-   30--Live Free or Die Hard
-   16--Texas Chainsaw 3D
-   20--Indie Game: The Movie
-   23--The Godfather: Part III
-  349--Some Like It Hot
-   62--Thor
-   25--Transporter 2
-   20--Big Buck Bunny
-   24--The Deer Hunter
-   62--Don't Be Afraid of the Dark
-   74--Rubber
-   28--The Box
-   14--High Fidelity
-   11--A Bug's Life
-   20--A Chinese Ghost Story
-   37--The Terminator
-   26--A Bronx Tale
-   22--Napoleon Dynamite
-   29--State of Play
-   22--Daybreakers
-   16--Memento
-   62--The Wolverine
-   74--Poltergeist
-   27--Once
-   62--A Very Harold and Kumar 3D Christmas
-   35--Crank
-   62--The Big Wedding
-   12--Alex Cross
-   64--17 Again
-   16--Ruby Sparks
-    7--The Fly
-   52--North by Northwest
-   28--The Imaginarium of Doctor Parnassus
-    5--My Name Is Khan
-   25--Monsters vs Aliens
-  125--The Chaser
-   29--Scarface
-  217--Soldier
-   75--Secret Window
-   23--Hollow Man
-   22--Death Race 2000
-    6--Shanghai Noon
-   23--Fallen
-   11--U.S. Marshals
-   73--Wild Wild West
-   62--Dreamworks' Turbo
-   16--The Girlfriend Experience
-   22--The Next Three Days
-   23--Wrong Turn
-   64--Hannah Montana
-   28--The Omen
-   20--Never Let Me Go
-   55--Muppets
-   11--My Super Ex-Girlfriend
-   24--Land of the Dead
-   12--The Pink Panther
-   24--The Terminal
-   24--Sneakers
-   62--Wolverine
-    7--AntiTrust
-   64--Private Benjamin
-   39--Cashback
-   40--Star Trek II: The Wrath of Khan
-   16--Bachelorette
-   28--Igor
-   62--Friends With Kids
-   21--Amores Perros
-    7--Behind Enemy Lines
-   24--The Happening
-   21--Lord of War
-   22--Burlesque
-   47--Scott Pilgrim vs. the World
-   30--Unstoppable
-   16--The Great and Powerful
-    9--A Christmas Story
-   30--Elf
-   23--From Hell
-   74--A Time to Kill
-   19--Harry Potter and the Prisoner of Azkaban
-   20--She's Out of My League
-   22--The Birds
-   48--Haunted
-   21--The Devil's Double
-   62--Iron Man 3
-   23--The Thirteenth Floor
-   74--Iron Man 2
-  145--12 Angry Men
-   32--Love Actually
-   16--Motorcade
-   25--Casablanca
-    8--Easy Rider
-   62--Pirates: Band of Misfits
-   25--Solomon Kane
-   16--Vampires Suck
-   21--Finding Nemo
-    5--Curse of the Golden Flower
-   27--Men in Black
-   30--Super Troopers
-    5--Akira
-   62--The Beaver
-   33--Black Dynamite
-   20--Rocky V
-   62--Swinging With the Finkels
-   62--Star Trek Into Darkness
-   30--Basic Instinct
-   25--The Men Who Stare at Goats
-   24--Finding Neverland
-    9--Iron Man
-   42--Seraphim Falls
-   62--Gulliver's Travels
-   64--Chronicle
-   62--Red Dawn
-   23--Uncle Buck
-   34--The Girl Next Door
-  281--Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb
-  220--The Thing
-   21--Fun with Dick and Jane
-    5--The Pirate Bay: Away From Keyboard
-    9--Pitch Perfect
-   62--Mirror, Mirror
-   24--Crash
-   23--The Uninvited
-   56--Catching Fire
-   22--Excalibur
-   22--Big Daddy
-   34--There's Something About Mary
-   24--Meet Joe Black
-   53--Vacation
-   20--WarGames
-   62--The Thing prequel
-    7--The Phantom of the Opera
-   11--Step Up Revolution
-   16--Twilight Saga: Eclipse
-  144--The Naked Gun 2?: The Smell of Fear
-   26--Zero Dark Thirty
-    6--Orphan
-   62--The Incredible Burt Wonderstone
-    5--Elite Squad 2: The Enemy Within
-    6--Star Trek: Nemesis
-   52--Planes
-   20--Blade II
-   67--The Iron Giant
-  212--The Naked Gun: From the Files of Police Squad!
-   62--Happiness Is a Warm Blanket
-   34--Pearl Harbor
-   26--The Vow
-   45--The Count of Monte Cristo
-   16--The Bounty Hunter
-   42--The Dead Zone
-   14--Barry Lyndon
-   62--Syrup
-   28--We Are the Night
-   62--Harry Potter and the Deathly Hallows
-   22--Final Fantasy: The Spirits Within
-   29--Ice Age
-   21--Ladyhawke
-    8--Closer
-   16--Karate Kid
-   62--Mission Impossible: Ghost Protocol
-   24--Pandorum
-   29--Faces in the Crowd
-   16--A Good Day to Die Hard
-   37--Frequently Asked Questions About Time Travel
-   20--Water for Elephants
-   27--The Aristocats
-    7--American Beauty
-   64--The Hangover II
-   62--The Son of No One
-   32--Resident Evil
-   22--Zodiac
-   21--Super Size Me
-   25--Moneyball
-   25--Mars Needs Moms
-   29--Interview with the Vampire
-   62--The Myth of the American Sleepover
-   16--The Green Lantern
-   47--The Proposition
-   42--Sleepy Hollow
-   26--A Beautiful Mind
-   21--4.3.2.1
-   13--First Blood
-   11--Be Cool
-   23--Ghostbusters II
-   24--The Guns of Navarone
-   18--Batman
-   48--Never Ending Story
-   36--Stargate: Continuum
-   21--8 Mile
-   62--Spy Kids: All the Time in the World
-   31--The Legend Is Born: Ip Man
-   24--The Girl with the Dragon Tattoo
-   24--American Wedding
-   62--Attack the Block
-   25--The Fighter
-   23--Enemy at the Gates
-   62--Details
-   30--The Man in the Iron Mask
-   62--The Apparition
-   24--A Christmas Carol
-   22--J. Edgar
-   62--A Bridge Too Far
-   44--The Princess and the Frog
-   20--Resident Evil: Extinction
-   16--Terminator Salvation
-  148--Out of Sight
-   26--Madagascar 3: Europe's Most Wanted
-   16--Stuck in Love
-   16--Night at the Museum 2
-   12--National Lampoon's Christmas Vacation
-    8--Natural Born Killers
-   55--The Machinist
-   36--Sky High
-   18--Grease
-   28--Honey, I Shrunk the Kids
-   27--Tinker Tailor Soldier Spy
-   27--Anvil! The Story of Anvil
-    6--Insidious
-   64--Nine
-    9--Force 10 from Navarone
-   36--The Ant Bully
-   32--Dr. No
-   52--Hawaiian Vacation
-   31--The Sting
-   62--Young Adult
-   14--Raising Arizona
-   24--The Iron Lady
-   33--Beneath Hill 60
-   24--Gremlins 2: The New Batch
-   22--The Family Man
-   41--Arthur Christmas
-   16--Jurassic Park
-   27--RoboCop
-   17--Breaking Dawn Part 1
-   33--Pocahontas
-   76--Unthinkable
-   14--Battle for Terra
-   22--Mystic River
-   62--Hummingbird
-    9--DodgeBall: A True Underdog Story
-   25--The Descent
-   22--Hang 'em High
-   34--The Warrior's Way
-   26--Dead Poets Society
-   25--The Truman Show
-   23--The Black Dahlia
-   24--Ed Wood
-   62--Abraham Lincoln Vampire Hunter
-   62--Angelina Jolie
-   43--Total Recall
-   64--Valentine's Day
-   24--X-Men Origins: Wolverine
-   21--8?
-   21--Scary Movie V
-   22--Bandits
-   62--Killing Bono
-   48--Seven Psychopaths
-    8--Ratatouille
-   22--Yes Man
-    7--The Crazies
-   25--Duel
-   23--Mamma Mia!
-   62--Happy Feet 2
-   24--Transformers: Dark of the Moon
-   57--Vertigo
-   23--The Simpsons Movie
-   62--The Mortal Instruments
-   26--Wallace & Gromit: The Curse of the Were-Rabbit
-   16--Lawless
-   21--The Guard
-   24--Carrie
-   62--Tempest
-  142--The International
-   25--A Nightmare on Elm Street
-   62--Bad Teacher
-   32--Dumbo
-   24--Flushed Away
-   22--Red Riding Hood
-   26--Warrior
-   22--You Again
-   30--Shrek the Third
-   25--MASH
-   62--We Bought a Zoo
-   29--Office Space
-   62--Green Lantern
-   22--Panic Room
-   21--Chicken Run
-    8--The Woman in Black
-   21--About Schmidt
-    6--The Last Exorcism
-   62--Carnage
-   22--Blue Streak
-   25--Age of Heroes
-    7--Tomorrow, When the War Began
-    7--Whip It
-  147--The Blair Witch Project
-   26--Flightplan
-   39--Underworld: Awakening
-   64--Star Wars: Episode VII
-   18--Kung Fu Hustle
-   48--Hangover 2
-   26--Rushmore
-   22--Brotherhood of the Wolf
-   16--Five Against a Bullet
-   20--Lifted
-   42--The Fifth Element
-   31--Legend of the Guardians: The Owls of Ga'Hoole
-   64--World of Warcraft
-   25--Solaris
-    7--Saw III
-   62--The Mortal Instruments: City of Bones
-   28--Winnie the Pooh
-   20--The Chronicles of Riddick
-   48--Big Trouble in Little China
-   40--Star Wars: Episode IV - A New Hope
-   65--The Expendables 2
-   25--Sherlock Holmes: A Game of Shadows
-   62--The Sorcerer's Apprentice
-   24--The Tree of Life
-   12--The Apartment
-   48--Animation
-   17--The Dark Knight Rises
-   15--Appleseed Saga: Ex Machina
-   22--Bill & Ted's Excellent Adventure
-   28--Cellular
-   27--Harry Potter and the Half-Blood Prince
-   21--Unforgiven
-   62--The Lady
-   16--The Sorcerer and the White Snake
-   37--Collateral
-   25--Dragon Hunters
-   64--Scary Movie 4
-   64--Scary Movie 5
-  287--Back to the Future
-   21--Bubba Ho-tep
-   16--The Company Men
-   27--Fast Five
-   29--War
-   28--The Science of Sleep
-   62--Four Wedding Planners
-    7--Erin Brockovich
-   15--Superman
-   16--Mad Max
-   62--Transformers 3
-   30--Sherlock Holmes
-   52--Transformers 4
-   20--Saw
-   62--Guillermo del Toro's Pacific Rim
-   10--The Score
-   27--Speed
-   63--The Lone Ranger
-   22--Little Miss Sunshine
-   24--Street Kings
-   10--Chaos
-   25--TRON: Legacy
-   75--Deep Blue Sea
-   23--RocknRolla
-   22--Priest
-   22--Paranormal Activity 3
-   25--Crimson Tide
-   22--Red Dragon
-   20--Ip Man 2
-   21--The Descent: Part 2
-   14--The Darjeeling Limited
-   26--The Last House on the Left
-   20--Bloodsport
-   21--The Experiment
-   27--Predator
-   48--Vanilla Sky
-   21--The Guardian
-   24--Hansel & Gretel: Witch Hunters
-   11--Defiance
-   22--The Quick and the Dead
-   10--The Tourist
-   31--What Dreams May Come
-   43--Fantasia
-   16--Cloud Atlas
-   26--Scream 2
-   12--Watchmen
-   28--Scream 3
-   23--Scream 4
-   38--The Great Raid
-   20--Young Frankenstein
-   52--Teen Witch
-   35--Star Trek VI: The Undiscovered Country
-   27--Alice in Wonderland
-   21--Hereafter
-   22--The Boat That Rocked
-  142--Spider-Man 2
-   16--Spider-Man 4
-   29--Van Helsing
-   16--Yogi Bear
-   19--S.W.A.T.
-   22--Amistad
-    6--For the Birds
-   20--Persepolis
-   62--Flypaper
-    9--Idiocracy
-   20--Resident Evil: Apocalypse
-   76--Fahrenheit 9/11
-   18--City of God
-  143--Dracula
-   24--Shaolin Soccer
-   75--Black Snake Moan
-   25--Catch Me If You Can
-   30--Toy Story 2
-   37--Toy Story 3
-    7--Highlander
-   62--The Brass Teapot
-  211--Immortal
-   33--The Prestige
-   22--AVP: Alien vs. Predator
-   21--Gran Torino
-   21--Mercury Rising
-   62--Land of Blood and Honey
-   28--Extract
-   22--The Last Starfighter
-   15--Smokey and the Bandit
-   30--The Assassination of Jesse James by the Coward Robert Ford
-   16--This Must Be the Place
-    5--You Only Live Twice
-    5--Citizen Kane
-   30--About a Boy
-   25--For a Few Dollars More
-   75--42
-   40--Where the Wild Things Are
-   62--The Great Gatsby
-   62--Our Idiot Brother
-   20--Slumdog Millionaire
-   62--Olympus is Fallen
-   16--Ice Age Four
-   16--Dead Island
-   25--Knowing
-   39--Kick-Ass
-   36--Ice Age: Continental Drift
-   30--Trinity is Still My Name
-   25--A Turtle's Tale: Sammy's Adventures
-   29--Kill Bill: Vol. 2
-   24--Kill Bill: Vol. 1
-   29--Charlie St. Cloud
-   16--Vampire Diaries
-   62--In Time
-    9--10 Things I Hate About You
-   41--Videodrome
-   25--Lost in Translation
-    7--How to Lose Friends & Alienate People
-   38--The Young Victoria
-   62--This Means War
-   25--Planet 51
-   22--Friday the 13th Part 2
-   25--Futurama: Into the Wild Green Yonder
-   62--Shame
-   22--Friday the 13th Part 3
-   22--Final Destination 5
-   39--Rio
-   65--Rise of the Planet of the Apes
-   25--Final Destination 3
-   25--Flight of the Navigator
-   75--Final Destination 2
-    6--Scary Movie
-   24--Crouching Tiger, Hidden Dragon
-    9--Pain & Gain
-   45--The Man Who Wasn't There
-   31--Barton Fink
-   32--Jarhead
-   24--The Forbidden Kingdom
-   62--The Mechanic
-   30--Raiders of the Lost Ark
-   22--Pet Sematary
-   16--Pirate Latitudes
-   32--The Untouchables
-   24--Romeo Must Die
-   17--Men in Black 3
-   21--The Chronicles of Narnia: The Voyage of the Dawn Treader
-   29--Hannibal
-   26--Anna Karenina
-   20--Oblivion
-  143--The Ten Commandments
-    9--Fletch
-   62--Snitch
-  356--The Negotiator
-   27--The Hole
-    9--The 36th Chamber of Shaolin
-   33--TRON
-   10--Clerks
-   32--The Big Boss
-   30--Best In Show
-    5--Wallace and Gromit: A Grand Day Out
-   16--The Moth Diaries
-   21--The Pirates! Band of Misfits
-   59--Big
-   26--The Reader
-   25--Bedtime Stories
-   17--Skyfall
-   62--Dylan Dog
-   27--Ghostbusters
-    9--Buried
-   21--Predators
-  145--The Frighteners
-  144--Dances with Wolves
-   24--Hero
-   25--Army of Darkness
-   29--Bedazzled
-   21--Bringing Up Baby
-   25--After.Life
-   38--Stardust
-   28--Hackers
-   29--A Fish Called Wanda
-   27--Sin City
-   24--Red
-   16--Finding Dory
-   33--The Third Man
-   10--Being John Malkovich
-   32--Aladdin
-   13--High Plains Drifter
-   25--One Flew Over the Cuckoo's Nest
-   26--Lady Vengeance
-   62--Rush
-   32--Shutter Island
-   20--Act of Valor
-   64--LOL
-   23--Cop Land
-   16--Les Miserables
-   24--Red Heat
-   39--Space Jam
-   23--Ghosts of Mars
-   11--Kung Fu Panda
-   21--Volver
-    6--The Shining
-   12--The Lookout
-   31--Waltz with Bashir
-   47--Dead Man
-   25--Green Street Hooligans
-   23--Mindhunters
-    7--Arachnophobia
-  148--Magnolia
-   16--Ghostbusters 3
-   21--The Good, The Bad, The Weird
-   25--Fast And Furious
-    5--Silent Hill: Revelation
-   26--The Patriot
-   18--The Santa Clause
-   25--The Ghost Writer
-   62--The Sitter
-   20--Harry Potter and the Goblet of Fire
-    7--I Am Sam
-   16--The Help
-   37--O Brother, Where Art Thou?
-   18--Clash of the Titans
-   16--Robot of the Future
-   17--The Lord of the Rings: The Two Towers
-   24--Evil Dead
-   26--Dead Alive
-   31--I, Robot
-   20--Four Lions
-   23--Blow
-   25--Edge of Darkness
-   62--To the Arctic
-   22--An Education
-   23--Pinocchio
-   62--Fireflies in the Garden
-   56--Identity Thief
-   10--Lethal Weapon
-   62--Giant Mechanical Man
-   16--Star Trek 2
-   28--Futurama: Bender's Big Score
-   62--The Way, Way Back
-   25--Alvin and the Chipmunks: Chipwrecked
-   13--How Do You Know
-   62--I'm Still Here
-   62--A Little Bit of Heaven
-   16--Heathers
-   62--Zookeeper
-   62--The Rum Diary
-   62--HomeAway's Hotel Hell Vacation
-    8--Mama
-   62--Where The Wild Things Are
-   18--Eclipse
-   33--The Mask
-   16--Dorothy of Oz
-   23--Unleashed
-   24--Devil
-   16--Austin Powers 4
-   30--Valkyrie
-   38--Peter Pan
-   19--Harry Potter And The Philosopher's Stone
-   23--Paths of Glory
-   21--The X-Files: I Want to Believe
-   62--Anchorman 2
-   25--Species
-   54--Warm Bodies
-   16--The Campaign
-   22--The Fisher King
-   62--A Glimpse Inside the Mind of Charles Swan III
-   23--Batteries Not Included
-  285--Happy Feet Two
-    7--Bad Boys II
-   24--Conviction
-   75--The Decline And Fall Of America
-   22--National Treasure: Book of Secrets
-   19--The Hobbit
-   22--Twins
-   18--The Big Lebowski
-   42--Gone Baby Gone
-   62--Chimpanzee
-   25--Evil Dead II
-   21--Dune
-   37--Snatch
-   21--Love and Other Drugs
-  211--The Exorcist
-   24--Shakespeare in Love
-    9--Strange Days
-   24--The Transporter
-   22--Suspiria
-    5--Street Fighter
-   19--Anastasia
-   62--The Social Network
-   62--G I Joe
-   39--Reservoir Dogs
-   55--Charade
-   21--The Joneses
-   62--Now You See Me
-   28--I Now Pronounce You Chuck & Larry
-   22--The Mist
-   25--Top Secret!
-   24--Stargate: The Ark of Truth
-   12--Clerks II
-   16--Lincoln
-   35--Stargate
-   16--Carlito's Way
-   62--The Hangover Part II
-   11--Transformers: The Movie
-   25--Constantine
-   21--Rambo III
-   28--8MM
-   16--Hancock
-   19--Road to Perdition
-   28--Contact
-   33--Romancing the Stone
-    7--I Spit on Your Grave
-    6--Fearless
-   16--The Possession
-   62--Fun Size
-   20--Exit Through the Gift Shop
-   28--This Is It
-   62--After Earth
-   62--Butter
-   62--Take This Waltz
-  145--Pulp Fiction
-   21--Star Wars: Episode III - Revenge of the Sith
-   27--Snow White and the Seven Dwarfs
-   75--The Mexican
-   23--Modern Times
-   26--Psycho
-   11--Just Friends
-   31--Dragon Tiger Gate
-   18--Breaking Dawn
-   21--21 & Over
-   22--Beverly Hills Cop
-   22--Final Destination
-  214--Tarzan
-   47--Conan the Barbarian
-   28--Crocodile Dundee
-   10--Home Alone 2: Lost In New York
-   27--Hachi: A Dog's Tale
-   16--Hansel and Gretel, Witch Hunters
-   30--Adaptation.
-  218--The Incredibles
-   16--The Internship
-   64--Spring Breakers
-    7--Under Siege
-   22--Jeepers Creepers
-    6--The Boat
-   21--Friday the 13th: The Final Chapter
-   35--The Fourth Kind
-   26--Trainspotting
-   21--25th Hour
-   62--Dead Man Down
-   16--Meet the Fockers
-   27--Real Steel
-   64--Pirates of Silicon Valley
-    5--Case 39
-   64--Secretariat
-   21--Blazing Saddles
-   19--Twilight
-   62--The Whistleblower
-   22--Dante's Peak
-   64--William and Kate
-   25--Escape from New York
-   24--Up in the Air
-   52--Slumdog
-   30--Star Trek: Generations
-   29--The Cowboys
-   21--The Animatrix
-   62--Seven Days in Utopia
-   73--Conquest 1453
-   31--Agora
-   25--The Kids Are All Right
-   26--How to Train Your Dragon
-    8--Superman II
-   44--The Night of the Hunter
-    6--Steamboy
-   16--The Silver Linings Playbook
-   32--Taken
-   26--Chicken Little
-   33--Shrek 2
-   75--Gothika
-    8--Nacho Libre
-   24--Fear and Loathing in Las Vegas
-   30--V for Vendetta
-   16--Crazy Stupid Love
-   18--James Bond
-   16--Jack Goes Boating
-   62--Prom
-   32--Tango & Cash
-   62--Martha Marcy May Marlene
-   62--Life of Pi
-   25--Abduction
-   30--300
-   20--Home
-  354--Sniper
-   27--Moulin Rouge!
-   62--Perfect Sense
-   43--Stranger Than Fiction
-  281--Full Metal Jacket
-   16--Top Gun 2
-  142--Mulan
-   40--Training Day
-   38--Star Wars: Episode V - The Empire Strikes Back
-   32--Lemony Snicket's A Series of Unfortunate Events
-   21--Payback
-   31--Better Off Dead...
-   62--The Three Stooges
-   21--One Day
-   25--Antiviral
-   12--Elephant
-   21--Tucker & Dale vs. Evil
-   30--The Time Machine
-   21--The Hunter
-   26--Cypher
-  145--Bonnie and Clyde
-    8--A Nightmare on Elm Street 4: The Dream Master
-   35--The Curious Case of Benjamin Button
-   10--Surf's Up
-   20--Red Cliff: Part I
-   21--The Legend of Zorro
-   25--Infernal Affairs
-   41--Hellboy II: The Golden Army
-   62--Transformers 3: Dark of the Moon
-  214--Platoon
-   23--Rush Hour 2
-   23--Kingdom of Heaven
-   16--Sucker Punch
-  211--The Secret World of Arrietty
-   16--Ocean of Pandora
-   26--Mulholland Drive
-   31--The Sixth Sense
-   62--Safe Haven
-   24--Hook
-   20--22 Bullets
-   22--The Master
-   11--Black Death
-   37--Triangle
-   76--Dawn of the Dead
-   32--Assassination of a High School President
-   16--28 Days Later...
-   14--Star Trek
-   26--Beauty and the Beast
-   20--The Croods
-   23--ParaNorman
-   46--Back to the Future Part II
-   16--Dolphin Tale
-   53--The Blues Brothers
-   21--Open Season 2
-  144--E.T. the Extra-Terrestrial
-   29--The Town
-   20--Notorious
-   25--Star Trek: The Motion Picture
-    7--Mr. Nobody
-   22--The Chronicles of Narnia: Prince Caspian
-   37--Rise of the Guardians
-   31--Ben-Hur
-   32--The Bourne Ultimatum
-   74--The Day After Tomorrow
-   23--Braveheart
-   24--Teenage Mutant Ninja Turtles
-   22--Baraka
-   43--Flawless
-   37--Once Upon a Time in America
-   74--Seven Years in Tibet
-   62--Blackthorn
-   26--Alvin and the Chipmunks: The Squeakquel
-   20--50 First Dates
-   22--Another Earth
-   26--Maverick
-   30--Limitless
-   52--Holiday
-   62--Albert Nobbs
-   64--Monsters vs. Aliens
-   23--The Jerk
-   62--Larry Crowne
-   25--Futurama: Bender's Game
-    9--The Pianist
-   24--American Reunion
-   25--Frank Herbert's Dune
-   25--Fired Up!
-   21--Galaxy Quest
-   27--Bee Movie
-   22--Friends with Benefits
-   10--Melancholia
-   62--Dilemma
-   31--Ironclad
-   16--Date Night
-   14--The Magnificent Seven
-   27--Outlander
-   32--In the Valley of Elah
-   62--Big Happy Family
-   21--Signs
-   24--The Roommate
-   12--2001: A Space Odyssey
-   74--Global Eugenics: Using Medicine to Kill
-   19--Cube
-   33--Secondhand Lions
-   24--Freddy vs. Jason
-   16--Seeking a Friend For The End Of The World
-   16--Hyde Park on the Hudson
-   16--21 Jump Street
-   23--The Graduate
-   13--Remember the Titans
-   22--Johnny English
-   28--Friday the 13th Part VI: Jason Lives
-   62--Wrath of the Titans
-   26--Snow White and the Huntsman
-   12--The Adventures of Tintin
-  146--Cloudy with a Chance of Meatballs
-   36--The 'Burbs
-   32--Once Upon a Time in the West
-    8--Robin Hood
-   26--Starship Troopers
-    8--Shelter
-   79--The Karate Kid
-   24--The Hitchhiker's Guide to the Galaxy
-   14--Jonah Hex
-   16--The Fantastic Four
-   23--88 Minutes
-   24--Pan's Labyrinth
-   22--The Great Dictator
-   62--My Week
-   19--Maximum Overdrive
-   19--Babel
-   62--Gangster Squad
-  143--The Tall Man
-   20--Malena
-   52--The Spirit
-    9--Goodfellas
-    5--The Cave
-  143--Fargo
-   27--It
-    6--Jingle All the Way
-   14--Kung Fu Panda 2
-   16--Chinatown
-   23--Apocalypse Now
-    7--The Chronicles of Narnia: The Lion, the Witch and the Wardrobe
-   24--48 Hrs.
-   62--Love Happens
-   29--Coraline
-   12--Harold & Kumar Go to White Castle
-   17--Casino Royale
-   21--District 13
-   23--Fair Game
-   27--Michael Clayton
-   24--Brave
-   22--Bandidas
-   26--The King's Speech
-   16--Death at a Funeral
-   26--The Craft
-   38--Sunshine
-    9--Cape Fear
-   21--Cold Mountain
-    9--Marley & Me
-   15--Up
-   27--Down Periscope
-   16--Bridesmaids
-   30--The Collection
-   22--Troy
-   62--Haywire
-   23--On Her Majesty's Secret Service
-   63--James Franco
-   23--Green Lantern: Emerald Knights
-   16--Cleopatra
-  144--Happy Feet
-   25--Prometheus
-   37--Hunger
-   10--The Hills Have Eyes II
-   24--Team America: World Police
-   74--Snakes on a Plane
-   26--The Midnight Meat Train
-   16--Under the Skin
-   27--The Andromeda Strain
-   40--Juno
-   45--The Emperor's New Groove
-   34--Ghost Dog: The Way of the Samurai
-  144--Point Break
-   62--Abraham Lincoln: Vampire Hunter
-   62--G.I.Joe: Retaliation
-   11--Raging Bull
-   25--The Wizard of Oz
-   25--The Silence of the Lambs
-   20--March of the Penguins
-   21--Sunset Boulevard
-   37--Cliffhanger
-   32--The Bourne Identity
-   34--August Rush
-   14--Eraserhead
-   45--Rock of Ages
-   40--Star Trek IV: The Voyage Home
-    6--King Arthur
-   26--The Elephant Man
-   16--Wall Street: Money Never Sleeps
-   32--The Best Exotic Marigold Hotel
-   28--Takers
-   16--The Iceman
-   27--No Country for Old Men
-   26--The Adventures of Robin Hood
-   48--King Kong
-   12--When Harry Met Sally...
-   25--The Da Vinci Code
-   22--Young Guns II
-   28--Ghost
-   11--The Addams Family
-   21--Goon
-    5--The Skin I Live In
-   24--A Walk to Remember
-   62--Next Three Days
-   24--Clueless
-  212--My Name is Nobody
-   21--Who Framed Roger Rabbit
-   62--Beastly
-   62--The Flowers of War
-   31--Jack-Jack Attack
-   62--The Silent House
-   62--Salmon Fishing In The Yemen
-  212--Boss Nigger
-   16--R.I.P.D.
-    7--Hesher
-   24--Ocean's Twelve
-    5--A Fistful of Dollars
-   20--Y tu mam? tambi?n
-   22--Dead Space: Downfall
-   22--Breakfast at Tiffany's
-   32--The Constant Gardener
-   54--The Fugitive
-   41--Star Wars: Episode VI - Return of the Jedi
-    6--Intouchables
-   10--Hellraiser
-   64--Ouija
-   15--Let the Right One In
-   20--Young Guns
-   51--The Chinese Connection
-   16--Alien 5
-   27--30 Days of Night
-   20--The Hunger Games
-   26--The Ring
-   33--The Gods Must Be Crazy
-    8--Dogtooth
-   29--Pirates of the Caribbean: The Curse of the Black Pearl
-   11--Kiki's Delivery Service
-   56--The Punisher
-   25--Child's Play
-  142--Event Horizon
-   62--The Cabin in the Woods
-   22--Drag Me to Hell
-   62--Captain America: The First Avenger
-    6--The Cove
-   54--Dial M For Murder
-   16--Running Scared
-   62--What's Your Number
-   38--Falling Down
-   37--Monsters, Inc.
-   31--Bolt
-   34--Shrek
-   26--The Illusionist
-   21--Good Luck Chuck
-   25--Along Came a Spider
-   31--Hoodwinked!
-   21--Candyman
-   15--Shark Tale
-  214--Basic
-   40--Manhattan
-   62--Extremely Loud and Incredibly Close
-   74--The Mummy
-   27--The Return of the Living Dead
-   27--Scent of a Woman
-   24--Sicko
-   21--Super 8
-   43--The Dark Knight
-   23--A Perfect Getaway
-   19--The Sword in the Stone
-  285--Spider-Man
-   16--Salt
-   44--The Game
-   16--Godzilla
-   33--Forrest Gump
-   23--Me, Myself & Irene
-   31--Inception
-   29--School of Rock
-   64--G.I. Joe: The Rise of Cobra
-   28--Grosse Pointe Blank
-   74--An Inconvenient Truth
-   16--The Smurfs
-   26--Gone with the Wind
-    7--The Mask of Zorro
-   14--Invictus
-   26--Caddyshack
-   64--50 Shades of Grey
-   12--Pirates of the Caribbean: Dead Man's Chest
-   64--Pom Wonderful Presents: The Greatest Movie Ever Sold
-   48--Dog Day Afternoon
-   28--The Collector
-   62--The Place Beyond the Pines
-   28--The Sound of Music
-   16--The Blue Umbrella
-   62--2 Guns
-   15--Lawrence of Arabia
-   16--E.T. The Extra-Terrestrial
-    9--Life Cycles
-   24--The Last Samurai
-   20--Serenity
-   22--Trading Places
-   13--Astro Boy
-   17--Clue
-   21--Letters to Juliet
-    7--Airplane!
-   64--Pride and Prejudice and Zombies
-   62--Magic Mike
-   62--Blitz
-   21--Conan the Destroyer
-   23--Ocean's Thirteen
-   30--Perfume: The Story of a Murderer
-   21--The Blind Side
-   22--The Nines
-   37--Master and Commander: The Far Side of the World
-   24--Angels & Demons
-   32--The Girl Who Kicked the Hornet's Nest
-   64--Matterhorn
-   25--Remember Me
-   22--The Rite
-    9--Antz
-   34--Land and Freedom
-   40--Despicable Me
-   75--Traffic
-   16--Premium Rush
-   30--The Rocketeer
-   29--Sex Drive
-   62--Killer Elite
-   27--Titanic
-   22--Casper
-   21--The Goonies
-   62--The Words
-   29--Conspiracy Theory
-   21--Willow
-   52--The Italian Job
-   64--Terrence Malick's To The Wonder
-   24--Swordfish
-  215--Blade Runner
-   62--Dark Skies
-   23--Chocolat
-   16--Bond 50
-   76--Bowling for Columbine
-   73--Sphere
-   52--Benjamin Button
-   25--Senna
-   62--Little Fockers
-   52--Tron Legacy
-   20--Rocky
-   16--Piranha 3D
-   62--Monsters University
-   25--It's Kind of a Funny Story
-   28--Brazil
-  143--Eight Legged Freaks
-   26--Jaws
-   24--The Crow: City of Angels
-   62--Grown Ups 2
-   62--iSteve
-   24--Wall Street
-   24--The Man from Earth
-   23--The Faculty
-   62--Straw Dogs
-   64--Arrested Development
-   16--G.I. Joe
-   16--360
-   28--John Carter
-    7--El Mariachi
-   62--To Rome With Love
-   38--Notting Hill
-   28--Match Point
-   14--Flags of Our Fathers
-   22--Australia
-   21--That's My Boy
-   26--Batman: Gotham Knight
-   34--Ice Age: The Meltdown
-   26--Dark Shadows
-   29--The Others
-    7--Munich
-   25--Eagle Eye
-   30--Paranormal Activity
-   28--We Were Soldiers
-   32--Leon: The Professional
-   39--Identity
-   30--How the Grinch Stole Christmas!
-   31--Tremors
-   37--Star Trek: First Contact
-   62--Stuck by Lightning
-   62--White House Down
-   25--Batman Returns
-   26--Spaceballs
-   33--Three Days of the Condor
-   21--The Seventh Seal
-   24--2012
-   33--2010
-    6--Pitch Black
-   16--Center of the Earth
-    6--Black Swan
-   39--X-Men
-   29--The Matrix
-   28--Good Will Hunting
-   12--Vampires
-   20--Legend of the Fist: The Return of Chen Zhen
-   45--The Hunt for Red October
-   63--Parker
-   20--Headhunters
-   76--The Perfect Storm
-   28--American Pie
-   20--The Ward
-   28--He's Just Not That Into You
-   27--The Killer
-   62--The Girl With the Dragon Tattoo
-   24--Beverly Hills Cop III
-   62--Looper
-   35--Underworld
-   23--Poseidon
-    9--Lara Croft: Tomb Raider
-   14--Cars 2
-   62--Being Elmo
-   16--Pain and Gain
-   41--The Nightmare Before Christmas
-   48--Rumblewick
-  279--Battle Royale
-   16--The Rescuers
-   44--Hotel Transylvania
-   30--True Grit
-  217--Amadeus
-   24--The Bourne Supremacy
-    9--Night at the Museum: Battle of the Smithsonian
-   49--Aliens
-   39--Horton Hears a Who!
-   21--Cube 2: Hypercube
-   75--The Long Kiss Goodnight
-   33--Sideways
-    5--Space Chimps
-   20--Close Encounters of the Third Kind
-   16--Red Tails
-   48--The Dark Fields
-   26--The Road
-   20--Ong Bak
-   20--Demolition Man
-   35--Bridge to Terabithia
-   61--Safe
-   16--The Grove
-   34--In the Mouth of Madness
-   16--A-Team
-   62--Trance
-   62--Dream House
-   25--Wild Things
-  288--Back to the Future Part III
-   62--Playing for Keeps
-   21--The League of Extraordinary Gentlemen
-   29--From Russia With Love
-   25--G.I. Joe: Retaliation
-   16--Contraband
-   62--Casa De Mi Padre
-   62--One for the Money
-   18--Frankenweenie
-    9--City of Angels
-   22--Alexander
-   32--Short Circuit 2
-   26--Jack Reacher
-   62--Beautiful Creatures
-   35--Frailty
-   48--Observe and Report
-   16--Blue Valentine
-   34--The Rock
-   23--Man on Fire
-   62--The Decoy Bride
-   29--The Running Man
-    9--Tooth Fairy
-   28--Martyrs
-   22--Batman Begins
-    8--Blade: Trinity
-   35--Flipped
-   23--Speed 2: Cruise Control
-   22--The Beastmaster
-   62--Diary of a Wimpy Kid: Dog Days
-   35--Minority Report
-   22--Irreversible
-   26--The Meaning of Life
-   43--The Great Escape
-   23--Octopussy
-   31--Tristan & Isolde
-   62--Savages
-   41--The Importance of Being Earnest
-   63--Red Band
-   21--The Dirty Dozen
-   30--Small Soldiers
-   52--Twilight Eclipse
-   30--Toy Story
-   27--A Knight's Tale
-   22--Happy Gilmore
-   24--The Passion of the Christ
-   20--Win Win
-   62--Hitchcock
-   16--Zoolander 2
-   31--Dark City
-   62--Your Highness
-   39--Prince of Persia: The Sands of Time
-   23--Hellboy
-   24--G-Force
-   20--The Spy Who Loved Me
-  142--Zatoichi: The Blind Swordsman
-   74--Soylent Green
-    7--La Femme Nikita
-   38--A Clockwork Orange
-   29--Ferris Bueller's Day Off
-   23--Invasion of the Body Snatchers
-   10--Changeling
-   62--Tower Heist
-   15--Joe Dirt
-   32--The Thin Red Line
-   29--Law Abiding Citizen
-   46--True Lies
-   21--End of Days
-   17--Secretary
-   62--Gravity
-   25--Ghost World
-   67--The Avengers
-   74--Cool Runnings
-   57--Bruno
-   74--The Jackal
-   27--Shrek Forever After
-   64--Three Men
-  216--Stargate SG-1 Children of the Gods - Final Cut
-   25--The Grudge
-   62--Machine Gun Preacher
-   18--Harry Potter
-   24--The Searchers
-   62--The Woman In Black
-   12--Casino
-   57--The Dictator
-   62--Good Neighbors
-   75--Inglourious Basterds
-   28--Fright Night
-   21--The Chronicles of Riddick: Dark Fury
-    7--Goldfinger
-   37--The Tale of Despereaux
-   11--Planet Terror
-   24--The Net
-   24--From Dusk Till Dawn
-   32--eXistenZ
-   22--P. S. I Love You
-   44--The Polar Express
-   21--Superman/Batman: Public Enemies
-   25--Pirates of the Caribbean: At World's End
-  214--Se7en
-   16--Gilligan's Island
-   34--Avatar
-   62--Mr. Popper's Penguins
-   22--National Treasure
-   62--Underworld Awakening
-   16--The Last Stand
-   31--An American Werewolf in London
-   24--Taxi
-   75--Cloverfield
-   24--Just Go With It
-   20--The Raid: Redemption
-   15--The Last of the Mohicans
-   22--Gattaca
-   24--Paycheck
-    9--The Red Baron
-   28--Planes, Trains and Automobiles
-   26--Twin Peaks: Fire Walk With Me
-   64--Dinosaurs Versus Aliens
-   27--Taxi Driver
-   52--The Kingdom
-   26--Red State
-   36--It's a Wonderful Life
-   22--Doom
-   21--The Hills Have Eyes
-   21--The Wedding Singer
-   21--The Treasure of the Sierra Madre
-   62--The Greening of Whitney Brown
-   23--Open Season
-   21--The Lives of Others
-   23--A Single Man
-   39--The Jacket
-    9--What's Eating Gilbert Grape
-   26--Schindler's List
-   43--The Green Mile
-   52--Romeo and Juliet
-   62--Answers to No One
-   56--Borat
-   20--Million Dollar Baby
-   22--Pirates of the Caribbean: On Stranger Tides
-   24--Mirrors
-   20--Doctor Zhivago
-   22--The Lincoln Lawyer
-   32--Inkheart
-   32--Rear Window
-   23--Deep Impact
-   24--Pretty Woman
-   13--3:10 to Yuma
-   26--The Lorax
-   73--Into the Wild
-   23--Brokeback Mountain
-   38--Black Hawk Down
-   43--X-Men: First Class
-   74--Catfish
-   25--Coriolanus
-   24--Puss in Boots
-   20--Antichrist
-   30--Coyote Ugly
-   74--The X Files
-  147--Chloe
-   35--Hitman
-  348--Flash Gordon
-   22--Bad Santa
-   76--Django Unchained
-   20--And Soon the Darkness
-   26--You've Got Mail
-   25--(500) Days of Summer
-   18--The Hobbit: An Unexpected Journey
-   62--Star Trek: Into Darkness
-   38--The Sandlot
-   16--Smurf
-   32--Monty Python and the Holy Grail
-   23--The Man from Nowhere
-   62--The Darkest Hour
-   31--The Day the Earth Stood Still
-   62--Welcome To The Punch
-   29--1984
-   23--Zombieland
-   16--Field of Dreams
-   24--Ocean's Eleven
-  143--101 Dalmatians
-   36--Lost Highway
-   37--The Crow
-   26--Dogville
-   30--Cruel Intentions
-   21--K-PAX
-   62--Wanderlust
-   29--Top Gun
-   32--Resident Evil: Degeneration
-   22--Star Wars: Episode II - Attack of the Clones
-   37--Serendipity
-   62--The Odd Life of Timothy Green
-   62--The Grandmaster
-   23--Mary and Max
-   74--On the Waterfront
-   35--The Skeleton Key
-   36--The Princess Bride
-   62--Dirty Girl
-   24--The Lion King II: Simba's Pride
-   23--The Fall
-   17--Contagion
-   29--The Muppets
-   16--Harry Potter and the Deathly Hallows: Part 2
-   22--Harry Potter and the Deathly Hallows: Part 1
-   68--Avengers
-   49--Alien
-   48--L.A. Confidential
-   16--Bourne Legacy
-   62--The Hangover 3
-   64--Police Academy
-  146--Star Wars: The Clone Wars
-   17--The Lord of the Rings: The Fellowship of the Ring
-   16--The Hangover 2
-   24--The Hurt Locker
-   23--Exam
-   16--Peanuts
-   21--Primer
-   54--Batman: Under the Red Hood
-   10--The Little Mermaid
-   43--Almost Famous
-   62--Horrible Bosses
-   29--Commando
-   43--Eternal Sunshine of the Spotless Mind
-   27--Take Me Home Tonight
-   23--Stake Land
-   64--JOBS
-   62--Page Eight
-   31--In Bruges
-   21--Footloose
-   23--Pride & Prejudice
-   17--The Lord of the Rings: The Return of the King
-   13--The City of Lost Children
-   23--A Nightmare on Elm Street 3: Dream Warriors
-   64--Bill and Ted
-   19--Kiss Kiss Bang Bang
-   62--Cowboys and Aliens
-   33--The Brothers Bloom
-   24--Deja Vu
-   20--Beetlejuice
-    5--Stand by Me
-   62--Despicable Me 2
-   56--Mission Impossible 4
-   29--Cinderella Man
-   25--Mad Max 2
-   26--Moon
-   25--The Devil's Advocate
-   26--Butch Cassidy and the Sundance Kid
-   20--Rocky II
-   24--Ace Ventura: Pet Detective
-   16--Mission: Impossible - Ghost Protocol
-   14--Underworld: Rise of the Lycans
-   21--Rocky IV
-   64--The Conspirator
-   16--Maggie Q
-   73--Alien?
-   26--Planet of the Apes
-   62--What to Expect When You're Expecting
-   30--Fantastic Mr. Fox
-   21--The Matrix Reloaded
-  145--Unbreakable
-   14--K-19: The Widowmaker
-   62--Everything Must Go
-    6--Black Book
-   18--Amazing Spider-Man
-   25--I Am Number Four
-   21--Beowulf
-   23--The Adjustment Bureau
-   27--The Island
-   36--Christine
-    8--Saw V
-   64--Tonka Trucks
-   16--The Samaritan
-   23--21 Grams
-   25--U-571
-    6--Arsenic and Old Lace
-   40--Enemy of the State
-   22--A Monster in Paris
-   26--Madagascar: Escape 2 Africa
-   25--Margin Call
-   22--Animal House
-    8--Safe House
-   25--Outbreak
-   24--Red Cliff: Part II
-   45--Gnomeo & Juliet
-   31--Blood Diamond
-   28--Colombiana
-   22--I Saw The Devil
-  143--Die Hard: With a Vengeance
-   31--X2: X-Men United
-   23--The Raven
-   16--Dance Flick
-   31--South Park: Bigger, Longer & Uncut
-   22--Eastern Promises
-   23--Underworld: Evolution
-   62--10 Years
-   24--Lady in the Water
-   38--Children of Men
-   25--Mary Poppins
-   11--Gangs of New York
-   62--Jack and Jill
-   27--Dogma
-   26--The Lost Boys
-   34--Alvin and the Chipmunks
-   27--Easy A
-   20--The Waterboy
-   22--Let Me In
-   19--District 13: Ultimatum
-   29--Scream
-   23--Vicky Cristina Barcelona
-    6--Bad Boys
-  147--Bound
-   23--The Ninth Gate
-   62--Thor: The Dark World
-   12--Mr. Deeds
-   24--Mesrine: Killer Instinct
-   23--Brick
-    8--Charlie's Angels: Full Throttle
-   62--The Perks of Being a Wallflower
-    9--Bruce Almighty
-   25--Black Sheep
-   28--The Usual Suspects
-   24--Hugo
-    7--Thunderball
-   62--Something Borrowed
-   62--The Immortals
-   62--Wall Street 2: Money Never Sleeps
-   16--Argo
-   18--Harry Potter and the Chamber of Secrets
-   21--The Eye
-   23--Sunshine Cleaning
-   16--High School
-   23--The Man with the Golden Gun
-   10--The African Queen
-   24--Kill the Irishman
-   26--Die Hard
-   10--Cars
-   24--National Lampoon's Vacation
-   62--Epic
+   80--The Sorcerer's Apprentice
+   80--Dolphin Tale
+   80--Animation
+   80--E.T. the Extra-Terrestrial
+   80--Fast and Furious 6
+   84--The Dark Knight Rises
+   88--Dark Knight
+   80--Harry Potter and the Half-Blood Prince
+   80--Tower Heist
+   80--The Lady
+   80--Rise of the Guardians
+   80--Documentary
+   80--Tanner Hall
+   80--Gravity
+   87--The Avengers
+   80--The Sorcerer and the White Snake
+   80--Blackthorn
+   81--Bruno
+   80--Scary Movie 4
+   80--Scary Movie 5
+   80--Rampart
+   80--American Reunion Red Band
+   80--The Company Men
+   80--Three Men
+   80--Maverick
+   80--Game Change
+   80--Limitless
+   82--Fast Five
+   80--Kick-Ass 2
+   83--War
+   80--Four Wedding Planners
+   80--Holiday
+   80--Twilight: Eclipse
+   80--Albert Nobbs
+   80--Mad Max
+   80--Monsters vs. Aliens
+   80--Larry Crowne
+   81--Transformers 3
+   80--Mirror Mirror
+   80--Transformers 4
+   87--Harry Potter
+   80--Machine Gun Preacher
+   80--The Woman In Black
+   83--New Moon
+   80--American Reunion
+   81--The Dictator
+   80--The Ides of March
+   80--Guillermo del Toro's Pacific Rim
+   80--50/50
+   82--Titans
+   80--Inglourious Basterds
+   80--Apollo 18
+   80--Good Neighbors
+   80--Melancholia
+   80--Dilemma
+   80--Ironclad
+   81--The Lone Ranger
+   81--Fright Night
+   80--Date Night
+   80--Big Happy Family
+   80--Priest
+   80--Cube
+   80--Hyde Park on the Hudson
+   80--Seeking a Friend For The End Of The World
+   80--Gilligan's Island
+   87--Avatar
+   80--21 Jump Street
+   80--Mr. Popper's Penguins
+   80--End of Watch
+   80--The Lucky One
+   80--The Last Stand
+   80--Underworld Awakening
+   80--The Bling Ring
+   80--Passion
+   80--The Host
+   80--Wrath of the Titans
+   80--The Adventures of Tintin
+   80--The Tourist
+   80--Robin Hood
+   80--The Librarian
+   80--Cloud Atlas
+   82--Watchmen
+   80--Dinosaurs Versus Aliens
+   80--Scream 4
+   80--The Karate Kid
+   80--Home Alone
+   80--Jonah Hex
+   80--Teen Witch
+   80--The Fantastic Four
+   80--The Greening of Whitney Brown
+   80--Alice in Wonderland
+   80--Hereafter
+   80--The Five-Year Engagement
+   80--My Week
+   80--Spider-Man 4
+   80--Gangster Squad
+   80--The Tall Man
+   80--The Spirit
+   80--Yogi Bear
+   84--It
+   80--Romeo and Juliet
+   80--Answers to No One
+   80--Flypaper
+   80--Borat
+   80--Pirates of the Caribbean: On Stranger Tides
+   80--Love Happens
+   80--Toy Story 3
+   80--The Brass Teapot
+   81--The Lorax
+   80--Couples Retreat
+   81--Brave
+   80--X-Men: First Class
+   80--Spiders
+   80--Puss in Boots
+   80--Land of Blood and Honey
+   80--Cape Fear
+   83--Chloe
+   80--Up
+   80--Unknown
+   80--This Must Be the Place
+   80--Journey 2: The Mysterious Island
+   80--Texas Killing Fields
+   80--Sinister
+   80--Killing Them Softly
+   80--Bridesmaids
+   80--Django Unchained
+   80--42
+   80--Love, Wedding, Marriage
+   80--Haywire
+   80--Where the Wild Things Are
+   82--James Franco
+   80--The Great Gatsby
+   83--The Hobbit: An Unexpected Journey
+   80--Star Trek: Into Darkness
+   80--Our Idiot Brother
+   80--Smurf
+   80--Cleopatra
+   81--Prometheus
+   92--Hunger
+   80--Snakes on a Plane
+   80--Olympus is Fallen
+   80--Ice Age Four
+   80--The Darkest Hour
+   80--Under the Skin
+   80--Dead Island
+   80--The Day the Earth Stood Still
+   80--Welcome To The Punch
+   82--Kick-Ass
+   80--Juno
+   81--Ice Age: Continental Drift
+   80--Abraham Lincoln: Vampire Hunter
+   80--G.I.Joe: Retaliation
+   80--1984
+   80--Field of Dreams
+   80--Bedtimes Stories
+   80--Vampire Diaries
+   80--In Time
+   80--Wanted
+   81--Rock of Ages
+   80--Wanderlust
+   80--Top Gun
+   80--The Odd Life of Timothy Green
+   80--The Grandmaster
+   80--The Other Guys
+   80--Country Strong
+   80--This is 40
+   80--Wall Street: Money Never Sleeps
+   82--World War Z
+   80--The Princess Bride
+   80--Dirty Girl
+   80--This Means War
+   80--Shame
+   80--The Iceman
+   80--Final Destination 5
+   80--Rio
+   82--The Muppets
+   83--Contagion
+   81--Rise of the Planet of the Apes
+   80--King Kong
+   80--Battle Los Angeles
+   89--Avengers
+   80--Alien
+   80--Bourne Legacy
+   80--The Hangover 3
+   80--Police Academy
+   80--Family
+   80--Clueless
+   80--Next Three Days
+   80--The Mechanic
+   80--District 9
+   80--The Hangover 2
+   80--Beastly
+   80--I Am Legend
+   80--The Flowers of War
+   83--Man of Steel
+   80--Pirate Latitudes
+   80--Jack the Giant Slayer
+   80--The Hangover: Part 2
+   82--Men in Black 3
+   80--The Silent House
+   80--The Caller
+   80--Salmon Fishing In The Yemen
+   80--R.I.P.D.
+   80--Texas Chainsaw 3D
+   80--Anna Karenina
+   80--Peanuts
+   80--Oblivion
+   80--Snitch
+   80--Thor
+   80--Horrible Bosses
+   80--Ouija
+   80--Don't Be Afraid of the Dark
+   80--The Moth Diaries
+   80--Alien 5
+   80--JOBS
+   80--Page Eight
+   80--Footloose
+   91--The Hunger Games
+   81--Skyfall
+   80--Bill and Ted
+   80--Dylan Dog
+   81--Ghostbusters
+   80--Predators
+   80--Cowboys and Aliens
+   80--The Cabin in the Woods
+   80--The Wolverine
+   80--Captain America: The First Avenger
+   80--A Very Harold and Kumar 3D Christmas
+   80--Despicable Me 2
+   80--Mission Impossible 4
+   80--The Big Wedding
+   80--Alex Cross
+   80--17 Again
+   80--Ruby Sparks
+   80--What's Your Number
+   80--Soldier
+   85--Moon
+   80--Finding Dory
+   80--Manhattan
+   80--Extremely Loud and Incredibly Close
+   80--Fallen
+   80--Mission: Impossible - Ghost Protocol
+   80--Super 8
+   80--The Conspirator
+   80--Maggie Q
+   81--Planet of the Apes
+   81--Rush
+   80--What to Expect When You're Expecting
+   80--Dreamworks' Turbo
+   80--LOL
+   80--The Girlfriend Experience
+   80--Hannah Montana
+   81--Les Miserables
+   80--Salt
+   84--Muppets
+   80--Godzilla
+   80--Inception
+   80--Wolverine
+   80--G.I. Joe: The Rise of Cobra
+   80--Dead Man
+   80--Private Benjamin
+   80--Everything Must Go
+   85--Amazing Spider-Man
+   80--50 Shades of Grey
+   80--Ghostbusters 3
+   80--Bachelorette
+   80--Pom Wonderful Presents: The Greatest Movie Ever Sold
+   80--Friends With Kids
+   80--The Place Beyond the Pines
+   80--The Blue Umbrella
+   80--2 Guns
+   80--The Sitter
+   80--E.T. The Extra-Terrestrial
+   80--Astro Boy
+   81--The Help
+   81--Clash of the Titans
+   80--The Great and Powerful
+   80--Robot of the Future
+   80--Tonka Trucks
+   80--The Samaritan
+   80--Pride and Prejudice and Zombies
+   80--To the Arctic
+   80--Magic Mike
+   80--Safe House
+   80--Blitz
+   80--Fireflies in the Garden
+   81--Identity Thief
+   80--Haunted
+   80--The Blind Side
+   80--The Devil's Double
+   82--Iron Man 3
+   81--Iron Man 2
+   80--Giant Mechanical Man
+   80--Motorcade
+   80--Star Trek 2
+   80--Matterhorn
+   80--The Rite
+   80--Solomon Kane
+   80--The Way, Way Back
+   80--Pirates: Band of Misfits
+   80--Vampires Suck
+   80--Finding Nemo
+   80--Despicable Me
+   80--Premium Rush
+   80--I'm Still Here
+   80--A Little Bit of Heaven
+   80--The Raven
+   80--Heathers
+   80--Killer Elite
+   80--Titanic
+   80--Zookeeper
+   80--Dance Flick
+   80--The Rum Diary
+   80--HomeAway's Hotel Hell Vacation
+   80--The Beaver
+   80--Where The Wild Things Are
+   83--Eclipse
+   80--Dorothy of Oz
+   80--The Words
+   80--10 Years
+   80--Star Trek Into Darkness
+   80--Swinging With the Finkels
+   80--Willow
+   80--Devil
+   80--Terrence Malick's To The Wonder
+   80--Valkyrie
+   80--Austin Powers 4
+   80--Blade Runner
+   80--Dark Skies
+   80--Gulliver's Travels
+   81--Anchorman 2
+   80--Chronicle
+   80--Bond 50
+   80--Jack and Jill
+   80--Red Dawn
+   80--The Campaign
+   80--Warm Bodies
+   80--Easy A
+   80--A Glimpse Inside the Mind of Charles Swan III
+   80--Happy Feet Two
+   80--The Thing
+   80--Benjamin Button
+   80--Little Fockers
+   80--Mirror, Mirror
+   80--Tron Legacy
+   80--Catching Fire
+   86--The Hobbit
+   80--Thor: The Dark World
+   80--Piranha 3D
+   80--Monsters University
+   80--Chimpanzee
+   81--Vacation
+   80--Jaws
+   80--The Perks of Being a Wallflower
+   80--Grown Ups 2
+   80--The Thing prequel
+   80--iSteve
+   80--Hugo
+   80--Twilight Saga: Eclipse
+   80--Zero Dark Thirty
+   80--Straw Dogs
+   80--G I Joe
+   82--The Social Network
+   80--G.I. Joe
+   80--Arrested Development
+   80--Something Borrowed
+   80--360
+   80--The Immortals
+   81--John Carter
+   80--Now You See Me
+   80--Wall Street 2: Money Never Sleeps
+   80--The Incredible Burt Wonderstone
+   80--To Rome With Love
+   80--Argo
+   82--Lincoln
+   80--The Hangover Part II
+   80--That's My Boy
+   80--Hancock
+   80--Planes
+   81--Dark Shadows
+   80--High School
+   80--Happiness Is a Warm Blanket
+   80--The Vow
+   80--The Bounty Hunter
+   80--Syrup
+   80--The Possession
+   80--Harry Potter and the Deathly Hallows
+   80--Fun Size
+   82--Cars
+   80--After Earth
+   80--Butter
+   81--Identity
+   80--Karate Kid
+   80--Take This Waltz
+   80--Mission Impossible: Ghost Protocol
+   80--Epic
+   80--A Good Day to Die Hard

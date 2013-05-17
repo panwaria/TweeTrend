@@ -116,23 +116,23 @@ public class TweetProcessor
 
 			        //System.out.println(tweetMessage + "\n");
 			        
-			        String webContext = getWebContext(tweetMessage);
+			        //String webContext = getWebContext(tweetMessage);
 			        ArrayList<String> webTokens = new ArrayList<String>();
-			        preprocessTweetMessage(webContext, webTokens, new ArrayList<String>());
+			        //preprocessTweetMessage(webContext, webTokens, new ArrayList<String>());
 			        
 			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
 			        extractMentions(normalTokens, false);
 			        extractMentions(hashTokens, true);
 //			        System.out.println(mCurrentMentions.size());
-			        extractMentions(webTokens, false);
+			        //extractMentions(webTokens, false);
 			        //AppUtils.println("After Simply Extracting Mentions");
 //			        printCurrentMentions();
 			        
 			        // [STEP 04_05] Next Step: Get Multiplication Factor and apply it on current mentions
-			        double mulFactor1 = getMultiplicationFactor(normalTokens, false);
-			        double mulFactor2 = getMultiplicationFactor(hashTokens, true);
-			        double normMulFactor = AppUtils.normalizeValues(mulFactor1, mulFactor2);
-			        applyMultiplicationFactor(normMulFactor);
+			        //double mulFactor1 = getMultiplicationFactor(normalTokens, false);
+			        //double mulFactor2 = getMultiplicationFactor(hashTokens, true);
+			        //double normMulFactor = AppUtils.normalizeValues(mulFactor1, mulFactor2);
+			        //applyMultiplicationFactor(normMulFactor);
 
 //			        System.out.println("After Applying Multiplication Factor");
 //			        printCurrentMentions();
@@ -336,13 +336,13 @@ public class TweetProcessor
 	 */
 	private void extractMentions(ArrayList<String> tokens, boolean isHash)
 	{
-        extractMentionsOfMovieCasts(tokens, isHash);
+        //extractMentionsOfMovieCasts(tokens, isHash);
         extractMentionsOfMovies(tokens, isHash);
 	}
 	
 	private void extractMentionsOfMovieCasts(ArrayList<String> tokens, boolean isHash)
 	{
-		double SCORE = isHash ? 0.5 : 0.25;
+		double SCORE = isHash ? 0.2 : 0.1;
 		for(String token : tokens)
 		{
 //			System.out.println(token);

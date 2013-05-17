@@ -185,7 +185,7 @@ public class MainClass
 			
 			for(TaxonomyNodeScoreClass queryScore : queryScoreArrayList)
 			{
-				System.out.println("[" + queryScore.mNodeName + ", " + queryScore.mTaxonomyNodeScore.mNodeScore + "]");
+				//System.out.println("[" + queryScore.mNodeName + ", " + queryScore.mTaxonomyNodeScore.mNodeScore + "]");
 				
 				int level = AppUtils.getTagCloudLevel(queryScore.mTaxonomyNodeScore.mNodeScore, thresholdArr);
 				if (level == -1) continue;
