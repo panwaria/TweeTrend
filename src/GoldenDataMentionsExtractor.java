@@ -48,36 +48,26 @@ public class GoldenDataMentionsExtractor extends DefaultHandler
 		}
 		*/
 		ArrayList<String> allResults = new ArrayList<String>();
+		ArrayList<Integer> allFrequencies = new ArrayList<Integer>();
+		
 		for(int j = 0; j < theArray.length; j++)
 		{
 			if(j != 0)
 			{
 				if(theArray[j].equals(theArray[j-1]))
+				{
+					Integer a = allFrequencies.remove(allResults.size() - 1);
+					a++;
+					allFrequencies.add(a);
 					continue;
+				}
 			}
-			/*
-			if(theArray[j] == null)
-				continue;
-			if(theArray[j].equals(""))
-				continue;
-			*/
-			System.out.println(theArray[j]);
-			/*
-			List<MovieDb> a = null;
-			try
-			{
-				a = tmdb.searchMovie(theArray[j], 0, "", true, 0);
-			} catch (MovieDbException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			if((a != null) && (a.get(0) != null) && (a.get(0).getGenres() != null))
-				System.out.println("\t" + a.get(0).getGenres().get(0));
-			else
-				System.out.println();
-			*/
+			allResults.add(theArray[j]);
+			allFrequencies.add(1);
 		}
+		
+		for(int j = 0; j < allResults.size(); j++)
+			System.out.format("%5d--%s\n", allFrequencies.get(j), allResults.get(j));
 		
 	}
 	
