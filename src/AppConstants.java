@@ -9,7 +9,7 @@ public class AppConstants
 	
 	// DEBUGGING Related
 	public static final int PROCESSING_TWEET_LIMIT = 1000;
-	public static final boolean PRINT_TO_CONSOLE_ALLOWED = true;
+	public static final boolean PRINT_TO_CONSOLE_ALLOWED = false;
 	
 	// TAXONOMY Related
 	public static final String TAXONOMY_SOURCE_XML = "src\\Taxonomy_Movies.xml";

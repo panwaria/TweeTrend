@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -335,8 +336,8 @@ public class TweetProcessor
 	 */
 	private void extractMentions(ArrayList<String> tokens, boolean isHash)
 	{
-        extractMentionsOfMovies(tokens, isHash);
         extractMentionsOfMovieCasts(tokens, isHash);
+        extractMentionsOfMovies(tokens, isHash);
 	}
 	
 	private void extractMentionsOfMovieCasts(ArrayList<String> tokens, boolean isHash)
@@ -356,7 +357,7 @@ public class TweetProcessor
 	
 	private void extractMentionsOfMovies(ArrayList<String> tokens, boolean isHash)
 	{
-		double SCORE = isHash ? 1.0 : 0.5;
+		double SCORE = isHash ? 1.0 : 0.8;
 		
 		TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
 
@@ -499,10 +500,26 @@ public class TweetProcessor
 				else
 				{
 					TaxonomyNodeScore taxonomyNodeScore = new TaxonomyNodeScore();
-					taxonomyNodeScore.mNodeScore = entry.getValue();
+					
+					
+					DecimalFormat df=new DecimalFormat("0.00");
+					String formate = df.format(entry.getValue()); 
+					double finalValue;
+                    try
+                    {
+	                    finalValue = (Double)df.parse(formate);
+                    } 
+                    catch (java.text.ParseException e)
+                    {
+	                    e.printStackTrace();
+	                    continue;
+                    }
+					
+					taxonomyNodeScore.mNodeScore = finalValue;
 					
 					if(taxonomyNodeScore.mNodeScore == 0)
 						System.err.println("Node Name with score '0' = " + nodeName);
+					
 					
 					mTaxonomyNodeScoreMap.put(nodeName, taxonomyNodeScore);
 				}
