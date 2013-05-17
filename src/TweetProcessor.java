@@ -331,8 +331,8 @@ public class TweetProcessor
 	 */
 	private void extractMentions(ArrayList<String> tokens, boolean isHash)
 	{
-        extractMentionsOfMovies(tokens, isHash);
         extractMentionsOfMovieCasts(tokens, isHash);
+        extractMentionsOfMovies(tokens, isHash);
 	}
 	
 	private void extractMentionsOfMovieCasts(ArrayList<String> tokens, boolean isHash)
@@ -348,7 +348,7 @@ public class TweetProcessor
 	
 	private void extractMentionsOfMovies(ArrayList<String> tokens, boolean isHash)
 	{
-		double SCORE = isHash ? 1.0 : 0.5;
+		double SCORE = isHash ? 1.0 : 0.8;
 		
 		TaxonomyPrefixMap prefixMap = TaxonomyPrefixMap.getPrefixMap();
 
