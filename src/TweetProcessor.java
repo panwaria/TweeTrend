@@ -123,10 +123,10 @@ public class TweetProcessor
 			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
 			        extractMentions(normalTokens, false);
 			        extractMentions(hashTokens, true);
-			        System.out.println(mCurrentMentions.size());
+//			        System.out.println(mCurrentMentions.size());
 			        extractMentions(webTokens, false);
 			        //AppUtils.println("After Simply Extracting Mentions");
-			        printCurrentMentions();
+//			        printCurrentMentions();
 			        
 			        // [STEP 04_05] Next Step: Get Multiplication Factor and apply it on current mentions
 			        double mulFactor1 = getMultiplicationFactor(normalTokens, false);
@@ -134,8 +134,8 @@ public class TweetProcessor
 			        double normMulFactor = AppUtils.normalizeValues(mulFactor1, mulFactor2);
 			        applyMultiplicationFactor(normMulFactor);
 
-			        System.out.println("After Applying Multiplication Factor");
-			        printCurrentMentions();
+//			        System.out.println("After Applying Multiplication Factor");
+//			        printCurrentMentions();
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
 			        filterMentions(AppConstants.THRESHOLD_VAL);
@@ -345,7 +345,7 @@ public class TweetProcessor
 		double SCORE = isHash ? 0.5 : 0.25;
 		for(String token : tokens)
 		{
-			System.out.println(token);
+//			System.out.println(token);
 			List<Long> movieNodeIds = MovieCastTrie.getMovieCastTrie().getMovieNodeIdList(token);
 			for(Long movieNodeId : movieNodeIds)
 			{
@@ -403,7 +403,7 @@ public class TweetProcessor
 		{
 			for (Map.Entry<Long, Double> entry : mCurrentMentions.entrySet())
 			{
-				System.out.println(entry.getKey());
+//				System.out.println(entry.getKey());
 				AppUtils.println("[" + entry.getKey() + ", " + mNodeNameArray[(int)(long)entry.getKey()] + ", " + entry.getValue() + "]");
 			}
 			
@@ -501,21 +501,10 @@ public class TweetProcessor
 				{
 					TaxonomyNodeScore taxonomyNodeScore = new TaxonomyNodeScore();
 					
+					double finalValue = AppUtils.getRoundedVal(entry.getValue());
+					if(finalValue == -1.0) continue;
 					
-					DecimalFormat df=new DecimalFormat("0.00");
-					String formate = df.format(entry.getValue()); 
-					double finalValue;
-                    try
-                    {
-	                    finalValue = (Double)df.parse(formate);
-                    } 
-                    catch (java.text.ParseException e)
-                    {
-	                    e.printStackTrace();
-	                    continue;
-                    }
-					
-					taxonomyNodeScore.mNodeScore = finalValue;
+					taxonomyNodeScore.mNodeScore = finalValue * 100;
 					
 					if(taxonomyNodeScore.mNodeScore == 0)
 						System.err.println("Node Name with score '0' = " + nodeName);
@@ -533,7 +522,8 @@ public class TweetProcessor
 		{
 			for (Map.Entry<String, TaxonomyNodeScore> entry : mTaxonomyNodeScoreMap.entrySet())
 			{
-				AppUtils.printToFile(TAXONOMY_NODE_SCORE_FILENAME, entry.getKey() + "~~" + entry.getValue().mNodeScore);
+//				AppUtils.printToFile(TAXONOMY_NODE_SCORE_FILENAME, entry.getValue().mNodeScore + entry.getKey());
+				System.out.format("%5d--%s\n", (int)entry.getValue().mNodeScore, entry.getKey());
 			}
 		}
 	}
@@ -597,7 +587,11 @@ public class TweetProcessor
 				}
 				
 				TaxonomyNodeScore taxonomyNodeScore = new TaxonomyNodeScore();
-				taxonomyNodeScore.mNodeScore = val;
+				
+				double finalValue = AppUtils.getRoundedVal(val);
+				if(finalValue == -1.0) continue;
+				
+				taxonomyNodeScore.mNodeScore = finalValue * 100;
 				mTaxonomyNodeScoreMap.put(parts[0], taxonomyNodeScore);
 			}
 			

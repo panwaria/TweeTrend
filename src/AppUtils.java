@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -54,6 +55,23 @@ public class AppUtils
     		writer.close();
         }
     }
+	
+	public static double getRoundedVal(double val)
+	{
+		DecimalFormat df = new DecimalFormat("0.00");
+		String formate = df.format(val); 
+		double finalValue = -1.0;
+        try
+        {
+            finalValue = Double.parseDouble(formate);
+        } 
+        catch (NumberFormatException e)
+        {
+            e.printStackTrace();
+        }
+        
+        return finalValue;
+	}
 	
 	private static boolean doLogsDirectoryExist()
 	{
