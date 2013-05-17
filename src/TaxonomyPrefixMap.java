@@ -113,7 +113,7 @@ public class TaxonomyPrefixMap
 		{
 			for (Map.Entry<String, TaxonomyPrefixMapValue> entry : mMap.entrySet())
 			{
-				AppUtils.println("<" + entry.getValue().getNodeId() + ", " + entry.getValue().isLast()
+				AppUtils.printLog("PrefixMap", "<" + entry.getValue().getNodeId() + ", " + entry.getValue().isLast()
 										+ "> \t - [" + entry.getKey() + "]");
 			}
 		}

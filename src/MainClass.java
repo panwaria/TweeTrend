@@ -18,7 +18,7 @@ public class MainClass
 		prepareMovieCastTrie(taxonomyTree);
 		
 		// Read Twitter Data and Process it.
-		TweetProcessor tweetProcessor = new TweetProcessor(taxonomyTree, AppConstants.TWITTER_DATA_FILE);
+		TweetProcessor tweetProcessor = new TweetProcessor(taxonomyTree, AppConstants.TWITTER_GOLDEN_DATA_FILE);
 		Map<String, TaxonomyNodeScore> scoreMap = tweetProcessor.getTaxonomyNodeScoreMap();
         System.out.println("CHECKPOINT: Final Taxonomy Node Score Updated.");
         
@@ -69,7 +69,7 @@ public class MainClass
 		System.out.println("CHECKPOINT: Taxonomy Prefix Map Generated.");
 		
 		// [TESTING] Print the Prefix Map.
-		//taxonomyTree.printPrefixMap();
+		taxonomyTree.printPrefixMap();
 		
 		return taxonomyTree;
 	}

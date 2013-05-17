@@ -28,7 +28,15 @@ public class MovieCastTrie
 	{
 		String[] tokens = castName.split(AppConstants.TWEET_DELIMITER_STRING);
 		for(String token : tokens)
+		{
+			if(token.equalsIgnoreCase("the"))
+				continue;
+			if(token.equalsIgnoreCase("a"))
+				continue;
+			if(token.equalsIgnoreCase("an"))
+				continue;
 			mCastTrie.insertCast(token, taxonomyNodeId);
+		}
 	}
 	
 	public List<Long> getMovieNodeIdList(String castName)

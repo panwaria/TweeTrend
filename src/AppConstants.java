@@ -21,6 +21,7 @@ public class AppConstants
 	
 	// TWEETS Related
 	public static final String TWITTER_DATA_FILE = "C:\\Tweets\\twitter_20110731-12.log";
+	public static final String TWITTER_GOLDEN_DATA_FILE = "golden_data_in_use\\golden_tweets.txt";
 	public static final String TWEET_DELIMITER_STRING = "\\s+|:|,|\\.|&|-|\\?";
 	public static final String GOLDEN_DATA_LOCATION = "golden_data";
 	
