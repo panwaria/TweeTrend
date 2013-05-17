@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -499,10 +500,26 @@ public class TweetProcessor
 				else
 				{
 					TaxonomyNodeScore taxonomyNodeScore = new TaxonomyNodeScore();
-					taxonomyNodeScore.mNodeScore = entry.getValue();
+					
+					
+					DecimalFormat df=new DecimalFormat("0.00");
+					String formate = df.format(entry.getValue()); 
+					double finalValue;
+                    try
+                    {
+	                    finalValue = (Double)df.parse(formate);
+                    } 
+                    catch (java.text.ParseException e)
+                    {
+	                    e.printStackTrace();
+	                    continue;
+                    }
+					
+					taxonomyNodeScore.mNodeScore = finalValue;
 					
 					if(taxonomyNodeScore.mNodeScore == 0)
 						System.err.println("Node Name with score '0' = " + nodeName);
+					
 					
 					mTaxonomyNodeScoreMap.put(nodeName, taxonomyNodeScore);
 				}
