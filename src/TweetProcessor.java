@@ -91,17 +91,19 @@ public class TweetProcessor
 		    	// [STEP 01] Find the actual Tweet JSON
 		    	try
 		    	{
-			    	String[] parts = line.split("\\[Twitter Firehose Receiver\\]");
-			    	String tweet = parts[1];
-			        //printLog("<<TWEET>> : \t" + tweet);
+			    	//String[] parts = line.split("\\[Twitter Firehose Receiver\\]");
+		    		//String tweet = parts[1];
+		    		//printLog("<<TWEET>> : \t" + tweet);
 			    	
 			    	// [STEP 01_05] Get TweetID
 			    	String tweetID = ""; // TODO: Implement getTweetID(tweet);
 			    	
 			        // [STEP 02] Find the Tweet Message
 			        // TODO: SEE IF IT IS GETTING CORRECT MESSAGE, AS THERE ARE MULTIPLE KEYS WITH 'text" as name.
-			        String tweetMessage = getTweetMessage(tweet);
-			        if((tweetMessage == null) || (tweetMessage.equals("")))
+			        //String tweetMessage = getTweetMessage(tweet);
+			    	String tweetMessage = line;
+			        
+			    	if((tweetMessage == null) || (tweetMessage.equals("")))
 			        	continue;
 			        
 			        // [STEP 03] Pre-process the tweet message
@@ -113,15 +115,17 @@ public class TweetProcessor
 
 			        //System.out.println(tweetMessage + "\n");
 			        
-			        //String webContext = getWebContext(tweetMessage);
-			        //String[] webTokens = preprocessTweetMessage(webContext);
+			        String webContext = getWebContext(tweetMessage);
+			        ArrayList<String> webTokens = new ArrayList<String>();
+			        preprocessTweetMessage(webContext, webTokens, new ArrayList<String>());
 			        
 			        // [STEP 04] Next Step: Compare the tweet with prefixMap. OUTPUT: Map<nodeID, score>
 			        extractMentions(normalTokens, false);
 			        extractMentions(hashTokens, true);
-			        //extractMentions(webTokens);
+			        System.out.println(mCurrentMentions.size());
+			        extractMentions(webTokens, false);
 			        //AppUtils.println("After Simply Extracting Mentions");
-			        //printCurrentMentions();
+			        printCurrentMentions();
 			        
 			        // [STEP 04_05] Next Step: Get Multiplication Factor and apply it on current mentions
 			        double mulFactor1 = getMultiplicationFactor(normalTokens, false);
@@ -129,8 +133,8 @@ public class TweetProcessor
 			        double normMulFactor = AppUtils.normalizeValues(mulFactor1, mulFactor2);
 			        applyMultiplicationFactor(normMulFactor);
 
-			        //AppUtils.println("After Applying Multiplication Factor");
-			        //printCurrentMentions();
+			        System.out.println("After Applying Multiplication Factor");
+			        printCurrentMentions();
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
 			        filterMentions(AppConstants.THRESHOLD_VAL);
@@ -340,9 +344,13 @@ public class TweetProcessor
 		double SCORE = isHash ? 0.5 : 0.25;
 		for(String token : tokens)
 		{
+			System.out.println(token);
 			List<Long> movieNodeIds = MovieCastTrie.getMovieCastTrie().getMovieNodeIdList(token);
 			for(Long movieNodeId : movieNodeIds)
+			{
 				mCurrentMentions.put(movieNodeId, SCORE);
+				//System.out.println("found");
+			}
 		}
 	}
 	
@@ -356,49 +364,32 @@ public class TweetProcessor
         
         for(int curIndex = 0; curIndex < tokens.size(); curIndex++)
         {
-        	String token = tokens.get(curIndex);
-        	
-        	if(!currentToken.equals(""))
+        	currentToken = tokens.get(curIndex);
+        	for (int i = curIndex + 1; i < tokens.size(); i++)
+			{
+        		//System.out.println("saurabh: " + currentToken);
+        		TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
+        		
+        		if(a != null)
+        		{
+        			if(a.getNodeId() != -1)
+        			{
+            			AppUtils.println("Mention Found: token-[" + currentToken + "]");
+            			mCurrentMentions.put(a.getNodeId(), SCORE);
+            		}
+        			if(a.isLast())
+        			{
+        				break;
+        			}
+        		}
+        		else
+        		{
+        			break;
+        		}
         		currentToken += " ";
-        	currentToken += token;
-        	TaxonomyPrefixMapValue a = prefixMap.retrieve(currentToken);
-
-        	if( a!= null && a.getNodeId() != -1)
-    		{
-    			AppUtils.println("Mention Found: token-[" + token + "]");
-    			mCurrentMentions.put(a.getNodeId(), SCORE);
-    			
-    			if(a.isLast())
-    			{
-    				currentToken = ""; 
-    				continue;
-    			}
-    			
-    			for (int i = curIndex + 1; i < tokens.size(); i++)
-    			{
-    				String newToken = tokens.get(i);
-    				
-    	        	currentToken += " ";
-    	        	currentToken += newToken;
-    	        	
-    	        	TaxonomyPrefixMapValue b = prefixMap.retrieve(currentToken);
-    	        	
-    	        	if(b!= null && b.getNodeId() != -1)
-    	        	{
-    	        		AppUtils.println("Mention Found: token-[" + currentToken + "]");
-            			mCurrentMentions.put(b.getNodeId(), SCORE);
-            			
-    	        		if(b.isLast())
-    	        			break;
-    	        	}
-    	        	else
-    	        		break;
-    	        	
-    			}
-    		}
-        	currentToken = "";
+        		currentToken += tokens.get(i);
+			}
         }
-
 	}
 	
 	private void printCurrentMentions()
@@ -411,8 +402,10 @@ public class TweetProcessor
 		{
 			for (Map.Entry<Long, Double> entry : mCurrentMentions.entrySet())
 			{
-				AppUtils.println("[" + entry.getKey() + ", " + entry.getValue() + "]");
+				System.out.println(entry.getKey());
+				AppUtils.println("[" + entry.getKey() + ", " + mNodeNameArray[(int)(long)entry.getKey()] + ", " + entry.getValue() + "]");
 			}
+			
 		}
 		else
 			AppUtils.println("No current mentions till now!\n");
