@@ -31,7 +31,6 @@ public class TaxonomyCreator
 			bw.write("<taxonomy>\n");
 			
 			TheMovieDbApi tmdb = new TheMovieDbApi(AppConstants.TMDB_API_KEY);
-			
 			List<Genre> allGenres = tmdb.getGenreList("");
 	        for(Genre genre : allGenres)
 	        {

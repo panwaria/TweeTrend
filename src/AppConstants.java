@@ -13,6 +13,7 @@ public class AppConstants
 	
 	// TAXONOMY Related
 	public static final String TAXONOMY_SOURCE_XML = "src\\Taxonomy_Movies.xml";
+	public static final String GOLDEN_TAXONOMY_SOURCE_XML = "src\\golden_data_taxonomy.xml";
 	public static final String MOVIE_CAST_SOURCE_XML = "src\\Movie_Cast.xml";
 	public static final String TAXONOMY_DELIMITER_STRING = "\\s+|:|,|\\.|&|-";
 	public static final String GO_WORDS_SOURCE_FILE = "src\\go_words.dat";

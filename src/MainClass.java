@@ -51,6 +51,7 @@ public class MainClass
 		
 		// Generate a tree structure from XML file.
 		TaxonomyTree taxonomyTree = taxonomyParser.createTreeFromXML(AppConstants.TAXONOMY_SOURCE_XML);
+		taxonomyTree = taxonomyParser.createTreeFromXML(AppConstants.GOLDEN_TAXONOMY_SOURCE_XML);
 		
 		System.out.println("CHECKPOINT: Taxonomy Tree Created.");
 		

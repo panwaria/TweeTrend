@@ -1,9 +1,13 @@
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -13,6 +17,12 @@ import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import com.omertron.themoviedbapi.MovieDbException;
+import com.omertron.themoviedbapi.TheMovieDbApi;
+import com.omertron.themoviedbapi.model.MovieDb;
+
+import java.util.List;
 
 
 public class GoldenDataMentionsExtractor extends DefaultHandler
@@ -25,14 +35,63 @@ public class GoldenDataMentionsExtractor extends DefaultHandler
 		String filename = "golden_data_in_use\\golden_tweets_saurabh.xml";
 		GoldenDataMentionsExtractor extractor = new GoldenDataMentionsExtractor();
 		extractor.parseXML(filename);
+		//System.out.println(extractor.count);
+		
+		String[] theArray = new String[extractor.arraylist.size()];
+		int i = 0;
+		for(String str : extractor.arraylist)
+			theArray[i++] = str;
+		Arrays.sort(theArray);
+		
+		extractor.arraylist.clear();
+		
+		/*
+		TheMovieDbApi tmdb = null;
+		try
+		{
+			tmdb = new TheMovieDbApi(AppConstants.TMDB_API_KEY);
+		} catch (MovieDbException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
+		ArrayList<String> allResults = new ArrayList<String>();
+		for(int j = 0; j < theArray.length; j++)
+		{
+			if(j != 0)
+			{
+				if(theArray[j].equals(theArray[j-1]))
+					continue;
+			}
+			/*
+			if(theArray[j] == null)
+				continue;
+			if(theArray[j].equals(""))
+				continue;
+			*/
+			System.out.println(theArray[j]);
+			/*
+			List<MovieDb> a = null;
+			try
+			{
+				a = tmdb.searchMovie(theArray[j], 0, "", true, 0);
+			} catch (MovieDbException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if((a != null) && (a.get(0) != null) && (a.get(0).getGenres() != null))
+				System.out.println("\t" + a.get(0).getGenres().get(0));
+			else
+				System.out.println();
+			*/
+		}
+		
 	}
 	
-	public TaxonomyTree createTreeFromXML(String filename)
-	{
-		parseXML(filename);
-		
-		return TaxonomyTree.getTaxonomyTree();
-	}
+	public int count = 0;
+	public List<String> arraylist = new ArrayList<String>();
 	
 	private void parseXML(String filename)
 	{
@@ -60,18 +119,20 @@ public class GoldenDataMentionsExtractor extends DefaultHandler
 	@Override
 	public void startElement(String uri, String localname, String qname, Attributes attributes) throws SAXException 
 	{
-		System.out.println("<start: " + qname + ">");
+		//System.out.println("<start: " + qname + ">");
+		if(qname.equals("mention"))
+		{
+			String movieName = attributes.getValue("name").trim();
+			//System.out.println(movieName);
+			arraylist.add(movieName);
+		}
 	}
-		
+	
 	@Override
 	public void endElement(String uri, String localname, String qname) throws SAXException 
 	{
-		System.out.println("</end: " + qname + ">" + "\n");
-	}
-	/*
-	public void characters( char[] data, int start, int length )
-	{
-		System.out.println("data = " + new String(data));
-	}
-	*/
+		if(qname.equals("tweet"))
+			count ++;
+		//System.out.println("</end: " + qname + ">");
+	}	
 }
