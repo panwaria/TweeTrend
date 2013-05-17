@@ -1,13 +1,12 @@
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -18,21 +17,13 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import com.omertron.themoviedbapi.MovieDbException;
-import com.omertron.themoviedbapi.TheMovieDbApi;
-import com.omertron.themoviedbapi.model.MovieDb;
-
-import java.util.List;
-
 
 public class GoldenDataMentionsExtractor extends DefaultHandler
 {
-	private static final String TWEET_TAG = "tweet";
-	private static final String MENTION_TAG = "mention";
-	
 	public static void main(String[] args)
 	{
-		String filename = "golden_data_in_use\\golden_tweets_saurabh.xml";
+		//String filename = "golden_data_in_use\\golden_tweets_saurabh.xml";
+		String filename = "golden_data_in_use\\golden_tweets_prakhar.xml";
 		GoldenDataMentionsExtractor extractor = new GoldenDataMentionsExtractor();
 		extractor.parseXML(filename);
 		//System.out.println(extractor.count);
