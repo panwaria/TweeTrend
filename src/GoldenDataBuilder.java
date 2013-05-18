@@ -42,6 +42,17 @@ public class GoldenDataBuilder
 		
 		Twitter twitter = new TwitterFactory().getInstance(); 
 		
+		Query query = new Query("Bardem Cruz");
+		
+		query.setCount(100);
+	    QueryResult result = mTwitter.search(query);
+	    for (Status status : result.getTweets()) {
+	    	String tweet = status.getText();
+	    	if(isEnglish(tweet.split(AppConstants.TWEET_DELIMITER_STRING)))
+	    		System.out.println(tweet);
+	    }
+	    
+		/*
 		for(int page = 1; page <= 50; page++)
 		{
 			Paging paging = new Paging(page);
@@ -52,6 +63,7 @@ public class GoldenDataBuilder
 		    		bw.write("<tweet>\n\t" + tweet + "\n</tweet>\n");
 		    }
 		}
+		*/
 	    
 	    bw.close();
 	}

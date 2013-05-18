@@ -84,6 +84,7 @@ public class TweetProcessor
 		    
 			long numTweets = 0;
 			
+			int numTweetsProcessed = 0;
 			for (String line; (line = reader.readLine()) != null /*&& numTweets < MAX_LIMIT*/; numTweets++)
 		    {
 		    	if(numTweets < MIN_LIMIT) continue;
@@ -111,11 +112,20 @@ public class TweetProcessor
 			        ArrayList<String> normalTokens = new ArrayList<String>();
 			        ArrayList<String> hashTokens = new ArrayList<String>();
 			        preprocessTweetMessage(tweetMessage, normalTokens, hashTokens);
-			        
 			        if(normalTokens.size() == 0 && hashTokens.size() == 0) continue;
-
-			        //System.out.println(tweetMessage + "\n");
 			        
+			        /*
+			        boolean goOn = false;
+			        if(tweetMessage.toLowerCase().contains("movie"))
+			        		goOn = true;
+			        if(!goOn)
+			        	continue;
+			        numTweetsProcessed++;
+			        if(numTweetsProcessed > 500)
+			        	break;
+			        
+			        System.out.println(tweetMessage + "\n");
+			        */
 			        //String webContext = getWebContext(tweetMessage);
 			        ArrayList<String> webTokens = new ArrayList<String>();
 			        //preprocessTweetMessage(webContext, webTokens, new ArrayList<String>());
@@ -138,7 +148,7 @@ public class TweetProcessor
 //			        printCurrentMentions();
 			        
 			        // [STEP 05] Next Step: Filter the mentions from the previous step. using a threshold. OUTPUT: Map<nodeID, score>
-			        filterMentions(AppConstants.THRESHOLD_VAL);
+			        //filterMentions(AppConstants.THRESHOLD_VAL);
 			        
 			        AppUtils.println("After Filtering Mentions");
 			        printCurrentMentions();

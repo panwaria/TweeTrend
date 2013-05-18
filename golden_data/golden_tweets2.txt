@@ -1,0 +1,19 @@
+Creating of Taxonomy XML
+API calls 
+- all genres = 20
+- 500 movies per genre
+bottleneck = network bandwidth & TMDB response time
+
+Reading from XML:
+Parser parses linearly ==> linear in the number of movies
+
+Creating taxonomy tree ==> 3 x number of movies
+
+Creating MovieCast XML ==> 5 x number of movies
+Reading from XML:
+Parser parses linearly ==> linear in the number of casts (5 x N)
+Creating trie ==> max_length_name x number of casts = 20 x 5 x N
+
+
+
+

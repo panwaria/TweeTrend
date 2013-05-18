@@ -23,8 +23,7 @@ public class MainClass
         System.out.println("CHECKPOINT: Final Taxonomy Node Score Updated.");
         
         // Process User's Query
-        processUserQuery(taxonomyTree, scoreMap);
-        
+        processUserQuery(taxonomyTree, scoreMap);   
 	}
 	
 	private static MovieCastTrie prepareMovieCastTrie(TaxonomyTree taxonomyTree)
@@ -197,7 +196,7 @@ public class MainClass
 			
 			String finalString = AppConstants.OUTPUT_HTML_START_STRING + htmlString + AppConstants.OUTPUT_HTML_END_STRING;
 			
-			AppUtils.printToFile(AppConstants.OUTPUT_HTML_FILE_BASE_NAME + input +".html", finalString);
+			AppUtils.printToFile(AppConstants.OUTPUT_HTML_FILE_BASE_NAME +".html", finalString);
 		}    
 		else
 			AppUtils.println("No entries in the User Query Score Map!\n");
